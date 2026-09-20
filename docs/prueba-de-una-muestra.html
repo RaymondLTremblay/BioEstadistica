@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 13 Prueba de una Muestra | BioEstadística</title>
 <meta name="author" content="">
-<meta name="description" content='library(gridExtra) library(tidyverse) Fecha de la última revisión ## [1] "2026-08-13"  13.1 El promedio, un estimado En este módulo se evalúan el promedio y las propiedades de una distribución...'>
-<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta name="description" content='library(gridExtra) library(tidyverse) Fecha de la última revisión ## [1] "2026-09-20"  13.1 El promedio, un estimado En este módulo se evalúan el promedio y las propiedades de una distribución...'>
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
 <meta property="og:title" content="Capítulo 13 Prueba de una Muestra | BioEstadística">
 <meta property="og:type" content="book">
-<meta property="og:description" content='library(gridExtra) library(tidyverse) Fecha de la última revisión ## [1] "2026-08-13"  13.1 El promedio, un estimado En este módulo se evalúan el promedio y las propiedades de una distribución...'>
+<meta property="og:description" content='library(gridExtra) library(tidyverse) Fecha de la última revisión ## [1] "2026-09-20"  13.1 El promedio, un estimado En este módulo se evalúan el promedio y las propiedades de una distribución...'>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 13 Prueba de una Muestra | BioEstadística">
-<meta name="twitter:description" content='library(gridExtra) library(tidyverse) Fecha de la última revisión ## [1] "2026-08-13"  13.1 El promedio, un estimado En este módulo se evalúan el promedio y las propiedades de una distribución...'>
+<meta name="twitter:description" content='library(gridExtra) library(tidyverse) Fecha de la última revisión ## [1] "2026-09-20"  13.1 El promedio, un estimado En este módulo se evalúan el promedio y las propiedades de una distribución...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_3-0.4.10/font.css" rel="stylesheet">
@@ -98,11 +98,11 @@
 <h1>
 <span class="header-section-number">Capítulo 13</span> Prueba de una Muestra<a class="anchor" aria-label="anchor" href="#prueba-de-una-muestra"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb520"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <p>Fecha de la última revisión</p>
-<pre><code>## [1] "2026-08-13"</code></pre>
+<pre><code>## [1] "2026-09-20"</code></pre>
 <p><img src="Graficos/hex_ggversa.png" alt="" width="20%"><img src="Graficos/hex_error.png" alt="" width="20%"></p>
 <hr>
 <div id="el-promedio-un-estimado" class="section level2" number="13.1">
@@ -127,7 +127,7 @@
 <div class="historia">
 <p>La distribución <em>t</em> fue publicada en 1908 por <strong>William Sealy Gosset</strong>, un químico y estadístico que trabajaba en la cervecería <strong>Guinness</strong> en Dublín. Como Guinness prohibía a sus empleados publicar, Gosset firmó con el seudónimo <strong>“Student”</strong>; por eso hoy se le llama la <em>t</em> de Student. La desarrolló para trabajar con las <strong>muestras pequeñas</strong> típicas del control de calidad de la cerveza.</p>
 </div>
-<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb522"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">out</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">df1x</span>, <span class="va">val</span>, colour<span class="op">=</span><span class="va">df</span><span class="op">)</span> <span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="va">rlt_theme</span><span class="op">+</span></span>
@@ -137,7 +137,7 @@
 <span>                     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Valores"</span><span class="op">)</span><span class="op">+</span></span>
 <span>                     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Densidad"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c13-10-1.png" alt="" width="672"></div>
-<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb523"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"t-distribution.png"</span><span class="op">)</span></span></code></pre></div>
 <p>Observa cómo cambia la distribución de <em>t</em> cuando cambia el tamaño de muestra (el grado de libertad es <span class="math inline">\(\nu=n-1\)</span>). Hay que observar dos componentes: 1. hay menos datos centrados en el promedio y 2. hay más datos en las colas.</p>
 <p>Se usa la distribución de <em>t</em> para calcular el intervalo de confianza y la hipótesis del promedio de una muestra, debido a que la forma de la distribución de <em>t</em> cambia con el tamaño de muestra (<span class="math inline">\(\nu=n-1\)</span>) y también con la tasa de error Tipo I, <span class="math inline">\(\alpha\)</span>.</p>
@@ -154,7 +154,7 @@
 </h2>
 <p>Regresamos a la idea de Tipo de error I. Cuando se selecciona un <span class="math inline">\(\alpha=0.05\)</span>, lo que estamos diciendo es que hay un 5% de probabilidad de cometer un error Tipo I, que es <span style="color: blue;">rechazar la hipótesis nula cuando en realidad es verdadera</span>. Este 5% se puede dividir en dos componentes, uno cuando el valor es más pequeño y otro cuando es más grande que el valor esperado. Por consiguiente, el área de rechazo de la hipótesis nula es 0.025 en la parte negativa y 0.025 en la positiva.</p>
 <p>Seleccionamos la curva con un grado de libertad de 5 y evaluamos el área de la curva que está dentro del 95% del intervalo de confianza y la que queda fuera de este rango. Si el promedio estimado de una prueba de <em>t</em> cae dentro del área en gris, no se rechaza la hipótesis nula; si cae en el área roja, se rechaza la hipótesis nula. Nota que para esta hipótesis hay dos maneras de rechazar la hipótesis nula (por ambos extremos).</p>
-<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb524"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d6</span> <span class="op">&lt;-</span> <span class="va">d5</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">db5</span>, <span class="va">x</span> <span class="op">&gt;</span> <span class="va">rand5</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">db5</span>, <span class="va">x</span> <span class="op">&lt;</span> <span class="op">-</span><span class="va">rand5</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="va">rlt_theme</span></span>
@@ -162,7 +162,7 @@
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c13-12-1.png" alt="" width="672"></div>
 <hr>
 <p>La alternativa es que nuestra hipótesis sea de un solo lado, donde el total del 5% está en la parte inferior o en la superior. En este caso se rechaza solamente si el valor se encuentra en esa proporción de los valores de <em>t</em>. Nota ahora que el área en esta sección es más grande (incluye más valores, no solamente el 2.5% pero el 5% de los valores).</p>
-<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb525"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">randsup</span><span class="op">=</span><span class="fl">2.015</span></span>
 <span><span class="va">d8</span> <span class="op">&lt;-</span> <span class="va">d5</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">db5</span>, <span class="va">x</span> <span class="op">&gt;</span> <span class="va">randsup</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="va">rlt_theme</span></span>
@@ -209,10 +209,10 @@
 <strong>Familia:</strong> <code>dt</code> (densidad), <code>pt</code> (probabilidad acumulada) y <code>rt</code> (datos aleatorios).</li>
 </ul>
 </div>
-<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb526"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">19</span><span class="op">)</span><span class="op">)</span> <span class="co"># nota que se usa la mitad de 0.05, por que es una prueba de dos lados. </span></span></code></pre></div>
 <pre><code>## [1] 2.093024</code></pre>
-<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb528"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">21</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">19</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 21.82371</code></pre>
 <hr>
@@ -234,12 +234,12 @@
 <p><span class="math display">\[LL_{0.95}=21-2.093\cdot\left(\frac{1.76}{\sqrt{20}}\right)=20.176\]</span></p>
 <hr>
 <p>El intervalo de confianza de <span class="math inline">\(\mu\)</span> está entre 20.176 y 21.824 con un 95% de confianza.</p>
-<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb530"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">UL</span><span class="op">=</span><span class="fl">21</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">19</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">LL</span><span class="op">=</span><span class="fl">21</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">19</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">UL</span></span></code></pre></div>
 <pre><code>## [1] 21.82371</code></pre>
-<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">LL</span></span></code></pre></div>
 <pre><code>## [1] 20.17629</code></pre>
 <hr>
@@ -250,12 +250,12 @@
 </h2>
 <p>Nota lo que pasa si uno tiene menos datos o más datos con el intervalo de confianza.</p>
 <p>Con un tamaño de muestra de solamente 5 datos, el IC de 95% está entre 18.815 y 23.185. Por tener menos datos, el intervalo es más ancho: tenemos menos precisión sobre dónde se encuentra el promedio del universo.</p>
-<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">UL</span><span class="op">=</span><span class="fl">21</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">4</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">LL</span><span class="op">=</span><span class="fl">21</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">4</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">UL</span></span></code></pre></div>
 <pre><code>## [1] 23.18533</code></pre>
-<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb536"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">LL</span></span></code></pre></div>
 <pre><code>## [1] 18.81467</code></pre>
 <hr>
@@ -265,12 +265,12 @@
 <span class="header-section-number">13.11</span> Más grados de libertad<a class="anchor" aria-label="anchor" href="#m%C3%A1s-grados-de-libertad"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ahora con un tamaño de muestra de 100. El intervalo de confianza está más estrecho: 20.651 a 21.349.</p>
-<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">UL</span><span class="op">=</span><span class="fl">21</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">99</span><span class="op">)</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">LL</span><span class="op">=</span><span class="fl">21</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">99</span><span class="op">)</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">UL</span></span></code></pre></div>
 <pre><code>## [1] 21.34922</code></pre>
-<div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">LL</span></span></code></pre></div>
 <pre><code>## [1] 20.65078</code></pre>
 <hr>
@@ -307,12 +307,12 @@ Figure 13.1: Su promedio incluye el promedio del universo?
 </ul>
 </li>
 </ol>
-<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">UL</span><span class="op">=</span><span class="fl">21</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">4</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">LL</span><span class="op">=</span><span class="fl">21</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">4</span><span class="op">)</span><span class="op">*</span><span class="fl">1.76</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">UL</span></span></code></pre></div>
 <pre><code>## [1] 23.18533</code></pre>
-<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">LL</span></span></code></pre></div>
 <pre><code>## [1] 18.81467</code></pre>
 <hr>
@@ -337,11 +337,11 @@ Figure 13.1: Su promedio incluye el promedio del universo?
 </ul>
 <p><span class="math display">\[|t|=\frac{\left(\overline{x}-\mu_0\right)}{\frac{s}{\sqrt{n}}}\]</span>
 Sustitución de los valores en la prueba de t.</p>
-<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="op">(</span><span class="fl">196.7</span><span class="op">-</span><span class="fl">209.4</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="op">(</span><span class="fl">39.1</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span></span>
 <span><span class="va">t</span> <span class="co"># Valor t de observado</span></span></code></pre></div>
 <pre><code>## [1] 1.779048</code></pre>
-<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">29</span><span class="op">)</span><span class="op">)</span>  <span class="co"># valor de t-critico, de la tabla</span></span></code></pre></div>
 <pre><code>## [1] 2.04523</code></pre>
 <p>Para enterder mejor como cambia el valor de t critico con el tamaño de muestra vea la siguiente tabla. <a href="https://numiqo.com/tutorial/t-distribution" class="uri">https://numiqo.com/tutorial/t-distribution</a></p>
@@ -394,7 +394,7 @@ Usamos un conjunto de datos en el paquete <strong>reshape</strong>, que llama <s
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb551"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tipTTest</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">tips</span><span class="op">$</span><span class="va">tip</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, mu<span class="op">=</span><span class="fl">2.50</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tipTTest</span></span></code></pre></div>
@@ -430,7 +430,7 @@ Usamos un conjunto de datos en el paquete <strong>reshape</strong>, que llama <s
 </ul>
 </blockquote>
 <p>En este ejemplo observamos que el promedio estimado está por encima del intervalo de confianza (las líneas entrecortadas).</p>
-<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># The calculated t-statistic</span></span>
 <span><span class="va">t_calculated</span> <span class="op">&lt;-</span> <span class="va">tipTTest</span><span class="op">$</span><span class="va">statistic</span></span>
 <span></span>
@@ -474,7 +474,7 @@ Usamos un conjunto de datos en el paquete <strong>reshape</strong>, que llama <s
 <span class="header-section-number">13.16</span> Ejercicio de práctica 1: Amigos de Facebook<a class="anchor" aria-label="anchor" href="#ejercicio-de-pr%C3%A1ctica-1-amigos-de-facebook"><i class="fas fa-link"></i></a>
 </h2>
 <p>Mucha gente cree que la cantidad promedio de amigos en Facebook es 338, con una desviación estándar de 43.2. En un muestreo al azar de 50 estudiantes universitarios en un país se calculó que el promedio de estos estudiantes es de 350 amigos. A un nivel de 5% de error, determina si hay evidencia de que los estudiantes tengan mayor número de amigos que el promedio anunciado por Facebook.</p>
-<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb554"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="va">FB_friends</span><span class="op">=</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">amigos</span>,</span>
@@ -505,7 +505,7 @@ Usamos un conjunto de datos en el paquete <strong>reshape</strong>, que llama <s
 ## 18   1300
 ## 19   1400
 ## 20   1500</code></pre>
-<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb556"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">FB_friends</span><span class="op">$</span><span class="va">amigos</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span>, mu<span class="op">=</span><span class="fl">350</span>, conf.level <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
@@ -530,7 +530,7 @@ Usamos un conjunto de datos en el paquete <strong>reshape</strong>, que llama <s
 <span class="header-section-number">13.17</span> Ejercicio de práctica 2: Dias de enfermedades<a class="anchor" aria-label="anchor" href="#ejercicio-de-pr%C3%A1ctica-2-dias-de-enfermedades"><i class="fas fa-link"></i></a>
 </h2>
 <p>El dueño de una empresa insiste en que la cantidad promedio de días de enfermedad de sus empleados es menor que el promedio nacional de 10. Los datos de 40 empleados siguen a continuación. Determina si hay evidencia para creer el comentario del dueño de esta empresa.</p>
-<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb558"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dias_E</span><span class="op">=</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">Enfermedad</span>,</span>
 <span>  <span class="fl">0</span>,<span class="fl">6</span>,<span class="fl">12</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">1</span>,</span>
@@ -611,7 +611,7 @@ Usamos un conjunto de datos en el paquete <strong>reshape</strong>, que llama <s
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-08-13.</p>
+    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-09-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

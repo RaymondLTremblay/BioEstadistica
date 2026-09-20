@@ -1,0 +1,69 @@
+---
+title: "Biometría I - Examen Parcial I: clave de respuestas"
+author: ""
+format:
+  html:
+    embed-resources: true
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+toc: false
+number-sections: false
+---
+
+# CLAVE DE RESPUESTAS
+
+Examen Parcial I, Biometría I. Corresponde a `Exam_2206_1.qmd`.
+
+**NO distribuir con el examen.**
+
+| Pregunta | Respuesta |
+|-----------|-----------|
+| 1 | A |
+| 2 | B |
+| 3 | C |
+| 4 | D |
+| 5 | A |
+| 6 | A |
+| 7 | C |
+| 8 | A |
+| 9 | B |
+| 10 | D |
+| 11 | B |
+| 12 | A |
+| 13 | A |
+| 14 | D |
+| 15 | B |
+| 16 | A |
+| 17 | C |
+| 18 | B |
+| 19 | D |
+| 20 | B |
+| 21 | C |
+| 22 | A |
+| 23 | B |
+| 24 | C |
+| 25 | D |
+| 26 | C |
+| 27 | A |
+| 28 | B |
+| 29 | C |
+| 30 | A |
+| 31 | C |
+| 32 | B |
+| 33 | B |
+| 34 | D |
+| 35 | C |
+| 36 | C |
+| 37 | C |
+| 38 | A |
+
+Las preguntas 39 y 40 son de respuesta corta, 2 puntos cada una.
+
+- **39.** Diferencia entre población y muestra: la población incluye todos los
+  individuos u observaciones de interés; la muestra es un subconjunto de esa
+  población seleccionado para estudio y se usa para estimar los parámetros
+  poblacionales.
+- **40.** Ventaja del muestreo aleatorio: reduce la posibilidad de sesgo de
+  selección, porque cada individuo de la población tiene la misma probabilidad
+  de ser incluido.

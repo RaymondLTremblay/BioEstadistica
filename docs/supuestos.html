@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 10 Supuestos | BioEstadística</title>
 <meta name="author" content="">
-<meta name="description" content='Fecha de la última revisión ## [1] "2026-08-13" Añadir los siguientes paquetes, Nota la función de pacman para instalar los paquetes. Esta función hace que si le falta un paquete en la lista lo va...'>
-<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta name="description" content='Fecha de la última revisión ## [1] "2026-09-20" Añadir los siguientes paquetes, Nota la función de pacman para instalar los paquetes. Esta función hace que si le falta un paquete en la lista lo va...'>
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
 <meta property="og:title" content="Capítulo 10 Supuestos | BioEstadística">
 <meta property="og:type" content="book">
-<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-08-13" Añadir los siguientes paquetes, Nota la función de pacman para instalar los paquetes. Esta función hace que si le falta un paquete en la lista lo va...'>
+<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-09-20" Añadir los siguientes paquetes, Nota la función de pacman para instalar los paquetes. Esta función hace que si le falta un paquete en la lista lo va...'>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 10 Supuestos | BioEstadística">
-<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-08-13" Añadir los siguientes paquetes, Nota la función de pacman para instalar los paquetes. Esta función hace que si le falta un paquete en la lista lo va...'>
+<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-09-20" Añadir los siguientes paquetes, Nota la función de pacman para instalar los paquetes. Esta función hace que si le falta un paquete en la lista lo va...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_3-0.4.10/font.css" rel="stylesheet">
@@ -99,9 +99,9 @@
 <span class="header-section-number">Capítulo 10</span> Supuestos<a class="anchor" aria-label="anchor" href="#supuestos"><i class="fas fa-link"></i></a>
 </h1>
 <p>Fecha de la última revisión</p>
-<pre><code>## [1] "2026-08-13"</code></pre>
+<pre><code>## [1] "2026-09-20"</code></pre>
 <p>Añadir los siguientes paquetes, Nota la función de <strong>pacman</strong> para instalar los paquetes. Esta función hace que si le falta un paquete en la lista lo va a instalar sin hacer tener que hacerlo uno por uno. Si quiere hacerlo separado remueve el <strong>#</strong> antes de <strong>install.packages</strong></p>
-<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#----Instalar los paquetes-----</span></span>
 <span><span class="co">#install.packages("car", dependencies = TRUE)</span></span>
 <span><span class="co">#install.packages("ggplot2")</span></span>
@@ -109,7 +109,8 @@
 <span><span class="co">#install.packages("psych")</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/trinker/pacman">"pacman"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span></span>
 <span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">car</span>, <span class="va">pastecs</span>, <span class="va">psych</span>, <span class="va">ggplot2</span>, <span class="va">ggversa</span>, <span class="va">knitr</span>, <span class="va">GGally</span>, </span>
-<span>               <span class="va">tidyverse</span>, <span class="va">kableExtra</span>, <span class="va">reshape2</span>, <span class="va">ggcorrplot</span>, <span class="va">gridExtra</span><span class="op">)</span></span>
+<span>               <span class="va">tidyverse</span>, <span class="va">kableExtra</span>, <span class="va">reshape2</span>, <span class="va">ggcorrplot</span>, <span class="va">gridExtra</span>,</span>
+<span>               <span class="va">e1071</span>, <span class="va">nortest</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Activar los paquetes</span></span>
@@ -120,54 +121,204 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggcorrplot/">ggcorrplot</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span> <span class="co"># Un paquete para organizar las figuras de ggplot2</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bprice2652/car_repo">car</a></span><span class="op">)</span> <span class="co"># Paquete para acompañar laregresión lineal</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bprice2652/car_repo">car</a></span><span class="op">)</span> <span class="co"># Paquete para acompañar la regresión lineal</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>  <span class="co"># Visualización de datos</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/SciViews/pastecs">pastecs</a></span><span class="op">)</span> <span class="co"># Paquete para análisis estadístico</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span>   <span class="co"># Paquete para análisis estadístico en psicología</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggversa</span><span class="op">)</span> <span class="co"># un paquete con datos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span>   <span class="co"># Paquete con las funciones de oblicuidad y curtosis</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">nortest</span><span class="op">)</span> <span class="co"># Paquete con pruebas de normalidad adicionales</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span></code></pre></div>
 <hr>
 <div id="qué-son-supuestos" class="section level2" number="10.1">
 <h2>
 <span class="header-section-number">10.1</span> ¿Qué son supuestos?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-son-supuestos"><i class="fas fa-link"></i></a>
 </h2>
+<div class="definicion">
+<p>Un <strong>supuesto</strong> es una condición que los datos tienen que cumplir para que el resultado de una prueba estadística signifique lo que decimos que significa. Si el supuesto no se cumple, la prueba sigue produciendo un número (un valor-<em>p</em>, un intervalo de confianza, una pendiente), pero ese número ya no corresponde a la pregunta biológica que se quiso contestar.</p>
+</div>
 <p>La ética en estadística se basa en comprobar y cumplir con los supuestos de las pruebas estadísticas que se usan. La gran mayoría de las pruebas tradicionales asumen que los datos cumplen con algunos supuestos; algunos típicos son:</p>
 <ol style="list-style-type: decimal">
+<li>Datos recolectados al azar (independencia de las observaciones)</li>
 <li>Distribución normal</li>
 <li>Igualdad de varianza = Homogeneidad de Varianza</li>
 <li>Simetría de las distribuciones</li>
-<li>Datos recolectados al azar</li>
 </ol>
+<p>Note que aquí la lista comienza con la independencia y no con la normalidad. La razón es práctica: la independencia depende del diseño del estudio y de cómo se recolectaron los datos, así que no se puede arreglar después de haber tomado las medidas. Los otros tres supuestos, por el contrario, sí tienen remedios (transformar los datos, cambiar de prueba) una vez los datos están en la hoja de cálculo.</p>
 <div class="supuestos">
 <p>Las pruebas paramétricas más comunes (prueba t, ANOVA, regresión) asumen: <strong>normalidad</strong> de los datos o de los residuales, <strong>homogeneidad de varianza</strong> entre grupos, e <strong>independencia</strong> de las observaciones. Si no se cumplen, conviene transformar los datos o usar pruebas no paramétricas.</p>
 </div>
 <p>Cuando no se cumplen los supuestos, aumentamos la probabilidad de cometer un error de tipo I (rechazar la hipótesis nula cuando en realidad es cierta) o un error de tipo II (no rechazar la hipótesis nula cuando en realidad es falsa).</p>
 <p>Por consecuencia, es <strong>primordial</strong> que cada investigador evalúe los supuestos de las pruebas que usa y, si no se cumplen, busque métodos alternos. Por ejemplo, se pueden utilizar métodos no paramétricos, estadística bayesiana o robusta como alternativas.</p>
-<p>En este módulo se explica cómo asegurar que los datos cumplan con los supuestos básicos de las pruebas paramétricas, que incluyen la prueba t, ANOVA, entre otras.</p>
-<p>Note que el énfasis de este módulo es evaluar los supuestos con herramientas visuales; también existen pruebas estadísticas disponibles para cada uno de estos supuestos. Vea la sección de estadística para más detalles sobre esas alternativas.</p>
 <hr>
-</div>
-<div id="homogeneidad-de-varianza" class="section level2" number="10.2">
-<h2>
-<span class="header-section-number">10.2</span> Homogeneidad de varianza<a class="anchor" aria-label="anchor" href="#homogeneidad-de-varianza"><i class="fas fa-link"></i></a>
-</h2>
-<p>La homogeneidad de varianza es un supuesto primordial en el análisis de varianza (ANOVA) y sus vertientes. Este mismo supuesto es también importante en el análisis de regresión simple y multivariable; por ejemplo, en el análisis discriminante (<em>discriminant function analysis</em> en inglés). Utilizaremos los datos de la Becasa de Mar <em>Limosa haemastica</em>, un ave migrante de las costas de las marismas de Argentina, de la base de datos Godwits. Para determinar si la razón de adquisición de comida es diferente entre sexo, tiempo del año, y la combinación de estas dos variables (en otras palabras, las interacciones entre ambas), hay que asumir lo siguiente: 1ro. la varianza en las observaciones entre sexo es similar, 2do. la variación en las tres estaciones es similar, y 3ro. la variación entre los grupos por sexo es similar.</p>
-<hr>
-</div>
-<div id="gráficos-de-cajas-condicionales" class="section level2" number="10.3">
-<h2>
-<span class="header-section-number">10.3</span> Gráficos de cajas condicionales<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-cajas-condicionales"><i class="fas fa-link"></i></a>
-</h2>
-<p>Para el ejemplo BecasaDeMar, se removieron algunos datos del análisis como se explica a continuación. En la variable <strong>SEX</strong>, hay tres categorías: 0 = sexo no identificado, 1 = hembra, y 2 = macho. Se removió la categoría de <strong>no identificado</strong> usando la siguiente función <strong>which</strong>:</p>
-<p><strong>BecasaDeMar=BecasaDeMar[-which(BecasaDeMar$SEX=={0}),]</strong></p>
-<p>Note aquí el <strong>-</strong> (el signo de resta) antes de <strong>which</strong>.</p>
-<p>El siguiente paso, después de remover los individuos no identificados por sexo, es cambiar el nombre de los niveles 1 y 2 a hembra y macho respectivamente. Para evaluar la homogeneidad de varianza entre las estaciones también se le asigna el nombre del periodo: Verano, Pre-migración e Invierno.</p>
-<p>Por ejemplo, con relación al supuesto de homogeneidad, en la figura se nota que hay un poco de variación en la varianza de ciertos grupos, pero en general no habría que preocuparse de una desigualdad como tal, aunque los 4 individuos identificados como puntos en la gráfica en el periodo de verano deberían ser evaluados con más detenimiento para asegurarse que los datos están correctos y que representen datos biológicamente posibles y no error en la toma de los datos o cuando se entraron en la hoja de datos.</p>
-<div id="selección-de-los-datos" class="section level3" number="10.3.1">
+<div id="qué-supone-cada-prueba" class="section level3" number="10.1.1">
 <h3>
-<span class="header-section-number">10.3.1</span> Selección de los datos<a class="anchor" aria-label="anchor" href="#selecci%C3%B3n-de-los-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1.1</span> ¿Qué supone cada prueba?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-supone-cada-prueba"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<p>Los supuestos no son una lista suelta: cada prueba que se estudia en los capítulos siguientes exige un subconjunto específico de ellos. La tabla resume cuáles y dónde se discute cada prueba en este libro.</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="18%">
+<col width="22%">
+<col width="22%">
+<col width="18%">
+<col width="18%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Prueba</th>
+<th align="center">Capítulo</th>
+<th align="center">Independencia</th>
+<th align="left">Normalidad</th>
+<th align="left">Homogeneidad de varianza</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Prueba de t de una muestra</td>
+<td align="center">13</td>
+<td align="center">Sí</td>
+<td align="left">de la variable</td>
+<td align="left">no aplica</td>
+</tr>
+<tr class="even">
+<td align="left">Prueba de t pareada</td>
+<td align="center">14</td>
+<td align="center">Sí</td>
+<td align="left">de las <strong>diferencias</strong>
+</td>
+<td align="left">no aplica</td>
+</tr>
+<tr class="odd">
+<td align="left">Prueba de t independiente</td>
+<td align="center">15</td>
+<td align="center">Sí</td>
+<td align="left">dentro de cada grupo</td>
+<td align="left">Sí</td>
+</tr>
+<tr class="even">
+<td align="left">ANOVA</td>
+<td align="center">16</td>
+<td align="center">Sí</td>
+<td align="left">de los <strong>residuales</strong>
+</td>
+<td align="left">Sí</td>
+</tr>
+<tr class="odd">
+<td align="left">Correlación de Pearson</td>
+<td align="center">17</td>
+<td align="center">Sí</td>
+<td align="left">de ambas variables</td>
+<td align="left">no aplica</td>
+</tr>
+<tr class="even">
+<td align="left">Regresión lineal</td>
+<td align="center">18</td>
+<td align="center">Sí</td>
+<td align="left">de los <strong>residuales</strong>
+</td>
+<td align="left">Sí (homocedasticidad)</td>
+</tr>
+<tr class="odd">
+<td align="left">Regresión logística</td>
+<td align="center">19</td>
+<td align="center">Sí</td>
+<td align="left">no aplica</td>
+<td align="left">no aplica</td>
+</tr>
+<tr class="even">
+<td align="left">Pruebas no paramétricas</td>
+<td align="center">21</td>
+<td align="center">Sí</td>
+<td align="left">no</td>
+<td align="left">según la prueba</td>
+</tr>
+</tbody>
+</table></div>
+<p>Observe dos cosas en la tabla. Primero, la independencia aparece en todas las filas; es el único supuesto que ninguna prueba perdona. Segundo, la columna de normalidad no siempre se refiere a lo mismo: en la prueba de t de una muestra se refiere a la variable medida, en la prueba pareada a las diferencias entre pares, y en el ANOVA y la regresión a los <strong>residuales</strong> del modelo y no a la variable de respuesta cruda.</p>
+<div class="advertencia">
+<p>Un error común es evaluar la normalidad de la variable de respuesta antes de ajustar un ANOVA o una regresión. En esos modelos el supuesto es sobre los <strong>residuales</strong>, o sea sobre lo que queda sin explicar después de restar el efecto de los grupos o de la variable predictiva. Una variable de respuesta que luce muy sesgada puede producir residuales perfectamente normales, y viceversa. Por eso, en un modelo, primero se ajusta y después se evalúa.</p>
+</div>
+<hr>
+</div>
+<div id="cómo-está-organizado-este-capítulo" class="section level3" number="10.1.2">
+<h3>
+<span class="header-section-number">10.1.2</span> Cómo está organizado este capítulo<a class="anchor" aria-label="anchor" href="#c%C3%B3mo-est%C3%A1-organizado-este-cap%C3%ADtulo"><i class="fas fa-link"></i></a>
+</h3>
+<p>El capítulo sigue el orden en que uno debería evaluar los supuestos en un trabajo real:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Independencia</strong>, que se evalúa pensando en el diseño del estudio y mirando el orden de los datos.</li>
+<li>
+<strong>Homogeneidad de varianza</strong>, primero entre grupos con gráficos de cajas condicionales y pruebas formales, y después dentro de un modelo de regresión usando los residuales.</li>
+<li>
+<strong>Valores atípicos e influyentes</strong>, que no son un supuesto en sí, pero que son la causa más frecuente de que los supuestos anteriores fallen. Aquí se usan los residuales estandarizados y la distancia de Cook.</li>
+<li>
+<strong>Normalidad</strong>, con gráficos Q-Q, histogramas con la curva teórica, curvas de densidad y pruebas formales.</li>
+<li>
+<strong>Simetría</strong>, medida con el índice de oblicuidad.</li>
+<li>
+<strong>Qué hacer cuando un supuesto no se cumple</strong>, que es la sección que conecta este capítulo con el resto del libro.</li>
+<li>
+<strong>Colinealidad</strong>, que es un supuesto adicional y exclusivo de los modelos con más de una variable predictiva.</li>
+</ol>
+<p>Note que el énfasis de este capítulo es evaluar los supuestos con herramientas <strong>visuales</strong>. Las pruebas formales se presentan como complemento, nunca como sustituto, porque casi todas dependen fuertemente del tamaño de muestra. Las pruebas de normalidad en particular se desarrollan con más detalle en el capítulo 12.</p>
+<hr>
+</div>
+</div>
+<div id="independencia-de-las-observaciones" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Independencia de las observaciones<a class="anchor" aria-label="anchor" href="#independencia-de-las-observaciones"><i class="fas fa-link"></i></a>
+</h2>
+<div class="definicion">
+<p>Dos observaciones son <strong>independientes</strong> si conocer el valor de una no nos da información sobre el valor de la otra, más allá de lo que ya explica el modelo. En términos de diseño, esto quiere decir que cada dato aporta una pieza de información nueva y completa.</p>
+</div>
+<p>Este es el supuesto más importante y, a la vez, el que menos se verifica. La razón es que no existe un gráfico ni una prueba que lo confirme de forma general: la independencia se argumenta desde el diseño del estudio, no desde los datos.</p>
+<p>En biología las violaciones más comunes son las siguientes:</p>
+<ul>
+<li>
+<strong>Pseudoreplicación espacial.</strong> Se miden 20 hojas de una misma planta y se tratan como 20 observaciones independientes. En realidad hay una sola planta; las 20 hojas comparten el mismo genotipo, el mismo suelo y la misma luz.</li>
+<li>
+<strong>Pseudoreplicación temporal.</strong> Se mide el mismo individuo en varias fechas y cada medida se cuenta como un dato nuevo. Las medidas de un mismo individuo se parecen más entre sí que las de individuos distintos.</li>
+<li>
+<strong>Estructura espacial.</strong> Dos cuadrantes contiguos en un bosque tienden a parecerse más que dos cuadrantes separados por un kilómetro.</li>
+<li>
+<strong>Efecto de observador o de tanda.</strong> Todos los datos de un tratamiento se tomaron el lunes y los del otro tratamiento el viernes; entonces el tratamiento y el día están confundidos.</li>
+</ul>
+<div class="advertencia">
+<p>La falta de independencia no se corrige transformando los datos ni cambiando a una prueba no paramétrica. Las pruebas no paramétricas también asumen independencia. Cuando hay medidas repetidas o estructura jerárquica, lo que corresponde es un modelo que incluya esa estructura, por ejemplo un modelo mixto, o reducir los datos a una sola observación por unidad experimental (el promedio de las 20 hojas de la planta).</p>
+</div>
+<p>En los datos de la Becasa de Mar <em>Limosa haemastica</em> que se usan a través de este capítulo, el supuesto de independencia exige que cada observación de consumo provenga de un ave distinta, o que se tome en cuenta explícitamente que un ave fue observada varias veces.</p>
+<div id="una-herramienta-visual-los-residuales-en-el-orden-de-recolección" class="section level3" number="10.2.1">
+<h3>
+<span class="header-section-number">10.2.1</span> Una herramienta visual: los residuales en el orden de recolección<a class="anchor" aria-label="anchor" href="#una-herramienta-visual-los-residuales-en-el-orden-de-recolecci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<p>Aunque la independencia se argumenta desde el diseño, hay un caso que sí se puede detectar gráficamente: la correlación serial, o sea cuando los datos cercanos en el tiempo o en la secuencia de recolección se parecen. Se grafican los residuales del modelo contra el orden en que aparecen en la hoja de datos. Si el gráfico muestra rachas de valores positivos seguidas de rachas de valores negativos, hay evidencia de que las observaciones no son independientes. Si los residuales se ven como un revoltijo sin patrón, no hay evidencia de correlación serial. Este gráfico se ilustra más adelante, después de ajustar el modelo de regresión de la sección siguiente.</p>
+<hr>
+</div>
+</div>
+<div id="homogeneidad-de-varianza" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Homogeneidad de varianza<a class="anchor" aria-label="anchor" href="#homogeneidad-de-varianza"><i class="fas fa-link"></i></a>
+</h2>
+<div class="definicion">
+<p>La <strong>homogeneidad de varianza</strong> (u homocedasticidad) quiere decir que la dispersión de los datos es similar en todos los grupos, o a lo largo de todo el rango de la variable predictiva. Lo contrario, varianzas desiguales, se llama heterocedasticidad.</p>
+</div>
+<p>La homogeneidad de varianza es un supuesto primordial en el análisis de varianza (ANOVA) y sus vertientes. Este mismo supuesto es también importante en el análisis de regresión simple y multivariable; por ejemplo, en el análisis discriminante (<em>discriminant function analysis</em> en inglés). Utilizaremos los datos de la Becasa de Mar <em>Limosa haemastica</em>, un ave migrante de las costas de las marismas de Argentina, de la base de datos Godwits. Para determinar si la razón de adquisición de comida es diferente entre sexo, tiempo del año, y la combinación de estas dos variables (en otras palabras, las interacciones entre ambas), hay que asumir lo siguiente: 1ro. la varianza en las observaciones entre sexo es similar, 2do. la variación en las tres estaciones es similar, y 3ro. la variación entre los grupos por sexo es similar.</p>
+<p>¿Por qué importa? Porque el ANOVA y la prueba de t combinan la variación de todos los grupos en un solo estimado de varianza. Si un grupo es mucho más variable que los demás, ese estimado combinado no describe bien a ninguno de los grupos: sobreestima la precisión en el grupo variable y la subestima en los demás. El resultado es un valor-<em>p</em> que no corresponde al riesgo real de equivocarse.</p>
+<hr>
+</div>
+<div id="gráficos-de-cajas-condicionales" class="section level2" number="10.4">
+<h2>
+<span class="header-section-number">10.4</span> Gráficos de cajas condicionales<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-cajas-condicionales"><i class="fas fa-link"></i></a>
+</h2>
+<p>El primer paso es preparar los datos. Para el ejemplo BecasaDeMar, se removieron algunos datos del análisis como se explica a continuación. En la variable <strong>SEX</strong>, hay tres categorías: 0 = sexo no identificado, 1 = hembra, y 2 = macho. Se removió la categoría de <strong>no identificado</strong> usando la siguiente función <strong>which</strong>:</p>
+<p><strong>BecasaDeMar=BecasaDeMar[-which(BecasaDeMar$SEX=={0}),]</strong></p>
+<p>Note aquí el <strong>-</strong> (el signo de resta) antes de <strong>which</strong>. Ese signo quiere decir “todas las filas <strong>menos</strong> estas”.</p>
+<p>El siguiente paso, después de remover los individuos no identificados por sexo, es cambiar el nombre de los niveles 1 y 2 a hembra y macho respectivamente. Para evaluar la homogeneidad de varianza entre las estaciones también se le asigna el nombre del periodo: Verano, Pre-migración e Invierno.</p>
+<div id="selección-de-los-datos" class="section level3" number="10.4.1">
+<h3>
+<span class="header-section-number">10.4.1</span> Selección de los datos<a class="anchor" aria-label="anchor" href="#selecci%C3%B3n-de-los-datos"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">BecasaDeMar</span><span class="op">=</span><span class="va">Godwits</span> <span class="co"># en el paquete ggversa</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">BecasaDeMar</span><span class="op">)</span></span></code></pre></div>
@@ -178,7 +329,7 @@
 ## 4      4   5     1   97        0   0   0      0       0.07
 ## 5      5   5     1   97        0   0   0      0       0.14
 ## 6      6   5     1   97        0   0   0      0       0.26</code></pre>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">BecasaDeMar</span><span class="op">=</span><span class="va">BecasaDeMar</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">SEX</span> <span class="op">==</span><span class="fl">0</span><span class="op">)</span>,<span class="op">]</span></span>
 <span></span>
 <span><span class="co">#unique(BecasaDeMar$SEX)</span></span>
@@ -191,7 +342,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">fSEXO</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] Hembra Macho 
 ## Levels: Hembra Macho</code></pre>
-<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">fPERIODO</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">PERIOD</span>,</span>
 <span>            levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
 <span>            labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Verano"</span>, <span class="st">"Pre-migración"</span>, <span class="st">"Invierno"</span><span class="op">)</span><span class="op">)</span></span>
@@ -211,7 +362,14 @@
 ## 128      Invierno
 ## 129      Invierno
 ## 130      Invierno</code></pre>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+</div>
+<div id="el-gráfico" class="section level3" number="10.4.2">
+<h3>
+<span class="header-section-number">10.4.2</span> El gráfico<a class="anchor" aria-label="anchor" href="#el-gr%C3%A1fico"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ya con los datos preparados, se construye un gráfico de cajas para el consumo por sexo, y se repite ese gráfico para cada período con la función <strong>facet_wrap</strong>. De ahí el nombre de caja <strong>condicional</strong>: la distribución que se muestra está condicionada al grupo. La opción <strong>notch=TRUE</strong> añade una muesca alrededor de la mediana; cuando las muescas de dos cajas no se solapan, hay evidencia de que las medianas difieren.</p>
+<p>Lo que se busca en este gráfico es el <strong>tamaño</strong> de las cajas, no su posición. Cajas de altura parecida en todos los grupos indican homogeneidad de varianza. Una caja mucho más alta o mucho más baja que las demás es la señal de alerta.</p>
+<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">BecasaMar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">BecasaDeMar</span>,</span>
 <span>                    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">mgconsumed</span>, x<span class="op">=</span><span class="va">fSEXO</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -223,17 +381,104 @@
 <span>            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Sexo de las aves"</span><span class="op">)</span><span class="op">+</span></span>
 <span>            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Razón de consumo"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-5-1.png" alt="" width="672"></div>
+<div class="interpretacion">
+<p>Con relación al supuesto de homogeneidad, en la figura se nota que hay un poco de variación en la varianza de ciertos grupos, pero en general no habría que preocuparse de una desigualdad como tal. Ahora bien, los 4 individuos identificados como puntos en la gráfica en el periodo de verano deberían ser evaluados con más detenimiento para asegurarse que los datos están correctos y que representen datos biológicamente posibles y no error en la toma de los datos o cuando se entraron en la hoja de datos.</p>
+</div>
 <hr>
 </div>
 </div>
-<div id="homogeneidad-de-varianza-en-modelos-de-regresión" class="section level2" number="10.4">
+<div id="pruebas-formales-de-homogeneidad-de-varianza" class="section level2" number="10.5">
 <h2>
-<span class="header-section-number">10.4</span> Homogeneidad de varianza en modelos de regresión<a class="anchor" aria-label="anchor" href="#homogeneidad-de-varianza-en-modelos-de-regresi%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5</span> Pruebas formales de homogeneidad de varianza<a class="anchor" aria-label="anchor" href="#pruebas-formales-de-homogeneidad-de-varianza"><i class="fas fa-link"></i></a>
 </h2>
-<p>Para el análisis de tipo regresión es necesario evaluar la homogeneidad de los datos utilizando los residuales del modelo. Esto lo logramos graficándolos contra los valores estimados (fitted values) y haciendo un gráfico de caja condicional con los residuales. Los residuales tienen que ser similares en todos los grupos. Si la variación de los residuales no es igual, será necesario transformar los datos o usar otras técnicas que no requieran del supuesto de la homogeneidad de varianza; por ejemplo, mínimos cuadrados generalizados (generalized least square, en inglés) o un análisis no paramétrico.</p>
-<p>El gráfico que utilizaremos se llama caja condicional ya que la distribución es condicional al grupo. El residual se calcula como la diferencia entre el valor observado y el valor esperado; en este caso, en la variable de <strong>y</strong>.</p>
-<p>A continuación, completamos el análisis utilizando otra vez los datos de la orquídea <strong>Dipodium</strong>. Primero hay que hacer un análisis de regresión simple usando <strong>lm()</strong> y darle un nombre al análisis o sea el modelo. Subseguientemente uno puede llamar los valores necesarios para hacer el gráfico con <strong>.fitted</strong> y <strong>.resid</strong>.</p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<p>El gráfico de cajas contesta la pregunta de forma aproximada. Cuando la diferencia entre las cajas no es evidente, conviene acompañarlo con una prueba formal. Las tres más usadas comparten la misma hipótesis nula:</p>
+<p>Ho: las varianzas de todos los grupos son iguales.<br>
+Ha: al menos una varianza es diferente.</p>
+<p>Por consiguiente, un valor-<em>p</em> <strong>grande</strong> es el resultado que uno desea aquí, porque quiere decir que no hay evidencia en contra de la homogeneidad. Esta lógica es al revés de la que se usa en la mayoría de las pruebas del curso, así que vale la pena detenerse en ella.</p>
+<div class="funcion">
+<p><strong><code>leveneTest(y ~ grupo, data = datos)</code></strong> (paquete <strong>car</strong>): prueba de Levene.</p>
+<ul>
+<li>
+<strong>Qué hace:</strong> compara las desviaciones absolutas de cada observación respecto a la <strong>mediana</strong> de su grupo. Si un grupo es más disperso, sus desviaciones serán mayores en promedio.</li>
+<li>
+<strong>Cómo leer la salida:</strong> mire la columna <code>Pr(&gt;F)</code>. Si el valor-<em>p</em> es mayor de 0.05, no se rechaza la homogeneidad de varianza.</li>
+<li>
+<strong>Ventaja:</strong> al usar la mediana (variante de Brown-Forsythe, que es la opción predeterminada en <strong>car</strong>), es robusta cuando los datos no son normales.</li>
+</ul>
+</div>
+<div class="funcion">
+<p><strong><code>bartlett.test(y ~ grupo, data = datos)</code></strong>: prueba de Bartlett.</p>
+<ul>
+<li>
+<strong>Qué hace:</strong> compara las varianzas de los grupos asumiendo que los datos provienen de distribuciones normales.</li>
+<li>
+<strong>Cómo leer la salida:</strong> igual que Levene, mire el valor-<em>p</em>.</li>
+<li>
+<strong>Límite:</strong> es muy sensible a la falta de normalidad. Si los datos son sesgados, Bartlett puede rechazar la homogeneidad cuando el problema real es la asimetría y no la varianza.</li>
+</ul>
+</div>
+<div class="funcion">
+<p><strong><code>fligner.test(y ~ grupo, data = datos)</code></strong>: prueba de Fligner-Killeen.</p>
+<ul>
+<li>
+<strong>Qué hace:</strong> lo mismo que Levene, pero basándose en rangos en lugar de valores.</li>
+<li>
+<strong>Uso:</strong> es la alternativa más robusta de las tres cuando hay valores atípicos.</li>
+</ul>
+</div>
+<p>A continuación se aplican las tres pruebas a la razón de consumo de la Becasa de Mar, primero comparando los tres períodos y después comparando los seis grupos que resultan de combinar sexo y período. Para la combinación se usa la función <strong>interaction</strong>, que crea un solo factor con todas las combinaciones de los dos factores originales.</p>
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Homogeneidad entre los tres períodos</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="va">mgconsumed</span> <span class="op">~</span> <span class="va">fPERIODO</span>, data <span class="op">=</span> <span class="va">BecasaDeMar</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Levene's Test for Homogeneity of Variance (center = median)
+##        Df F value   Pr(&gt;F)   
+## group   2   4.909 0.008279 **
+##       203                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/bartlett.test.html">bartlett.test</a></span><span class="op">(</span><span class="va">mgconsumed</span> <span class="op">~</span> <span class="va">fPERIODO</span>, data <span class="op">=</span> <span class="va">BecasaDeMar</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  mgconsumed by fPERIODO
+## Bartlett's K-squared = 26.457, df = 2, p-value = 1.798e-06</code></pre>
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/fligner.test.html">fligner.test</a></span><span class="op">(</span><span class="va">mgconsumed</span> <span class="op">~</span> <span class="va">fPERIODO</span>, data <span class="op">=</span> <span class="va">BecasaDeMar</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Fligner-Killeen test of homogeneity of variances
+## 
+## data:  mgconsumed by fPERIODO
+## Fligner-Killeen:med chi-squared = 9.9228, df = 2, p-value = 0.007003</code></pre>
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Homogeneidad entre los seis grupos de sexo por período</span></span>
+<span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">grupo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">fSEXO</span>,</span>
+<span>                                 <span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">fPERIODO</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="va">mgconsumed</span> <span class="op">~</span> <span class="va">grupo</span>, data <span class="op">=</span> <span class="va">BecasaDeMar</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Levene's Test for Homogeneity of Variance (center = median)
+##        Df F value   Pr(&gt;F)   
+## group   5  3.6888 0.003244 **
+##       200                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<div class="advertencia">
+<p>Estas pruebas dependen mucho del tamaño de muestra, igual que las pruebas de normalidad del capítulo 12. Con muestras grandes rechazan la homogeneidad ante diferencias minúsculas que no afectan al ANOVA; con muestras pequeñas casi nunca la rechazan, aun cuando la diferencia sea grande. Por lo tanto, el valor-<em>p</em> se lee junto al gráfico de cajas y nunca en lugar de él. Una regla práctica útil es comparar la desviación estándar del grupo más variable con la del menos variable: si la razón entre ambas es menor de 2, la desigualdad rara vez tiene consecuencias prácticas en un ANOVA balanceado.</p>
+</div>
+<p>Una observación adicional que conviene retener: la desigualdad de varianza hace mucho más daño cuando los grupos tienen <strong>tamaños de muestra distintos</strong>. Si todos los grupos tienen el mismo número de observaciones, el ANOVA tolera bastante bien varianzas desiguales. Si el grupo más variable es además el más pequeño, el error de tipo I puede ser mucho mayor de lo que indica el valor-<em>p</em>.</p>
+<hr>
+</div>
+<div id="homogeneidad-de-varianza-en-modelos-de-regresión" class="section level2" number="10.6">
+<h2>
+<span class="header-section-number">10.6</span> Homogeneidad de varianza en modelos de regresión<a class="anchor" aria-label="anchor" href="#homogeneidad-de-varianza-en-modelos-de-regresi%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+<p>En una regresión no hay grupos que comparar, así que el supuesto se plantea de otra forma: la dispersión de los puntos alrededor de la línea debe ser la misma a lo largo de todo el eje de <strong>X</strong>. Para evaluar esto se usan los residuales del modelo.</p>
+<div class="definicion">
+<p>Un <strong>residual</strong> es la diferencia entre el valor observado y el valor que el modelo predice para esa misma observación, medida en el eje de <strong>y</strong>. Un residual positivo quiere decir que el punto queda por encima de la línea; uno negativo, por debajo.</p>
+</div>
+<p>Para el análisis de tipo regresión es necesario evaluar la homogeneidad de los datos utilizando los residuales del modelo. Esto lo logramos graficándolos contra los valores estimados (fitted values). Los residuales tienen que ser similares en todos los rangos de los valores estimados. Si la variación de los residuales no es igual, será necesario transformar los datos o usar otras técnicas que no requieran del supuesto de la homogeneidad de varianza; por ejemplo, mínimos cuadrados generalizados (generalized least square, en inglés) o un análisis no paramétrico.</p>
+<p>A continuación, completamos el análisis utilizando otra vez los datos de la orquídea <em>Dipodium</em>. Primero hay que hacer un análisis de regresión simple usando <strong>lm()</strong> y darle un nombre al análisis o sea el modelo. Subseguientemente uno puede llamar los valores necesarios para hacer el gráfico con <strong>.fitted</strong> y <strong>.resid</strong>.</p>
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dipodium2</span><span class="op">=</span><span class="va">dipodium</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Number_of_Flowers</span>, <span class="va">Height_Inflo</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -247,7 +492,7 @@
 ## 4                24           47
 ## 5                25           61
 ## 6                17           35</code></pre>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">modelflower</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Number_of_Flowers</span><span class="op">~</span><span class="va">Height_Inflo</span>,</span>
 <span>         data<span class="op">=</span><span class="va">dipodium2</span><span class="op">)</span></span>
 <span></span>
@@ -270,22 +515,22 @@
 ## Residual standard error: 4.266 on 179 degrees of freedom
 ## Multiple R-squared:  0.6694, Adjusted R-squared:  0.6676 
 ## F-statistic: 362.5 on 1 and 179 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span></span></code></pre></div>
-<p><img src="BioEstadistica_files/figure-html/c10-6-1.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c10-6-2.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c10-6-3.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c10-6-4.png" alt="" width="672"></p>
-<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<p><img src="BioEstadistica_files/figure-html/c10-8-1.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c10-8-2.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c10-8-3.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c10-8-4.png" alt="" width="672"></p>
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dipodium2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Height_Inflo</span>, <span class="va">Number_of_Flowers</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method<span class="op">=</span><span class="va">lm</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-6-5.png" alt="" width="672"></div>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-8-5.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#influence(modelflower)</span></span>
 <span><span class="co">#rstandard(modelflower)</span></span>
 <span><span class="co">#influence.measures(modelflower)</span></span>
 <span><span class="co">#head(fortify(modelflower))</span></span></code></pre></div>
-<p>Lo que observaremos es que la distribución de los residuales luce más o menos uniforme alrededor del promedio de los residuales (el cero). Hay aproximadamente igual cantidad de valores mayor a cero (por encima de la línea en verde) y menor a cero (por debajo de la línea en verde) que están distribuidos a través de la variable en el eje de <strong>X</strong>, o valores estimados. Además, los residuales (negativos o positivos) no están limitados a subgrupos de los valores estimados (en la <strong>X</strong>).</p>
+<p>La función <strong>plot()</strong> aplicada a un modelo produce cuatro gráficos de diagnóstico de forma automática. Los dos primeros son los que interesan en este capítulo: <em>Residuals vs Fitted</em>, que es el gráfico de homogeneidad, y <em>Normal Q-Q</em>, que evalúa la normalidad de los residuales. A continuación se reconstruye el primero con <strong>ggplot2</strong> para poder controlar su apariencia.</p>
 <p>Note que se está aplicando el modelo <strong>modelflower</strong>, y se usan los valores calculados en el modelo <strong>.fitted</strong> y <strong>.resid</strong> para producir el gráfico. Se añade una linea horizontal para identificar el modelo nulo con <strong>geom_hline</strong>.</p>
-<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">modelflower</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">.fitted</span>, <span class="va">.resid</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept<span class="op">=</span><span class="fl">0</span>,</span>
@@ -296,15 +541,56 @@
 <span>           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Residuales"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Residuales vs. Valores Estimados"</span><span class="op">)</span></span>
 <span><span class="va">res</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-7-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-9-1.png" alt="" width="672"></div>
+<p>Lo que observaremos es que la distribución de los residuales luce más o menos uniforme alrededor del promedio de los residuales (el cero). Hay aproximadamente igual cantidad de valores mayor a cero (por encima de la línea roja punteada) y menor a cero (por debajo de la línea roja punteada) que están distribuidos a través de la variable en el eje de <strong>X</strong>, o valores estimados. Además, los residuales (negativos o positivos) no están limitados a subgrupos de los valores estimados (en la <strong>X</strong>).</p>
+<div class="interpretacion">
+<p>Cómo leer el gráfico de residuales contra valores estimados:</p>
+<ul>
+<li>
+<strong>Una nube sin forma, de ancho constante:</strong> el supuesto se cumple. Esto es lo que uno quiere ver.</li>
+<li>
+<strong>Un embudo o cono</strong>, o sea los residuales se abren según aumentan los valores estimados: heterocedasticidad. Es el patrón más común con datos de conteo o de biomasa, y suele mejorar con una transformación logarítmica o de raíz cuadrada.</li>
+<li>
+<strong>Una curva</strong>, por ejemplo residuales negativos en los extremos y positivos en el centro: el problema no es la varianza sino la <strong>forma</strong> del modelo. La relación no es lineal y hace falta un término cuadrático o una transformación de la variable predictiva.</li>
+<li>
+<strong>Rachas de puntos por encima y luego por debajo de la línea</strong>, cuando el eje de X es el orden de recolección: falta de independencia.</li>
+</ul>
+</div>
+<div id="el-gráfico-de-residuales-en-orden-de-recolección" class="section level3" number="10.6.1">
+<h3>
+<span class="header-section-number">10.6.1</span> El gráfico de residuales en orden de recolección<a class="anchor" aria-label="anchor" href="#el-gr%C3%A1fico-de-residuales-en-orden-de-recolecci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<p>Retomando lo que se anticipó en la sección de independencia, el mismo objeto del modelo permite evaluar la correlación serial. Se grafica cada residual contra su posición en la hoja de datos usando <strong>seq_along</strong>. Si los puntos alternan sin patrón alrededor de cero, no hay evidencia de correlación serial.</p>
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">modelflower</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">.resid</span><span class="op">)</span>, <span class="va">.resid</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.3</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept<span class="op">=</span><span class="fl">0</span>, col<span class="op">=</span><span class="st">"red"</span>, linetype<span class="op">=</span><span class="st">"dashed"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>        axis.text<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>, face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Orden de la observación en la hoja de datos"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Residuales"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Residuales en el orden de recolección"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-10-1.png" alt="" width="672"></div>
+<p>Para acompañar el gráfico con una prueba formal se puede usar la función <strong>durbinWatsonTest</strong> del paquete <strong>car</strong>. La hipótesis nula es que no hay autocorrelación entre residuales consecutivos; un valor-<em>p</em> grande es, otra vez, el resultado deseado. Tenga presente que esta prueba solo tiene sentido si el orden de las filas en la hoja de datos corresponde al orden real de recolección.</p>
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/durbinWatsonTest.html">durbinWatsonTest</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  lag Autocorrelation D-W Statistic p-value
+##    1      0.08656669      1.823994    0.26
+##  Alternative hypothesis: rho != 0</code></pre>
 <hr>
 </div>
-<div id="los-residuales-de-student-para-detectar-valores-sesgados" class="section level2" number="10.5">
+</div>
+<div id="los-residuales-de-student-para-detectar-valores-sesgados" class="section level2" number="10.7">
 <h2>
-<span class="header-section-number">10.5</span> Los residuales de Student para detectar valores sesgados<a class="anchor" aria-label="anchor" href="#los-residuales-de-student-para-detectar-valores-sesgados"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.7</span> Los residuales de Student para detectar valores sesgados<a class="anchor" aria-label="anchor" href="#los-residuales-de-student-para-detectar-valores-sesgados"><i class="fas fa-link"></i></a>
 </h2>
-<p>A continuación se ilustra otro enfoque para evaluar los residuales. En este caso, para detectar valores sesgados (outliers). Para visualizar los residuales se usan los residuales estandarizados (divididos por la desviación estándar). Valores mayores de 3 se considerarían atípicos. Esta alternativa es apropiada para detectar valores atípicos. Note en la figura que se usa otra vez el modelo <strong>modelflower</strong> y los valores calculados en el modelo <strong>.fitted</strong> y los residuales de student con <strong>.stdresid</strong>. Note ahora también que todos los valores en el eje de <strong>Y</strong> son mayores de cero.</p>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<p>A continuación se ilustra otro enfoque para evaluar los residuales. En este caso, para detectar valores sesgados (outliers). Para visualizar los residuales se usan los residuales <strong>estandarizados</strong>, o sea cada residual dividido por su desviación estándar estimada. Al estandarizarlos, todos quedan en la misma escala sin importar las unidades de la variable original, y eso permite usar un criterio común: un residual estandarizado mayor de 3 en valor absoluto se considera atípico, porque bajo una distribución normal casi ninguna observación debería llegar tan lejos.</p>
+<p>Note en la figura que se usa otra vez el modelo <strong>modelflower</strong> y los valores calculados en el modelo <strong>.fitted</strong> y los residuales estandarizados con <strong>.stdresid</strong>.</p>
+<div class="nota">
+<p>En el eje de <strong>y</strong> no se grafica el residual estandarizado directamente, sino <span class="math inline">\(\sqrt{|\,\text{residual estandarizado}\,|}\)</span>. Por eso todos los valores en el eje de <strong>y</strong> son mayores de cero: al tomar el valor absoluto se eliminan los signos. Esta transformación se usa porque hace más fácil ver si la dispersión cambia a lo largo del eje de <strong>X</strong>, que es justamente el supuesto de homogeneidad. Tenga presente que en esta escala el criterio de 3 no aplica directamente: un residual estandarizado de 3 aparece en el gráfico a la altura de <span class="math inline">\(\sqrt{3} \approx 1.73\)</span>.</p>
+</div>
+<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="va">ResEst</span><span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">modelflower</span>,</span>
 <span>                 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">.fitted</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">.stdresid</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>                 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">+</span></span>
@@ -314,15 +600,33 @@
 <span>          <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Residuales estandarizados \n de Student"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Residuales vs. Valores Estimados"</span><span class="op">)</span></span>
 <span><span class="va">ResEst</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-8-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-12-1.png" alt="" width="672"></div>
+<p>Si se prefiere trabajar con el criterio de 3 de forma directa, se puede graficar el residual estandarizado sin transformar y añadir las dos líneas de corte. Así se identifica de inmediato cuáles observaciones lo exceden.</p>
+<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">modelflower</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">.fitted</span>, <span class="va">.stdresid</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>             col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"black"</span>, <span class="st">"red"</span><span class="op">)</span>,</span>
+<span>             linetype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"solid"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>        axis.text<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>, face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Valores estimados"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Residuales estandarizados"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Criterio de +/- 3 para valores atípicos"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-13-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># ¿Cuántas observaciones exceden el criterio?</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">rstandard</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
 <hr>
 </div>
-<div id="valores-sesgados-con-la-distancia-de-cook-di" class="section level2" number="10.6">
+<div id="valores-sesgados-con-la-distancia-de-cook-di" class="section level2" number="10.8">
 <h2>
-<span class="header-section-number">10.6</span> Valores sesgados con la Distancia de Cook, Di<a class="anchor" aria-label="anchor" href="#valores-sesgados-con-la-distancia-de-cook-di"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.8</span> Valores sesgados con la Distancia de Cook, Di<a class="anchor" aria-label="anchor" href="#valores-sesgados-con-la-distancia-de-cook-di"><i class="fas fa-link"></i></a>
 </h2>
+<p>Hay que distinguir dos ideas que se confunden con facilidad. Un valor <strong>atípico</strong> es una observación con un residual grande: el modelo la predice mal. Un valor <strong>influyente</strong> es una observación que, si se removiera, cambiaría los coeficientes del modelo. No son lo mismo: un punto puede estar muy lejos de la línea y no mover nada (si queda en el centro del rango de X), y otro puede estar cerca de la línea y aun así dominar la pendiente (si queda en un extremo del rango de X). La sección anterior atendió los valores atípicos; esta atiende los influyentes.</p>
 <div class="funcion">
-<p><strong><code>cooks.distance(modelo)</code></strong> — distancia de Cook.</p>
+<p><strong><code>cooks.distance(modelo)</code></strong>: distancia de Cook.</p>
 <ul>
 <li>
 <strong>Qué hace:</strong> mide cuánto cambiaría el modelo si se eliminara cada observación; sirve para detectar puntos muy influyentes.</li>
@@ -330,25 +634,47 @@
 <strong>Cómo leer:</strong> valores altos (<span class="math inline">\(D_i &gt; 1\)</span> o <span class="math inline">\(D_i &gt; 4/n\)</span>) señalan observaciones que conviene revisar.</li>
 </ul>
 </div>
+<div class="historia">
+<p>La medida fue desarrollada por <strong>R. Dennis Cook</strong> en 1977, en un artículo breve que hoy es una de las referencias más citadas del análisis de regresión.</p>
+</div>
 <p>Continuando con el tema de evaluar si hay valores que podrían influenciar mucho el análisis, podemos utilizar una de las herramientas para evaluar el peso de cada valor sobre una regresión lineal basada en métodos de los mínimos cuadrados, llamada la <strong>Distancia de Cook</strong>. Este análisis fue desarrollado por R. Dennis Cook en 1977 y tiene como objetivo evaluar cada valor en la matriz de datos y el peso que tiene sobre el resultado (cuando esté este incluido o no en el análisis). Produce un índice para cada uno de los valores sobre el resultado basándose en los valores residuales que se llama la Distancia de Cook. Por lo tanto, ese análisis evalúa el impacto relativo de cada valor sobre el índice. Desafortunadamente no está claro cuál es el valor crítico; o sea, qué valor nos puede indicar que se tiene exceso de peso sobre los resultados. Las dos principales sugerencias son: <strong>Distancia de Cook</strong>, Di, es mayor a 1 (sugerido por el propio R. Dennis Cook en 1982); y que la <strong>Di &gt; 4/n</strong>, donde <strong>n</strong> es el número de observaciones (Bollen <em>et al</em>. 1990).</p>
-<p>Para hacer una ilustración, continuaremos con el modelo <strong>modelflower</strong> usando los valores calculados en el modelo anterior. El gráfico se construirá utilizando la opción <strong>seq_along</strong>, para que los valores en el eje de <strong>X</strong> se basen en la secuencia de datos en el archivo y los valores en el eje de <strong>Y</strong> se basen en los valores de la <strong>Distancia de Cook</strong>. En este caso, vemos que todos los valores están muy por debajo de 1, lo que sugiere que ninguno de los valores individuales influenciaría mucho en los resultados aún si estos fuesen excluidos. Si utilizáramos la segunda alternativa de <strong>Di &gt; 4/n</strong>, entonces nos deberían preocupar los 8 valores de Di que son mayores a 4/181=0.022, donde 181 es la cantidad de datos en el archivo. Si se considera esta segunda alternativa, sería necesario evaluar 8 valores en la tabla de datos que pudiesen ser sospechosos (los valores encima de la línea roja). Note que no es que están incorrectos; más bien, este resultado es solamente una herramienta para evaluar valores que <strong>parecen</strong> tener un impacto considerable sobre los resultados.</p>
-<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<p>Para hacer una ilustración, continuaremos con el modelo <strong>modelflower</strong> usando los valores calculados en el modelo anterior. El gráfico se construirá utilizando la opción <strong>seq_along</strong>, para que los valores en el eje de <strong>X</strong> se basen en la secuencia de datos en el archivo y los valores en el eje de <strong>Y</strong> se basen en los valores de la <strong>Distancia de Cook</strong>.</p>
+<p>Note que el valor de corte que se dibuja no se escribió a mano: se calcula como 4 dividido entre el número de observaciones del modelo. Como el modelo tiene 181 observaciones, ese corte es 4/181 = 0.022.</p>
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n_obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dipodium2</span><span class="op">)</span>   <span class="co"># cantidad de observaciones en el modelo</span></span>
+<span><span class="va">corte</span> <span class="op">&lt;-</span> <span class="fl">4</span><span class="op">/</span><span class="va">n_obs</span></span>
+<span><span class="va">n_obs</span></span></code></pre></div>
+<pre><code>## [1] 181</code></pre>
+<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">corte</span></span></code></pre></div>
+<pre><code>## [1] 0.02209945</code></pre>
+<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">modelflower</span>,</span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">.cooksd</span><span class="op">)</span>, <span class="va">.cooksd</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"identity"</span>,</span>
 <span>        position<span class="op">=</span><span class="st">"identity"</span>, fill<span class="op">=</span><span class="st">"steelblue"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span><span class="fl">0.022</span>, colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">corte</span>, colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">20</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>        axis.text<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">20</span>, face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"La secuencia de las observaciones"</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia de Cook"</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Distancia de Cook"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-9-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-14-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># ¿Cuántas observaciones exceden cada criterio?</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">cooks.distance</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">cooks.distance</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span> <span class="op">&gt;</span> <span class="va">corte</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="interpretacion">
+<p>En este caso, vemos que todos los valores están muy por debajo de 1, lo que sugiere que ninguno de los valores individuales influenciaría mucho en los resultados aún si estos fuesen excluidos. Si utilizáramos la segunda alternativa de <strong>Di &gt; 4/n</strong>, entonces nos deberían preocupar los valores de Di que son mayores a 4/181=0.022. Si se considera esta segunda alternativa, sería necesario evaluar esas observaciones en la tabla de datos que pudiesen ser sospechosas (los valores encima de la línea roja). Note que no es que están incorrectos; más bien, este resultado es solamente una herramienta para evaluar valores que <strong>parecen</strong> tener un impacto considerable sobre los resultados.</p>
+</div>
 <hr>
 </div>
-<div id="causas-principales-de-los-valores-sesgados" class="section level2" number="10.7">
+<div id="causas-principales-de-los-valores-sesgados" class="section level2" number="10.9">
 <h2>
-<span class="header-section-number">10.7</span> Causas principales de los valores sesgados<a class="anchor" aria-label="anchor" href="#causas-principales-de-los-valores-sesgados"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.9</span> Causas principales de los valores sesgados<a class="anchor" aria-label="anchor" href="#causas-principales-de-los-valores-sesgados"><i class="fas fa-link"></i></a>
 </h2>
 <p>Los valores que parecen atípicos pueden ser normales de la población estudiada; en esos casos, removerlos podría llevar a describir los resultados de forma incorrecta. Primero hay que evaluar las siguientes posibles causas. Si alguna de ellas está presente, hay que corregir los valores o removerlos de la hoja de análisis.</p>
 <ul>
@@ -359,22 +685,27 @@
 <div class="advertencia">
 <p>No elimines valores atípicos automáticamente. Un valor extremo puede ser real y biológicamente válido; removerlo sin justificación sesga los resultados. Elimínalo solo si identificas una causa clara (error de medición o de captura).</p>
 </div>
+<p>Una práctica que resuelve casi todos estos dilemas: si hay dudas sobre un valor extremo, corra el análisis <strong>con</strong> y <strong>sin</strong> ese valor y reporte ambos resultados. Si la conclusión biológica no cambia, el punto era irrelevante y no hay nada que decidir. Si la conclusión sí cambia, entonces el lector merece saberlo, y ese hecho es en sí mismo un resultado que hay que reportar.</p>
 <hr>
 </div>
-<div id="supuesto-de-normalidad" class="section level2" number="10.8">
+<div id="supuesto-de-normalidad" class="section level2" number="10.10">
 <h2>
-<span class="header-section-number">10.8</span> Supuesto de normalidad<a class="anchor" aria-label="anchor" href="#supuesto-de-normalidad"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10</span> Supuesto de normalidad<a class="anchor" aria-label="anchor" href="#supuesto-de-normalidad"><i class="fas fa-link"></i></a>
 </h2>
 <p>Hay muchas pruebas estadísticas que asumen que los datos provienen de una distribución normal. Pero no todas las pruebas tienen que satisfacer ese supuesto. Por ejemplo, la prueba de t o el ANOVA asumen distribución normal. Por el contrario, las pruebas no paramétricas como Wilcoxon, Mann-Whitney, Kruskall Wallis y otras no asumen ese supuesto.</p>
+<p>Antes de seguir, conviene repetir la distinción de la tabla del comienzo del capítulo. Cuando se comparan dos grupos con una prueba de t, el supuesto es sobre la variable medida dentro de cada grupo. Cuando se ajusta un ANOVA o una regresión, el supuesto es sobre los <strong>residuales</strong> del modelo. En las secciones que siguen se evalúa primero la variable cruda, que es el caso de la prueba de t, y al final se evalúan los residuales del modelo <strong>modelflower</strong>, que es el caso de la regresión.</p>
 <p>Una alternativa tradicional para comprobar la normalidad de los datos es mirar el gráfico de QQ; o sea, una visualización para comparar las probabilidades de dos variables en las que se grafican los cuantiles (recordemos que <strong>Q</strong> viene de <em>quantile</em>, cuantil). Si las distribuciones de las dos variables son similares, los puntos aparecerán nítidamente en el gráfico de QQ sobre la línea de <strong>X-Y</strong>. Eso se demostrará a continuación.</p>
+<div class="nota">
+<p>Un tercer detalle que se suele pasar por alto: lo que las pruebas paramétricas realmente necesitan es que la <strong>distribución del promedio muestral</strong> sea normal, no que lo sean los datos individuales. Por el teorema del límite central, el promedio se acerca a una distribución normal según aumenta el tamaño de muestra, aun cuando los datos crudos estén sesgados. Por eso una desviación moderada de la normalidad con n grande preocupa poco, mientras que la misma desviación con n pequeño preocupa mucho. El teorema del límite central se desarrolla en el capítulo 12.</p>
+</div>
 <hr>
 </div>
-<div id="qplot" class="section level2" number="10.9">
+<div id="el-gráfico-q-q" class="section level2" number="10.11">
 <h2>
-<span class="header-section-number">10.9</span> qplot<a class="anchor" aria-label="anchor" href="#qplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.11</span> El gráfico Q-Q<a class="anchor" aria-label="anchor" href="#el-gr%C3%A1fico-q-q"><i class="fas fa-link"></i></a>
 </h2>
-<p>En el gráfico se representa el consumo por la Becasa de Mar de la base de datos Godwits, el ave de las marismas de Argentina que hemos analizado anteriormente. En el gráfico se nota que los datos a los extremos no están muy cerca de la línea <strong>X-Y</strong>, lo que sugiere que el consumo por la Becasa de Mar no tiene una distribución normal. La función qplot es la manera más sencilla para generar el gráfico de QQ.</p>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<p>En el gráfico se representa el consumo por la Becasa de Mar de la base de datos Godwits, el ave de las marismas de Argentina que hemos analizado anteriormente. En el gráfico se nota que los datos a los extremos no están muy cerca de la línea <strong>X-Y</strong>, lo que sugiere que el consumo por la Becasa de Mar no tiene una distribución normal. Aquí se usa el objeto <strong>BecasaDeMar</strong>, o sea los datos ya filtrados por sexo que se prepararon más arriba.</p>
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Note que anteriormente ya habíamos depositado los datos en el data.frame BecasaDeMar</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">BecasaDeMar</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>sample<span class="op">=</span><span class="va">mgconsumed</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">geom_qq</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
@@ -383,15 +714,15 @@
 <span>        axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">20</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Valores teóricos"</span><span class="op">)</span><span class="op">+</span></span>
 <span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Valores observados"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-10-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-15-1.png" alt="" width="672"></div>
 <hr>
 </div>
-<div id="geom_qq-y-geom_qq_line" class="section level2" number="10.10">
+<div id="geom_qq-y-geom_qq_line" class="section level2" number="10.12">
 <h2>
-<span class="header-section-number">10.10</span> geom_qq y geom_qq_line<a class="anchor" aria-label="anchor" href="#geom_qq-y-geom_qq_line"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.12</span> geom_qq y geom_qq_line<a class="anchor" aria-label="anchor" href="#geom_qq-y-geom_qq_line"><i class="fas fa-link"></i></a>
 </h2>
 <div class="funcion">
-<p><strong><code><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">geom_qq()</a></code> + <code><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">geom_qq_line()</a></code></strong> — gráfico Q-Q en ggplot2.</p>
+<p><strong><code><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">geom_qq()</a></code> + <code><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">geom_qq_line()</a></code></strong>: gráfico Q-Q en ggplot2.</p>
 <ul>
 <li>
 <strong>Qué hacen:</strong> dibujan los cuantiles observados frente a los teóricos (<code>geom_qq</code>) y la línea de referencia (<code>geom_qq_line</code>).</li>
@@ -399,16 +730,18 @@
 <strong>Cómo leer:</strong> si los puntos siguen la línea, los datos son compatibles con la distribución normal.</li>
 </ul>
 </div>
-<p>A pesar de lo fácil de este enfoque, apreciar si los datos quedan nítidamente alineados sobre una línea no es tan evidente en algunos casos. Por lo tanto, en la siguiente versión del gráfico de QQ producida con la función <strong>geom_qq</strong> y <strong>geom_qq_line</strong> se le añade una línea para mostrar dónde debería estar localizada la gran mayoría de los datos si estos tuvieran una distribución normal. Ahora vemos que claramente muchos de los datos no yacen en la línea. Evidentemente, el trazar la línea teórica ayuda a visualizar la conclusión; en este caso, se podría concluir que el consumo de comida por este pájaro no sigue una distribución normal <span style="color: blue;">la linea azul</span>. En el segundo ejemplo se crea un conjunto de datos con distribución normal y, en ese caso, la gran mayoría de los datos se solapan con la línea, <span style="color: red;">la línea roja</span></p>
+<p>A pesar de lo fácil de este enfoque, apreciar si los datos quedan nítidamente alineados sobre una línea no es tan evidente en algunos casos. Por lo tanto, en la siguiente versión del gráfico de QQ se le añade una línea para mostrar dónde debería estar localizada la gran mayoría de los datos si estos tuvieran una distribución normal. Ahora vemos que claramente muchos de los datos no yacen en la línea. Evidentemente, el trazar la línea teórica ayuda a visualizar la conclusión; en este caso, se podría concluir que el consumo de comida por este pájaro no sigue una distribución normal <span style="color: blue;">la linea azul</span>. En el segundo ejemplo se crea un conjunto de datos con distribución normal y, en ese caso, la gran mayoría de los datos se solapan con la línea, <span style="color: red;">la línea roja</span></p>
+<p>Note que en el primer panel se usa el objeto <strong>Godwits</strong> completo, o sea sin filtrar por sexo, mientras que la figura anterior usó <strong>BecasaDeMar</strong>, que sí está filtrado. La conclusión sobre la normalidad es la misma en ambos casos, pero es importante saber siempre cuál conjunto de datos se está graficando.</p>
 <div class="interpretacion">
-<p>En un gráfico Q-Q, si los datos siguen una distribución normal los puntos caen sobre la línea diagonal. Desviaciones sistemáticas en los extremos (colas) indican que los datos <strong>no</strong> son normales.</p>
+<p>En un gráfico Q-Q, si los datos siguen una distribución normal los puntos caen sobre la línea diagonal. Desviaciones sistemáticas en los extremos (colas) indican que los datos <strong>no</strong> son normales. Además, la <strong>dirección</strong> de la desviación informa sobre el tipo de problema: si los puntos se curvan hacia arriba en el extremo derecho, hay una cola larga hacia los valores grandes (sesgo positivo); si se curvan hacia abajo en el extremo izquierdo, la cola larga está hacia los valores pequeños (sesgo negativo); y una curva en forma de “S” indica colas más pesadas o más ligeras que las de una normal.</p>
 </div>
-<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span><span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Godwits</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="va">mgconsumed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq_line</a></span><span class="op">(</span>colour<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Valores teóricos"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Valores observados"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Valores observados"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"(a) Consumo, Becasa de Mar"</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span>
@@ -416,32 +749,35 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq_line</a></span><span class="op">(</span>colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Valores teóricos"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Valores observados"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Valores observados"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"(b) Datos simulados normales"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-11-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-16-1.png" alt="" width="672"></div>
 <hr>
 </div>
-<div id="la-distribución-normal" class="section level2" number="10.11">
+<div id="la-distribución-normal" class="section level2" number="10.13">
 <h2>
-<span class="header-section-number">10.11</span> La distribución normal<a class="anchor" aria-label="anchor" href="#la-distribuci%C3%B3n-normal"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.13</span> La distribución normal<a class="anchor" aria-label="anchor" href="#la-distribuci%C3%B3n-normal"><i class="fas fa-link"></i></a>
 </h2>
 <p>Una segunda alternativa para visualizar si los datos siguen una distribución normal es construir un histograma de los datos y gráficar sobre este la curva normal basándonos en el promedio y la desviación estándar de los mismos datos. Para construir el histograma se usa la función <strong>geom_histogram</strong> y para la distribución teórica normal de estos datos se usa la función <strong>stat_function</strong>. Esto lo demostramos con gráficos adicionales de la Becasa del Mar, donde se representa la razón de consumo y el período en que esto ocurrió. En la Figura (a) vemos la distribución para todos los períodos, y los otros tres en la Figura (b) muestran una distribución para cada uno de los períodos. Se observa en todos los casos que las distribuciones están sesgadas hacia la <strong>derecha</strong> (la mayoría de los valores son pequeños y hay una cola larga hacia los valores grandes). Esta visualización nos ayuda a evaluar la normalidad de esos datos. Nota que no es una prueba estadística igual como el gráfico de qqplot.</p>
+<p>La lógica de esta figura es la siguiente: la curva roja es la distribución normal que <strong>tendrían</strong> los datos si fueran normales, construida con el promedio y la desviación estándar observados. Si el histograma se aparta de esa curva, la diferencia entre las barras y la curva es exactamente la falta de normalidad.</p>
 <p>Nota la formula para calcular la distribución normal (la densidad). Hay solamente dos parámetros que necesitamos, el promedio <span class="math inline">\(\mu\)</span> y la desviación estándar <span class="math inline">\(\sigma\)</span>. Todos los demás son constantes: <span class="math inline">\(\pi\)</span> y <span class="math inline">\(e\)</span> (la base de los logaritmos naturales).</p>
 <p><span class="math display">\[P(x)=\frac{1}{\sigma\sqrt{2\pi}}\,e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}\]</span></p>
 <p>Note que en <strong>geom_histogram</strong> se tiene que incluir</p>
 <p><strong>aes(y=after_stat(density))</strong></p>
-<p>y añadir dentro de la función <strong>stat_function</strong> todo lo siguiente:</p>
+<p>Esto es necesario porque la curva normal se dibuja en unidades de <strong>densidad</strong> y no de frecuencia. Si el histograma quedara en frecuencia (el conteo de observaciones por barra) y la curva en densidad, las dos quedarían en escalas distintas y la curva se vería aplastada contra el eje.</p>
+<p>Después hay que añadir dentro de la función <strong>stat_function</strong> todo lo siguiente:</p>
 <p>stat_function(fun = dnorm,
 args = list(mean = mean(Godwits<span class="math inline">\(mgconsumed,
                                 na.rm = TRUE),
                       sd = sd(Godwits\)</span>mgconsumed,
 na.rm = TRUE)),
-colour = “red”, size = 1)</p>
+colour = “red”, linewidth = 1)</p>
 <p>El parámetro <strong>dnorm</strong> quiere decir densidad de la distribución normal. También se necesitan dos parámetros para calcular el promedio (mean) y la desviación estándar (sd). Con ambos hay que especificar de dónde provienen los datos; en este caso,</p>
 <p><strong>Godwits$mgconsumed</strong></p>
 <p>Además, si hay NA en los datos, hay que añadir <strong>na.rm = TRUE</strong> para excluir los <strong>NA</strong>. Veamos.</p>
-<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span><span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Godwits</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">mgconsumed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -453,7 +789,7 @@ colour = “red”, size = 1)</p>
 <span>        args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Godwits</span><span class="op">$</span><span class="va">mgconsumed</span>,</span>
 <span>                                na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">Godwits</span><span class="op">$</span><span class="va">mgconsumed</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    colour <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
+<span>    colour <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Todos los datos"</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -467,20 +803,21 @@ colour = “red”, size = 1)</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Godwits</span><span class="op">$</span><span class="va">mgconsumed</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">Godwits</span><span class="op">$</span><span class="va">mgconsumed</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    colour <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
+<span>    colour <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">PERIOD</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Por estación anual"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-12-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-17-1.png" alt="" width="672"></div>
 <hr>
 </div>
-<div id="stat_function" class="section level2" number="10.12">
+<div id="stat_function" class="section level2" number="10.14">
 <h2>
-<span class="header-section-number">10.12</span> stat_function<a class="anchor" aria-label="anchor" href="#stat_function"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14</span> stat_function<a class="anchor" aria-label="anchor" href="#stat_function"><i class="fas fa-link"></i></a>
 </h2>
 <p>Continuaremos con este mismo análisis pero esta vez evaluaremos la distribución del peso de gorriones en un trabajo de captura y recaptura en 6 meses diferentes. Utilizaremos la base de datos <strong>SparrowsElphick</strong>. En la figura (a) observamos un histograma de la distribución de los pesos de estas aves por cada mes. Vemos claramente que hay meses (mayo, septiembre y octubre) en los que se tuvieron muchas menos observaciones. En el segundo gráfico, Figura (b), observamos el histograma y la curva normal para todos los datos sin importar el mes. Igualmente, esta visualización nos ayuda a evaluar la normalidad de los datos.</p>
-<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<p>El hecho de que unos meses tengan muchas menos observaciones que otros no es un detalle menor. Un histograma construido con 8 observaciones se ve irregular aunque los datos provengan de una población perfectamente normal, simplemente porque hay pocas barras y cada una depende de muy pocos individuos. Por eso, al evaluar normalidad por grupos, siempre hay que mirar el tamaño de muestra de cada grupo antes de concluir.</p>
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Sparrows</span><span class="op">=</span><span class="va">SparrowsElphick</span></span>
 <span></span>
 <span><span class="va">Sparrows</span><span class="op">$</span><span class="va">fMonth</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Sparrows</span><span class="op">$</span><span class="va">Month</span>,</span>
@@ -488,7 +825,13 @@ colour = “red”, size = 1)</p>
 <span>             labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mayo"</span>, <span class="st">"Junio"</span>, <span class="st">"Julio"</span>, <span class="st">"Agosto"</span>,</span>
 <span>                                   <span class="st">"Sept."</span>, <span class="st">"Oct."</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">a</span><span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Sparrows</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span><span class="co"># El tamaño de muestra por mes</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">Sparrows</span><span class="op">$</span><span class="va">fMonth</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##   Mayo  Junio  Julio Agosto  Sept.   Oct. 
+##     17    590    409    194     49     36</code></pre>
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a</span><span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Sparrows</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth<span class="op">=</span><span class="fl">1</span>, colour<span class="op">=</span><span class="st">"white"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">fMonth</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span>,</span>
@@ -506,18 +849,18 @@ colour = “red”, size = 1)</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, </span>
 <span>                args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Sparrows</span><span class="op">$</span><span class="va">wt</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>                            sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">Sparrows</span><span class="op">$</span><span class="va">wt</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                            colour <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>                            colour <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-13-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-18-1.png" alt="" width="672"></div>
 <hr>
 </div>
-<div id="visualizando-la-distribuciones-con-geom_density" class="section level2" number="10.13">
+<div id="visualizando-la-distribuciones-con-geom_density" class="section level2" number="10.15">
 <h2>
-<span class="header-section-number">10.13</span> Visualizando la distribuciones con <strong>geom_density</strong><a class="anchor" aria-label="anchor" href="#visualizando-la-distribuciones-con-geom_density"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.15</span> Visualizando la distribuciones con <strong>geom_density</strong><a class="anchor" aria-label="anchor" href="#visualizando-la-distribuciones-con-geom_density"><i class="fas fa-link"></i></a>
 </h2>
 <div class="funcion">
-<p><strong><code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code></strong> — curva de densidad suavizada.</p>
+<p><strong><code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code></strong>: curva de densidad suavizada.</p>
 <ul>
 <li>
 <strong>Qué hace:</strong> en lugar de barras (histograma), dibuja una curva continua que estima la forma de la distribución de una variable.</li>
@@ -526,13 +869,14 @@ colour = “red”, size = 1)</p>
 </ul>
 </div>
 <p>A continuación se muestra otra alternativa para observar los datos anteriores. Nada más que estos ahora se representan sustituyendo las funciones <strong>geom_histogram</strong> y <strong>stat_function</strong> por <strong>geom_density</strong> para la construcción de curvas de densidad. Otra vez utilizaremos la base de datos <strong>SparrowsElphick</strong>. La curva normal que se genera es tipo gausiana (gaussian en inglés). Note que para el segundo conjunto de gráficos, (b), no se le especificó la opción en <strong>kernel</strong> igual a <strong>gaussian</strong> ya que de forma predeterminada la función <strong>geom_density</strong> usa el parámetro <strong>gaussian</strong>; o sea, no es necesario especificarla si eso es lo que se quiere. Una distribución en donde el pico es más alto significa que hay mayor densidad de datos en esa región de la variable en el eje de <strong>X</strong>. Podemos apreciar que la curva de densidad no sigue claramente una distribución normal con respecto a los valores en <strong>X</strong>.</p>
-<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
+<p>La ventaja del gráfico de densidad sobre el histograma es que no depende del ancho de las barras, que es una decisión arbitraria que puede cambiar por completo la apariencia de un histograma. La desventaja es que la curva suaviza los datos y puede sugerir una forma continua donde solo hay unos pocos puntos; de ahí la importancia, otra vez, de conocer el tamaño de muestra de cada grupo.</p>
+<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Note que anteriormente ya habíamos depositado los datos en el data.frame Sparrows:</span></span>
 <span><span class="va">a</span><span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Sparrows</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group<span class="op">=</span><span class="va">fMonth</span>, fill<span class="op">=</span><span class="va">fMonth</span><span class="op">)</span>,</span>
 <span>             kernel<span class="op">=</span><span class="st">"gaussian"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">fMonth</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"none"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>        axis.text<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>, face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Densidad"</span><span class="op">)</span><span class="op">+</span></span>
@@ -547,18 +891,152 @@ colour = “red”, size = 1)</p>
 <span>        axis.text<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>, face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Densidad"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Peso"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>colour<span class="op">=</span><span class="st">"Mes"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"Mes"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-14-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-19-1.png" alt="" width="672"></div>
 <hr>
 </div>
-<div id="colinealidad-entre-covariables-con-ggpairs" class="section level2" number="10.14">
+<div id="pruebas-formales-de-normalidad" class="section level2" number="10.16">
 <h2>
-<span class="header-section-number">10.14</span> Colinealidad entre covariables con <strong>ggpairs</strong><a class="anchor" aria-label="anchor" href="#colinealidad-entre-covariables-con-ggpairs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.16</span> Pruebas formales de normalidad<a class="anchor" aria-label="anchor" href="#pruebas-formales-de-normalidad"><i class="fas fa-link"></i></a>
 </h2>
+<p>Las herramientas visuales anteriores son el punto de partida, pero a veces se necesita un criterio numérico. Las pruebas de normalidad se desarrollan con detalle en el capítulo 12; aquí se aplican brevemente a los datos de este capítulo para cerrar el ciclo.</p>
+<p>La hipótesis nula de todas ellas es la misma:</p>
+<p>Ho: los datos provienen de una distribución normal.<br>
+Ha: los datos NO provienen de una distribución normal.</p>
+<p>Igual que con las pruebas de homogeneidad, un valor-<em>p</em> grande es el resultado deseado.</p>
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Normalidad de la variable cruda: el consumo de la Becasa de Mar</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">mgconsumed</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  BecasaDeMar$mgconsumed
+## W = 0.88433, p-value = 1.767e-11</code></pre>
+<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Normalidad de los RESIDUALES del modelo de regresión</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuals(modelflower)
+## W = 0.98287, p-value = 0.02559</code></pre>
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Una segunda prueba, Anderson-Darling, sobre los mismos residuales</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/nortest/man/ad.test.html">ad.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Anderson-Darling normality test
+## 
+## data:  residuals(modelflower)
+## A = 0.99561, p-value = 0.01233</code></pre>
+<p>Note la diferencia de propósito entre las dos primeras líneas. La primera evalúa la variable tal como se midió, que es lo que corresponde si el plan es hacer una prueba de t. La segunda evalúa los residuales de <strong>modelflower</strong>, que es lo que corresponde para la regresión del capítulo 18.</p>
+<div class="advertencia">
+<p>Las pruebas de normalidad son muy sensibles al tamaño de muestra. Con muestras grandes rechazan la hipótesis nula ante desviaciones triviales que no afectan a las pruebas paramétricas; con muestras muy pequeñas casi nunca la rechazan por falta de poder. Por eso no conviene depender solo del valor-<em>p</em>: combínelo siempre con el histograma y el gráfico Q-Q. Vea el capítulo 12 para las reglas prácticas sobre los tamaños de muestra en que cada prueba es confiable.</p>
+</div>
+<hr>
+</div>
+<div id="simetría-de-las-distribuciones" class="section level2" number="10.17">
+<h2>
+<span class="header-section-number">10.17</span> Simetría de las distribuciones<a class="anchor" aria-label="anchor" href="#simetr%C3%ADa-de-las-distribuciones"><i class="fas fa-link"></i></a>
+</h2>
+<p>El cuarto supuesto de la lista inicial es la simetría. Una distribución es simétrica si la mitad izquierda es una imagen de espejo de la mitad derecha. La normalidad implica simetría, pero la simetría no implica normalidad: hay distribuciones perfectamente simétricas que no son normales, como la uniforme.</p>
+<p>La simetría importa por sí sola porque varias pruebas no paramétricas, que se estudian en el capítulo 21, no asumen normalidad pero sí asumen simetría. La prueba de rangos con signo de Wilcoxon es el ejemplo típico. O sea que, al abandonar la normalidad, uno no queda libre de todos los supuestos.</p>
+<p>La forma de cuantificar la simetría es el <strong>índice de oblicuidad</strong> (<em>skewness</em>), que se introdujo en el capítulo 8. Recordemos su interpretación: es positiva cuando la cola larga está a la derecha, negativa cuando está a la izquierda, y cercana a cero cuando la distribución es simétrica.</p>
 <div class="funcion">
-<p><strong><code>ggpairs(datos)</code></strong> (paquete <strong>GGally</strong>) — matriz de correlaciones.</p>
+<p><strong><code>skewness(x)</code></strong> (paquete <strong>e1071</strong>): índice de oblicuidad.</p>
+<ul>
+<li>
+<strong>Qué hace:</strong> cuantifica la asimetría de la variable <code>x</code> con un solo número.</li>
+<li>
+<strong>Cómo leer:</strong> el signo indica hacia qué lado está la cola larga; la magnitud, cuán pronunciada es. Valores cercanos a cero indican simetría.</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Oblicuidad del consumo de la Becasa de Mar</span></span>
+<span><span class="fu">e1071</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">BecasaDeMar</span><span class="op">$</span><span class="va">mgconsumed</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 1.568521</code></pre>
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Oblicuidad del peso de los gorriones</span></span>
+<span><span class="fu">e1071</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">Sparrows</span><span class="op">$</span><span class="va">wt</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0.1068934</code></pre>
+<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Oblicuidad de los residuales del modelo de regresión</span></span>
+<span><span class="fu">e1071</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">modelflower</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0.2113748</code></pre>
+<p>Compare estos números con los histogramas que se construyeron más arriba. El valor del índice debe concordar con lo que se ve en la figura: si el histograma tiene una cola larga hacia la derecha, la oblicuidad tiene que ser positiva. Cuando el número y la figura no concuerdan, casi siempre es señal de que se calculó el índice sobre una variable distinta a la que se graficó.</p>
+<div class="nota">
+<p>No existe un valor de corte universalmente aceptado para decidir cuándo la oblicuidad es “demasiada”. Los criterios que circulan en la literatura varían según el autor y según el tamaño de muestra. Por eso, en este curso el índice se usa de forma <strong>descriptiva</strong> y comparativa (por ejemplo, para comparar la asimetría antes y después de una transformación) y no como una prueba con un umbral fijo.</p>
+</div>
+<hr>
+</div>
+<div id="qué-hacer-cuando-no-se-cumple-un-supuesto" class="section level2" number="10.18">
+<h2>
+<span class="header-section-number">10.18</span> ¿Qué hacer cuando no se cumple un supuesto?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-hacer-cuando-no-se-cumple-un-supuesto"><i class="fas fa-link"></i></a>
+</h2>
+<p>Hasta aquí el capítulo ha tratado de <strong>detectar</strong> los problemas. Esta sección resume qué hacer con ellos. Hay cuatro caminos, y conviene considerarlos en este orden.</p>
+<p><strong>1. Revisar los datos.</strong> Antes de transformar nada, verifique si el problema se debe a unos pocos valores erróneos, a unidades mezcladas o a filas duplicadas. Es sorprendente cuán a menudo un histograma con una cola imposible se debe a un error de entrada de datos.</p>
+<p><strong>2. Transformar la variable.</strong> Una transformación cambia la escala de la variable sin cambiar el orden de las observaciones. Sirve para corregir sesgo y heterocedasticidad a la vez, porque ambos problemas suelen tener la misma causa.</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Transformación</th>
+<th align="left">Cuándo se usa</th>
+<th align="left">En R</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Logaritmo</td>
+<td align="left">sesgo positivo fuerte; la varianza crece con el promedio</td>
+<td align="left"><code>log(x)</code></td>
+</tr>
+<tr class="even">
+<td align="left">Logaritmo con ajuste</td>
+<td align="left">igual que el anterior, pero hay ceros en los datos</td>
+<td align="left"><code>log(x + 1)</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Raíz cuadrada</td>
+<td align="left">datos de conteo con sesgo moderado</td>
+<td align="left"><code>sqrt(x)</code></td>
+</tr>
+<tr class="even">
+<td align="left">Recíproco</td>
+<td align="left">sesgo positivo muy extremo</td>
+<td align="left"><code>1/x</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="advertencia">
+<p>Después de transformar, todo se interpreta en la escala transformada. Si se analiza <code>log(peso)</code>, la diferencia entre dos grupos ya no se expresa en gramos sino en unidades logarítmicas, y el promedio que se estima es la media geométrica y no la aritmética. Transformar no es gratis: se paga con interpretabilidad. Por eso siempre hay que reportar cuál transformación se usó, y verificar los supuestos <strong>otra vez</strong> sobre los datos transformados.</p>
+</div>
+<p><strong>3. Cambiar de prueba.</strong> Si la transformación no resuelve el problema, o si la variable transformada no se puede interpretar biológicamente, se cambia a un método que no exija el supuesto que falla:</p>
+<ul>
+<li>Para falta de normalidad: las pruebas no paramétricas del capítulo 21 (Wilcoxon, Mann-Whitney, Kruskal-Wallis), que trabajan con rangos en vez de valores.</li>
+<li>Para falta de homogeneidad de varianza: la prueba de t de Welch, que es de hecho la opción <strong>predeterminada</strong> de la función <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> en R y no asume varianzas iguales.</li>
+<li>Para datos de conteo o de proporciones: los modelos lineales generalizados, de los cuales la regresión logística del capítulo 19 es un caso. Para conteos suele ser preferible un modelo de este tipo antes que transformar con raíz cuadrada.</li>
+<li>Para falta de independencia: un modelo que incluya la estructura de los datos, por ejemplo un modelo mixto.</li>
+</ul>
+<p><strong>4. Métodos robustos o bayesianos.</strong> El <em>bootstrap</em> y la estadística bayesiana permiten estimar intervalos de confianza sin depender del supuesto de normalidad. Son las alternativas que se mencionaron al principio del capítulo.</p>
+<div class="consejo">
+<p>La decisión sobre cuál camino tomar se documenta en el manuscrito. Una frase como “los datos se transformaron con logaritmo natural porque el gráfico de residuales mostró heterocedasticidad” es información que el lector necesita para evaluar el trabajo. Decidir en silencio, y reportar solo el análisis final, es precisamente la práctica que la sección de ética del comienzo del capítulo advierte que hay que evitar.</p>
+</div>
+<hr>
+</div>
+<div id="colinealidad-entre-covariables-con-ggpairs" class="section level2" number="10.19">
+<h2>
+<span class="header-section-number">10.19</span> Colinealidad entre covariables con <strong>ggpairs</strong><a class="anchor" aria-label="anchor" href="#colinealidad-entre-covariables-con-ggpairs"><i class="fas fa-link"></i></a>
+</h2>
+<p>Este último supuesto es de naturaleza distinta a los anteriores. No se trata de la forma de la distribución ni de la dispersión de los residuales, sino de la relación <strong>entre las variables predictivas</strong> de un modelo. Por eso solo aplica cuando hay más de una variable predictiva, o sea en la regresión múltiple.</p>
+<div class="definicion">
+<p>La <strong>colinealidad</strong> es la correlación alta entre dos o más variables predictivas dentro de un mismo modelo. Cuando existe, el modelo no puede separar el efecto de una variable del de la otra, porque ambas llevan la misma información.</p>
+</div>
+<div class="funcion">
+<p><strong><code>ggpairs(datos)</code></strong> (paquete <strong>GGally</strong>): matriz de correlaciones.</p>
 <ul>
 <li>
 <strong>Qué hace:</strong> muestra en una sola figura los diagramas de dispersión, las distribuciones y los coeficientes de correlación de todos los pares de variables.</li>
@@ -568,14 +1046,18 @@ colour = “red”, size = 1)</p>
 </div>
 <p>Hoy en día la cantidad de datos que se obtienen en diferentes estudios puede ser muy impresionante. Muchas veces el objetivo es detectar si unas variables, entre muchas otras, podrían predecir la variable de respuesta. A consecuencia de eso, el problema mayor es tomar en cuenta la colinealidad entre variables explicativas. La colinealidad es simplemente la correlación entre variables en un modelo de análisis de regresión múltiple, en donde las variables predictivas están altamente correlacionadas.</p>
 <p>Un ejemplo sencillo de variables con colinealidad podría incluir la relación entre el largo y ancho de las hojas de una herbácea y cómo estas están correlacionadas con la producción de flores. Es probable que la correlación entre el largo y el ancho de la hoja estén correlacionadas con la producción de las flores de formas muy similares; o sea, con una pendiente que explicaría ambas relaciones de formas similares. Entonces, al añadir ambas variables al modelo de regresión múltiple, no estaríamos explicando variaciones distintas, si no más bien la misma variación. Cuando hay mucha colinealidad entre variables explicativas, se debería seleccionar un subgrupo de estas variables que expliquen variaciones distintas para el modelo y no incluir todas las variables.</p>
-<p>A continuación exploraremos diferentes alternativas para llevar a cabo este tipo de análisis utilizando otra vez los datos de la orquídea <em>Dipodium</em>. En el primer ejemplo, se utiliza la función <strong>cor</strong> para evaluar solo una relación: la correlación entre la distancia de la planta a un árbol y la altura de la planta, dejando otras variables a un lado. Como deseamos el estimado de la correlación solamente, utilizamos un par de variables a la vez para evaluar la correlación entre la distancia de la orquídea al árbol y la altura de la inflorescencia (mostrado más adelante). Concluimos que a mayor distancia del árbol, menor es la altura de la inflorescencia; este análisis arroja un valor de correlación de -0.095, como se muestra en el ejemplo.</p>
-<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<div class="interpretacion">
+<p>¿Cómo se manifiesta la colinealidad en los resultados? De una forma muy característica: el modelo completo es claramente significativo y el <span class="math inline">\(R^2\)</span> es alto, pero <strong>ninguno</strong> de los coeficientes individuales lo es. Además, los errores estándar de los coeficientes son enormes y los estimados cambian de magnitud, o incluso de signo, al añadir o remover una variable. Si ve ese patrón, sospeche de colinealidad antes que de cualquier otra cosa.</p>
+</div>
+<p>A continuación exploraremos diferentes alternativas para llevar a cabo este tipo de análisis utilizando otra vez los datos de la orquídea <em>Dipodium</em>. En el primer ejemplo, se utiliza la función <strong>cor</strong> para evaluar solo una relación: la correlación entre la distancia de la planta a un árbol y la altura de la planta, dejando otras variables a un lado. Como deseamos el estimado de la correlación solamente, utilizamos un par de variables a la vez para evaluar la correlación entre la distancia de la orquídea al árbol y la altura de la inflorescencia (mostrado más adelante).</p>
+<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">dipodium</span><span class="op">$</span><span class="va">Distance</span>, </span>
 <span>    <span class="va">dipodium</span><span class="op">$</span><span class="va">Height_Inflo</span>,</span>
 <span>    use<span class="op">=</span><span class="st">"pairwise.complete.obs"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] -0.09541256</code></pre>
+<p>El valor obtenido es de -0.095. El signo negativo indica que a mayor distancia del árbol, menor es la altura de la inflorescencia. Ahora bien, la magnitud es muy pequeña: un coeficiente de -0.095 quiere decir que la distancia al árbol explica menos del 1% de la variación en la altura de la inflorescencia. Este es un buen momento para recordar que el signo de una correlación describe la dirección, pero es la magnitud la que dice si la relación tiene alguna importancia biológica. Para efectos de colinealidad, un valor tan bajo indica que estas dos variables pueden incluirse juntas en un modelo sin problema.</p>
 <p>Otra alternativa es hacer el análisis de correlación de muchas variables en conjunto. En la tabla, <strong>Correlaciones de Pearson</strong>, se muestra la correlación entre las tres variables siguientes: DBH, cantidad de flores y altura de la inflorescencia. En esa tabla se observa la correlación de Pearson para estos datos. Recordemos que esta correlación asume distribución normal.</p>
-<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">dipodium</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">8</span>, <span class="fl">9</span><span class="op">)</span><span class="op">]</span>,</span>
 <span> use<span class="op">=</span><span class="st">"pairwise.complete.obs"</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
@@ -607,12 +1089,12 @@ colour = “red”, size = 1)</p>
 </tbody>
 </table></div>
 <hr>
-<div id="tabla-de-correlación-de-kendall" class="section level3" number="10.14.1">
+<div id="tabla-de-correlación-de-kendall" class="section level3" number="10.19.1">
 <h3>
-<span class="header-section-number">10.14.1</span> Tabla de correlación de Kendall<a class="anchor" aria-label="anchor" href="#tabla-de-correlaci%C3%B3n-de-kendall"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.19.1</span> Tabla de correlación de Kendall<a class="anchor" aria-label="anchor" href="#tabla-de-correlaci%C3%B3n-de-kendall"><i class="fas fa-link"></i></a>
 </h3>
 <p>Usando la función <strong>cor</strong> se puede también calcular estimados de correlación sin asumir distribución normal usando los métodos <strong>Kendall</strong> o <strong>Spearman</strong> mostrados en la Tabla siguiente.</p>
-<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">dipodium</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">8</span>, <span class="fl">9</span><span class="op">)</span><span class="op">]</span>,</span>
 <span> method<span class="op">=</span><span class="st">"kendall"</span>,</span>
 <span> use<span class="op">=</span><span class="st">"pairwise.complete.obs"</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span>, </span>
@@ -620,7 +1102,7 @@ colour = “red”, size = 1)</p>
 <span>  <span class="st">"\\label{fig:CK}Correlaciones de Kendall"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:c10-17">Table 10.1: </span>Correlaciones de Kendall</caption>
+<span id="tab:c10-24">Table 10.1: </span>Correlaciones de Kendall</caption>
 <thead><tr class="header">
 <th align="left"></th>
 <th align="right">DBH</th>
@@ -650,11 +1132,11 @@ colour = “red”, size = 1)</p>
 </table></div>
 <hr>
 </div>
-<div id="tabla-de-correlación-de-spearman" class="section level3" number="10.14.2">
+<div id="tabla-de-correlación-de-spearman" class="section level3" number="10.19.2">
 <h3>
-<span class="header-section-number">10.14.2</span> Tabla de correlación de Spearman<a class="anchor" aria-label="anchor" href="#tabla-de-correlaci%C3%B3n-de-spearman"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.19.2</span> Tabla de correlación de Spearman<a class="anchor" aria-label="anchor" href="#tabla-de-correlaci%C3%B3n-de-spearman"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">dipodium</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">8</span>, <span class="fl">9</span><span class="op">)</span><span class="op">]</span>,</span>
 <span> method<span class="op">=</span><span class="st">"spearman"</span>,</span>
 <span> use<span class="op">=</span><span class="st">"pairwise.complete.obs"</span><span class="op">)</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -686,27 +1168,34 @@ colour = “red”, size = 1)</p>
 </tr>
 </tbody>
 </table></div>
-<p>En esas tres tablas podemos apreciar un patrón consistente entre todos los métodos; o sea, la altura de la inflorescencia está altamente correlacionada con la cantidad de flores (con coeficientes de correlación de 0.82, 0.65, y 0.81 respectivamente). Note que para facilitar la lectura de los valores, se usó la función <strong>signif</strong> para así identificar solamente los valores significativos del análisis.</p>
+<p>En esas tres tablas podemos apreciar un patrón consistente entre todos los métodos; o sea, la altura de la inflorescencia está altamente correlacionada con la cantidad de flores (con coeficientes de correlación de 0.82, 0.65, y 0.81 respectivamente). Como estas dos variables comparten tanta información, incluirlas a las dos como predictoras en un mismo modelo de regresión múltiple sería un caso claro de colinealidad.</p>
+<div class="nota">
+<p>La función <strong>signif</strong> no tiene nada que ver con la significancia estadística, a pesar de lo que sugiere su nombre. Lo que hace es redondear un número a la cantidad de <strong>cifras significativas</strong> que se le indique: <code>signif(0.8237, 2)</code> produce 0.82. Se usa aquí únicamente para que las tablas se lean con comodidad.</p>
+</div>
 <p>Brevemente recapitulamos, si los datos no siguen una distribución normal, se deberían utilizar los métodos Kendall o Spearman. Si se tienen pocos datos, Kendall tiende a ser una mejor alternativa para determinar el indice de correlación. Se le advierte, sin embargo, que consulte libros de estadística sobre este tema antes que realice un análisis de este tipo ya que la decisión de seleccionar una alternativa sobre otra no es tan sencilla.</p>
 <hr>
 </div>
 </div>
-<div id="seleción-de-parámetros-para-correlaciones-cuando-hay-na" class="section level2" number="10.15">
+<div id="seleción-de-parámetros-para-correlaciones-cuando-hay-na" class="section level2" number="10.20">
 <h2>
-<span class="header-section-number">10.15</span> Seleción de parámetros para correlaciones cuando hay NA<a class="anchor" aria-label="anchor" href="#seleci%C3%B3n-de-par%C3%A1metros-para-correlaciones-cuando-hay-na"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.20</span> Seleción de parámetros para correlaciones cuando hay NA<a class="anchor" aria-label="anchor" href="#seleci%C3%B3n-de-par%C3%A1metros-para-correlaciones-cuando-hay-na"><i class="fas fa-link"></i></a>
 </h2>
 <p>Además, los análisis anteriores utilizados emplearon el parámetro <strong>pairwise.complete.obs</strong>, ya que obviaría los <strong>NA</strong> en las columnas que se utilizan para calcular la correlación. Por lo tanto, la cantidad de pares de datos utilizados para calcular las diferentes correlaciones entre variables puede variar si hay <strong>NA</strong> en el archivo. Tome en consideración que hay otras cuatro alternativas para analizar los datos cuando tenemos <strong>NA</strong> presentes: <strong>everything</strong>, <strong>all.obs</strong>, <strong>complete.obs</strong> y <strong>na.or.complete</strong>. No vamos a discutir esas alternativas en el presente libro. Sería bueno que busque información en R para sus usos. Estas alternativas se discutirán en otros módulos.</p>
+<div class="advertencia">
+<p>La consecuencia práctica de <strong>pairwise.complete.obs</strong> es que cada celda de la tabla de correlaciones puede estar calculada con un número distinto de observaciones. Esto conviene tenerlo presente al comparar los valores de la tabla entre sí, porque una correlación basada en 40 pares y otra basada en 180 pares no tienen la misma confiabilidad, aunque aparezcan una al lado de la otra.</p>
+</div>
 <p>Finalmente, también se utilizó el comando <strong>kable</strong> ya que es una manera efectiva de organizar los resultados en una tabla.</p>
 <hr>
 </div>
-<div id="uso-de-ggally-para-ver-correlaciones" class="section level2" number="10.16">
+<div id="uso-de-ggally-para-ver-correlaciones" class="section level2" number="10.21">
 <h2>
-<span class="header-section-number">10.16</span> Uso de GGally para ver correlaciones<a class="anchor" aria-label="anchor" href="#uso-de-ggally-para-ver-correlaciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.21</span> Uso de GGally para ver correlaciones<a class="anchor" aria-label="anchor" href="#uso-de-ggally-para-ver-correlaciones"><i class="fas fa-link"></i></a>
 </h2>
 <p>Continuando con el mismo tema, una tercera opción para descubrir la colinealidad entre covariables es utilizar el paquete <strong>GGally</strong>, ya que no solamente nos calcula las correlaciones, si no que también nos permite hacer los gráficos de densidad de la distribución de las variables y un gráfico de dispersión por pares de variables evaluadas.</p>
+<p>La ventaja de esta función para el tema de este capítulo es que resuelve dos cosas a la vez: en la diagonal se evalúa la <strong>normalidad</strong> de cada variable por separado, y fuera de la diagonal se evalúa la <strong>colinealidad</strong> entre pares. O sea, es una sola figura que atiende dos supuestos.</p>
 <p>En los gráficos de la siguiente Figura observamos los coeficientes de correlación, la distribución de los datos y la visualización de correlación por cada par. Además, vemos el diagrama de caja de los datos cuando hay variables discretas. Note al extremo derecho que la variable <strong>Herbivory</strong> tiene una categoría no identificada, que incluye los <strong>NA</strong>.</p>
 <p>Con la función de <strong>ggpairs</strong> podemos calcular las correlaciones entre las variables y a la misma vez producir todos los gráficos entre las variables y gráficos de distribución de densidad de cada variable. En el gráfico podemos observar en la parte izquierda la distribución de los datos en pares. En la diagonal se observa la densidad de cada una de las variables. En la parte superior derecha se observa el valor de correlación y en el extremo derecho se observan los diagramas de caja de las variables discretas con relación a la variable de la izquierda. Este gráfico es sumamente práctico, ya que produce mucha información con pocos pasos. Desafortunadamente, no hay manera de remover los <strong>NA</strong> al presente. A consecuencia de esto, al extremo derecho uno observa en las cajas abajo una barra con muchos valores (la de la derecha), pero esta representa todos los valores <strong>NA</strong> en la tabla de datos. En este caso, la presencia de herbivoría en las plantas no fue recolectada y en cambio se dejó con un <strong>NA</strong>. Note que aquí no se pueden poner ceros u otros valores. Las alternativas podrían ser <strong>H</strong> para la presencia de herbivoría y <strong>n</strong> para las plantas donde no hay evidencia de ella.</p>
-<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dipodium</span><span class="op">)</span> <span class="co"># para ver los nombres de las variables/columnas</span></span></code></pre></div>
 <pre><code>##  [1] "Tree Number"             "Tree species"           
 ##  [3] "DBH"                     "Plant number"           
@@ -719,9 +1208,107 @@ colour = “red”, size = 1)</p>
 ## [17] "Frutos_si_o_no"          "P_or_R_Infl_Lenght"     
 ## [19] "Num of fruits"           "Species_Name"           
 ## [21] "Cardinal orientation"</code></pre>
-<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggobi.github.io/ggally/reference/ggpairs.html">ggpairs</a></span><span class="op">(</span><span class="va">dipodium</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">13</span>, <span class="fl">14</span>, <span class="fl">10</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-19-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="BioEstadistica_files/figure-html/c10-26-1.png" alt="" width="672"></div>
+<hr>
+</div>
+<div id="resumen-del-capítulo" class="section level2" number="10.22">
+<h2>
+<span class="header-section-number">10.22</span> Resumen del capítulo<a class="anchor" aria-label="anchor" href="#resumen-del-cap%C3%ADtulo"><i class="fas fa-link"></i></a>
+</h2>
+<p>La tabla siguiente reúne en un solo lugar lo que se cubrió: qué supuesto, con qué herramienta se evalúa, y qué hacer si no se cumple.</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Supuesto</th>
+<th align="left">Herramienta visual</th>
+<th align="left">Prueba formal</th>
+<th align="left">Si no se cumple</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Independencia</td>
+<td align="left">residuales en orden de recolección</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/car/man/durbinWatsonTest.html">durbinWatsonTest()</a></code></td>
+<td align="left">modelo mixto; promediar por unidad experimental</td>
+</tr>
+<tr class="even">
+<td align="left">Homogeneidad entre grupos</td>
+<td align="left">gráfico de cajas condicional</td>
+<td align="left">
+<code><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest()</a></code>, <code><a href="https://rdrr.io/r/stats/bartlett.test.html">bartlett.test()</a></code>, <code><a href="https://rdrr.io/r/stats/fligner.test.html">fligner.test()</a></code>
+</td>
+<td align="left">transformar; prueba de t de Welch</td>
+</tr>
+<tr class="odd">
+<td align="left">Homogeneidad en regresión</td>
+<td align="left">residuales vs. valores estimados</td>
+<td align="left">ninguna en este capítulo</td>
+<td align="left">transformar; mínimos cuadrados generalizados</td>
+</tr>
+<tr class="even">
+<td align="left">Normalidad</td>
+<td align="left">Q-Q, histograma con curva, densidad</td>
+<td align="left">
+<code><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test()</a></code>, <code><a href="https://rdrr.io/pkg/nortest/man/ad.test.html">ad.test()</a></code>
+</td>
+<td align="left">transformar; pruebas no paramétricas</td>
+</tr>
+<tr class="odd">
+<td align="left">Simetría</td>
+<td align="left">histograma, densidad</td>
+<td align="left">índice de oblicuidad, <code><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness()</a></code>
+</td>
+<td align="left">transformar</td>
+</tr>
+<tr class="even">
+<td align="left">Ausencia de valores influyentes</td>
+<td align="left">distancia de Cook, residuales estandarizados</td>
+<td align="left">criterios <span class="math inline">\(D_i&gt;1\)</span> y <span class="math inline">\(D_i&gt;4/n\)</span>
+</td>
+<td align="left">verificar el dato; reportar con y sin él</td>
+</tr>
+<tr class="odd">
+<td align="left">Ausencia de colinealidad</td>
+<td align="left">
+<code><a href="https://ggobi.github.io/ggally/reference/ggpairs.html">ggpairs()</a></code>, tablas de correlación</td>
+<td align="left">coeficientes de correlación</td>
+<td align="left">remover una de las variables correlacionadas</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tres ideas para retener del capítulo:</p>
+<ol style="list-style-type: decimal">
+<li>Los gráficos mandan; las pruebas formales acompañan. Todas las pruebas de esta tabla dependen del tamaño de muestra y ninguna sustituye mirar los datos.</li>
+<li>En un modelo, el supuesto es sobre los <strong>residuales</strong>, no sobre la variable cruda.</li>
+<li>Evaluar supuestos no es un trámite previo al análisis: es parte del análisis, y las decisiones que se tomen aquí se reportan en el manuscrito.</li>
+</ol>
+<hr>
+</div>
+<div id="actividades-de-práctica" class="section level2" number="10.23">
+<h2>
+<span class="header-section-number">10.23</span> Actividades de práctica<a class="anchor" aria-label="anchor" href="#actividades-de-pr%C3%A1ctica"><i class="fas fa-link"></i></a>
+</h2>
+<div class="consejo">
+<p><strong>Actividad 1: Normalidad, simetría y valores atípicos.</strong></p>
+<p>En esta actividad se evalúa el supuesto de normalidad de variables de la orquídea <em>Dipodium</em> usando las cuatro herramientas del capítulo (histograma con curva teórica, gráfico Q-Q, curva de densidad y el índice de oblicuidad), y se comparan esos resultados con los de la prueba de Shapiro-Wilk. La segunda parte trata la identificación de valores atípicos y la decisión, justificada, de qué hacer con ellos.</p>
+<p>Archivo: <strong>Exam/Actividades_Supuestos/Actividad_1_Normalidad.Rmd</strong><br>
+Duración estimada: 1 hora y 30 minutos.<br>
+Entrega: el archivo .Rmd completado más el HTML compilado.</p>
+</div>
+<div class="consejo">
+<p><strong>Actividad 2: Homogeneidad de varianza, residuales y colinealidad.</strong></p>
+<p>En esta actividad se evalúa la homogeneidad de varianza del peso de gorriones entre meses, primero con gráficos de cajas condicionales y después con las pruebas de Levene, Bartlett y Fligner-Killeen. La segunda parte ajusta un modelo de regresión con la orquídea <em>Dipodium</em>, evalúa sus residuales, identifica observaciones influyentes con la distancia de Cook y examina la colinealidad entre las covariables.</p>
+<p>Archivo: <strong>Exam/Actividades_Supuestos/Actividad_2_Homogeneidad.Rmd</strong><br>
+Duración estimada: 1 hora y 30 minutos.<br>
+Entrega: el archivo .Rmd completado más el HTML compilado.</p>
+</div>
 <hr>
 </div>
 </div>
@@ -732,29 +1319,48 @@ colour = “red”, size = 1)</p>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#supuestos"><span class="header-section-number">10</span> Supuestos</a></li>
-<li><a class="nav-link" href="#qu%C3%A9-son-supuestos"><span class="header-section-number">10.1</span> ¿Qué son supuestos?</a></li>
-<li><a class="nav-link" href="#homogeneidad-de-varianza"><span class="header-section-number">10.2</span> Homogeneidad de varianza</a></li>
 <li>
-<a class="nav-link" href="#gr%C3%A1ficos-de-cajas-condicionales"><span class="header-section-number">10.3</span> Gráficos de cajas condicionales</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#selecci%C3%B3n-de-los-datos"><span class="header-section-number">10.3.1</span> Selección de los datos</a></li></ul>
-</li>
-<li><a class="nav-link" href="#homogeneidad-de-varianza-en-modelos-de-regresi%C3%B3n"><span class="header-section-number">10.4</span> Homogeneidad de varianza en modelos de regresión</a></li>
-<li><a class="nav-link" href="#los-residuales-de-student-para-detectar-valores-sesgados"><span class="header-section-number">10.5</span> Los residuales de Student para detectar valores sesgados</a></li>
-<li><a class="nav-link" href="#valores-sesgados-con-la-distancia-de-cook-di"><span class="header-section-number">10.6</span> Valores sesgados con la Distancia de Cook, Di</a></li>
-<li><a class="nav-link" href="#causas-principales-de-los-valores-sesgados"><span class="header-section-number">10.7</span> Causas principales de los valores sesgados</a></li>
-<li><a class="nav-link" href="#supuesto-de-normalidad"><span class="header-section-number">10.8</span> Supuesto de normalidad</a></li>
-<li><a class="nav-link" href="#qplot"><span class="header-section-number">10.9</span> qplot</a></li>
-<li><a class="nav-link" href="#geom_qq-y-geom_qq_line"><span class="header-section-number">10.10</span> geom_qq y geom_qq_line</a></li>
-<li><a class="nav-link" href="#la-distribuci%C3%B3n-normal"><span class="header-section-number">10.11</span> La distribución normal</a></li>
-<li><a class="nav-link" href="#stat_function"><span class="header-section-number">10.12</span> stat_function</a></li>
-<li><a class="nav-link" href="#visualizando-la-distribuciones-con-geom_density"><span class="header-section-number">10.13</span> Visualizando la distribuciones con geom_density</a></li>
-<li>
-<a class="nav-link" href="#colinealidad-entre-covariables-con-ggpairs"><span class="header-section-number">10.14</span> Colinealidad entre covariables con ggpairs</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#tabla-de-correlaci%C3%B3n-de-kendall"><span class="header-section-number">10.14.1</span> Tabla de correlación de Kendall</a></li>
-<li><a class="nav-link" href="#tabla-de-correlaci%C3%B3n-de-spearman"><span class="header-section-number">10.14.2</span> Tabla de correlación de Spearman</a></li>
+<a class="nav-link" href="#qu%C3%A9-son-supuestos"><span class="header-section-number">10.1</span> ¿Qué son supuestos?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#qu%C3%A9-supone-cada-prueba"><span class="header-section-number">10.1.1</span> ¿Qué supone cada prueba?</a></li>
+<li><a class="nav-link" href="#c%C3%B3mo-est%C3%A1-organizado-este-cap%C3%ADtulo"><span class="header-section-number">10.1.2</span> Cómo está organizado este capítulo</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#seleci%C3%B3n-de-par%C3%A1metros-para-correlaciones-cuando-hay-na"><span class="header-section-number">10.15</span> Seleción de parámetros para correlaciones cuando hay NA</a></li>
-<li><a class="nav-link" href="#uso-de-ggally-para-ver-correlaciones"><span class="header-section-number">10.16</span> Uso de GGally para ver correlaciones</a></li>
+<li>
+<a class="nav-link" href="#independencia-de-las-observaciones"><span class="header-section-number">10.2</span> Independencia de las observaciones</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#una-herramienta-visual-los-residuales-en-el-orden-de-recolecci%C3%B3n"><span class="header-section-number">10.2.1</span> Una herramienta visual: los residuales en el orden de recolección</a></li></ul>
+</li>
+<li><a class="nav-link" href="#homogeneidad-de-varianza"><span class="header-section-number">10.3</span> Homogeneidad de varianza</a></li>
+<li>
+<a class="nav-link" href="#gr%C3%A1ficos-de-cajas-condicionales"><span class="header-section-number">10.4</span> Gráficos de cajas condicionales</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#selecci%C3%B3n-de-los-datos"><span class="header-section-number">10.4.1</span> Selección de los datos</a></li>
+<li><a class="nav-link" href="#el-gr%C3%A1fico"><span class="header-section-number">10.4.2</span> El gráfico</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#pruebas-formales-de-homogeneidad-de-varianza"><span class="header-section-number">10.5</span> Pruebas formales de homogeneidad de varianza</a></li>
+<li>
+<a class="nav-link" href="#homogeneidad-de-varianza-en-modelos-de-regresi%C3%B3n"><span class="header-section-number">10.6</span> Homogeneidad de varianza en modelos de regresión</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#el-gr%C3%A1fico-de-residuales-en-orden-de-recolecci%C3%B3n"><span class="header-section-number">10.6.1</span> El gráfico de residuales en orden de recolección</a></li></ul>
+</li>
+<li><a class="nav-link" href="#los-residuales-de-student-para-detectar-valores-sesgados"><span class="header-section-number">10.7</span> Los residuales de Student para detectar valores sesgados</a></li>
+<li><a class="nav-link" href="#valores-sesgados-con-la-distancia-de-cook-di"><span class="header-section-number">10.8</span> Valores sesgados con la Distancia de Cook, Di</a></li>
+<li><a class="nav-link" href="#causas-principales-de-los-valores-sesgados"><span class="header-section-number">10.9</span> Causas principales de los valores sesgados</a></li>
+<li><a class="nav-link" href="#supuesto-de-normalidad"><span class="header-section-number">10.10</span> Supuesto de normalidad</a></li>
+<li><a class="nav-link" href="#el-gr%C3%A1fico-q-q"><span class="header-section-number">10.11</span> El gráfico Q-Q</a></li>
+<li><a class="nav-link" href="#geom_qq-y-geom_qq_line"><span class="header-section-number">10.12</span> geom_qq y geom_qq_line</a></li>
+<li><a class="nav-link" href="#la-distribuci%C3%B3n-normal"><span class="header-section-number">10.13</span> La distribución normal</a></li>
+<li><a class="nav-link" href="#stat_function"><span class="header-section-number">10.14</span> stat_function</a></li>
+<li><a class="nav-link" href="#visualizando-la-distribuciones-con-geom_density"><span class="header-section-number">10.15</span> Visualizando la distribuciones con geom_density</a></li>
+<li><a class="nav-link" href="#pruebas-formales-de-normalidad"><span class="header-section-number">10.16</span> Pruebas formales de normalidad</a></li>
+<li><a class="nav-link" href="#simetr%C3%ADa-de-las-distribuciones"><span class="header-section-number">10.17</span> Simetría de las distribuciones</a></li>
+<li><a class="nav-link" href="#qu%C3%A9-hacer-cuando-no-se-cumple-un-supuesto"><span class="header-section-number">10.18</span> ¿Qué hacer cuando no se cumple un supuesto?</a></li>
+<li>
+<a class="nav-link" href="#colinealidad-entre-covariables-con-ggpairs"><span class="header-section-number">10.19</span> Colinealidad entre covariables con ggpairs</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tabla-de-correlaci%C3%B3n-de-kendall"><span class="header-section-number">10.19.1</span> Tabla de correlación de Kendall</a></li>
+<li><a class="nav-link" href="#tabla-de-correlaci%C3%B3n-de-spearman"><span class="header-section-number">10.19.2</span> Tabla de correlación de Spearman</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#seleci%C3%B3n-de-par%C3%A1metros-para-correlaciones-cuando-hay-na"><span class="header-section-number">10.20</span> Seleción de parámetros para correlaciones cuando hay NA</a></li>
+<li><a class="nav-link" href="#uso-de-ggally-para-ver-correlaciones"><span class="header-section-number">10.21</span> Uso de GGally para ver correlaciones</a></li>
+<li><a class="nav-link" href="#resumen-del-cap%C3%ADtulo"><span class="header-section-number">10.22</span> Resumen del capítulo</a></li>
+<li><a class="nav-link" href="#actividades-de-pr%C3%A1ctica"><span class="header-section-number">10.23</span> Actividades de práctica</a></li>
 </ul>
 
       <div class="book-extra">
@@ -772,7 +1378,7 @@ colour = “red”, size = 1)</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-08-13.</p>
+    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-09-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

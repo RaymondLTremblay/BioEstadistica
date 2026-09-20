@@ -93,7 +93,7 @@ Para visualizar las primeras y ultimas 6 filas usar **head()** y **tail()** resp
 
 ```{r c09-6}
 head(Exam_Anxiety) # para las primeras 6 filas
-tail(Exam_Anxiety)
+tail(Exam_Anxiety) # ultima 6 filas
 ```
 
 Para ver el nombre de las variables en el archivo se usa la función **names**. Vemos que hay cinco columnas: **Code**, un código que identifica al estudiante; **Revise**, el tiempo que el estudiante estudió antes del examen; **Exam**, la nota del estudiante; **Anxiety**, un índice de ansiedad antes del examen; y **Gender**, el género del estudiante.
@@ -109,9 +109,9 @@ names(Exam_Anxiety)
 El primer gráfico es una regresión lineal. Para producirla se necesitan dos variables con datos continuos; seleccionamos el nivel de ansiedad y la nota del examen. Para hacer una regresión lineal que sigue el patrón $y = mx + b$, se usa la función `geom_smooth(method = lm)`, donde **lm** se refiere a modelo lineal (en inglés *linear model*). Nota que con ggplot2 hay que primero identificar de dónde provienen los datos (**Exam_Anxiety**), después cuáles son las variables que se van a utilizar (en este caso **y = Exam, x = Anxiety**), y por último qué tipo de gráfico se quiere, que en este caso es una regresión lineal.
 
 ```{r c09-8}
-
-ggplot(Exam_Anxiety, aes(Anxiety, Exam))+ 
-  geom_smooth(method=lm, colour="red")+
+library(tidyverse)
+ggplot(Exam_Anxiety, aes(Anxiety, Exam,group=Gender))+ 
+  geom_smooth(method=lm)+
   geom_point()# linear model
 
 ```

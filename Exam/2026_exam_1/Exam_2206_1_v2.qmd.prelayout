@@ -1,0 +1,891 @@
+---
+title: "Biometría I - Examen Parcial I"
+author: ""
+format:
+  html:
+    embed-resources: true
+  pdf:
+    documentclass: article
+    papersize: legal
+    geometry:
+      - legalpaper
+      - margin=1in
+toc: false
+number-sections: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{=html}
+<style>
+@page { size: 8.5in 14in; margin: 1in; }
+@media print { body { max-width: 6.5in; } }
+</style>
+```
+
+```{r setup}
+library(ggplot2)
+library(grid)
+
+# Barras de frecuencia
+fig_barras <- function(x, y, titulo, ymax, xlab = "Valor") {
+  d <- data.frame(x = factor(x, levels = x), y = y)
+  ggplot(d, aes(x = x, y = y)) +
+    geom_col(fill = "grey40", width = 0.75) +
+    scale_y_continuous(limits = c(0, ymax), expand = c(0, 0)) +
+    labs(title = titulo, x = xlab, y = "Frecuencia") +
+    theme_classic(base_size = 11)
+}
+
+# Apila los valores repetidos para el diagrama de puntos
+apilar <- function(v) {
+  d <- data.frame(v = v)
+  d$y <- ave(d$v, d$v, FUN = seq_along)
+  d
+}
+
+tema_puntos <- function() {
+  theme_classic(base_size = 11) +
+    theme(axis.line.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          axis.text.y = element_blank(),
+          strip.background = element_blank())
+}
+
+# Diagrama de puntos de un conjunto
+fig_puntos <- function(v, titulo, xlab = "Valor", linea = NULL,
+                       etiqueta_linea = NULL, xlim = NULL) {
+  d <- apilar(v)
+  ymax <- max(2, max(d$y) + 0.8)
+  p <- ggplot(d, aes(x = v, y = y)) +
+    geom_point(size = 3, colour = "grey25") +
+    scale_y_continuous(limits = c(0.3, ymax)) +
+    labs(title = titulo, x = xlab, y = NULL) +
+    tema_puntos()
+  if (!is.null(linea)) {
+    p <- p + geom_vline(xintercept = linea, linetype = "dashed", colour = "grey20")
+    if (!is.null(etiqueta_linea)) {
+      p <- p + annotate("text", x = linea, y = ymax, label = etiqueta_linea,
+                        size = 3, vjust = 1, hjust = 1.05)
+    }
+  }
+  if (!is.null(xlim)) p <- p + coord_cartesian(xlim = xlim)
+  p
+}
+
+# Diagrama de puntos de dos conjuntos
+fig_puntos2 <- function(a, b, titulo, xlab = "Valor",
+                        etiquetas = c("Conjunto A", "Conjunto B")) {
+  da <- apilar(a); da$g <- etiquetas[1]
+  db <- apilar(b); db$g <- etiquetas[2]
+  d <- rbind(da, db)
+  d$g <- factor(d$g, levels = etiquetas)
+  ggplot(d, aes(x = v, y = y)) +
+    geom_point(size = 3, colour = "grey25") +
+    facet_wrap(~ g, ncol = 1) +
+    scale_x_continuous(breaks = sort(unique(d$v))) +
+    scale_y_continuous(limits = c(0.3, max(3, max(d$y) + 0.6))) +
+    labs(title = titulo, x = xlab, y = NULL) +
+    tema_puntos() +
+    theme(panel.border = element_rect(fill = NA, colour = "grey70"),
+          panel.spacing = unit(0.6, "lines"),
+          axis.line.x = element_blank())
+}
+
+# Diagrama de caja con las observaciones
+fig_caja <- function(v, titulo, xlab = "Valor") {
+  d <- data.frame(v = v)
+  ggplot(d, aes(x = 1, y = v)) +
+    geom_boxplot(width = 0.45, fill = "grey90", colour = "grey25",
+                 outlier.shape = NA) +
+    geom_point(aes(x = 1.5), size = 2.5, colour = "grey25") +
+    scale_x_continuous(limits = c(0.6, 1.75)) +
+    scale_y_continuous(breaks = seq(min(v), max(v), by = 1)) +
+    coord_flip() +
+    labs(title = titulo, x = NULL, y = xlab) +
+    theme_classic(base_size = 11) +
+    theme(axis.line.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          axis.text.y = element_blank())
+}
+
+# Observaciones de una muestra con el intervalo de confianza del promedio
+fig_ic <- function(titulo, xlab = "Largo de la hoja (cm)") {
+  v <- c(2.0, 2.5, 2.5, 3.0, 3.0, 3.5, 3.5, 3.5, 4.0, 4.0,
+         4.0, 4.0, 4.5, 4.5, 4.5, 4.5, 5.0, 5.0, 5.0, 5.0,
+         5.0, 5.5, 5.5, 5.5, 5.5, 6.0, 6.0, 6.0, 6.0, 6.5,
+         6.5, 6.5, 7.0, 7.0, 7.5, 7.5, 8.0, 8.0, 8.5, 9.0)
+  d <- apilar(v)
+  ggplot(d, aes(x = v, y = y)) +
+    geom_point(size = 2.4, colour = "grey45") +
+    annotate("segment", x = 4.2, xend = 5.8, y = -0.9, yend = -0.9,
+             colour = "black") +
+    annotate("point", x = c(4.2, 5.0, 5.8), y = -0.9, size = 2.2) +
+    annotate("text", x = 5.0, y = -2.1, size = 3,
+             label = "intervalo de confianza de 95% del promedio") +
+    scale_y_continuous(limits = c(-2.6, max(d$y) + 0.6)) +
+    labs(title = titulo, x = xlab, y = NULL) +
+    tema_puntos()
+}
+```
+
+# BIOMETRÍA I
+
+## Examen Parcial I
+
+**Nombre:** ____________________________________
+
+**Fecha:** ______________________________________
+
+**Sección:** _____________________________________
+
+**Valor Total: 80 puntos**
+
+### Instrucciones
+
+- Seleccione la mejor contestación.
+- Cada pregunta vale 2 puntos.
+- No se permite calculadora.
+- Marque una sola respuesta por pregunta.
+- En los diagramas de puntos, cada punto es una observación, y los puntos se
+  apilan verticalmente cuando un mismo valor se repite.
+- Las últimas dos preguntas son de respuesta corta.
+
+---
+
+# I. Conceptos Fundamentales
+
+### 1.
+
+¿Cuál es el propósito principal de la estadística?
+
+A. Organizar, resumir e interpretar datos
+
+B. Demostrar que la hipótesis del investigador es correcta
+
+C. Eliminar la variación presente en los datos
+
+D. Aumentar el tamaño de la muestra
+
+---
+
+### 2.
+
+Una población es:
+
+A. El grupo de individuos que el investigador logró medir
+
+B. Cualquier grupo grande de organismos
+
+C. El conjunto de datos disponibles en el laboratorio
+
+D. Todos los individuos u observaciones de interés
+
+---
+
+### 3.
+
+Una muestra es:
+
+A. Cualquier grupo de individuos de la misma especie
+
+B. Un subconjunto de la población seleccionado para estudio
+
+C. El valor promedio de las observaciones
+
+D. Un conjunto de datos sin errores de medición
+
+---
+
+### 4.
+
+En un experimento se compara el número de frutos producidos por plantas de *Lepanthes rupestris* creciendo bajo tres niveles de luz. La variable dependiente es:
+
+A. El nivel de luz
+
+B. La especie estudiada
+
+C. El número de frutos
+
+D. El número de plantas medidas
+
+---
+
+# II. Variables y Niveles de Medición
+
+### 5.
+
+¿Cuál de las siguientes es una variable cuantitativa continua?
+
+A. Número de flores por planta
+
+B. Color de los pétalos
+
+C. Presencia o ausencia de frutos
+
+D. Altura de la planta
+
+---
+
+### 6.
+
+¿Cuál de las siguientes es una variable cuantitativa discreta?
+
+A. Largo de la hoja
+
+B. Número de semillas producidas
+
+C. Peso seco de la raíz
+
+D. Temperatura del sustrato
+
+---
+
+### 7.
+
+¿Cuál de las siguientes es una variable nominal?
+
+A. Nivel de daño foliar: bajo, mediano, alto
+
+B. Color de la flor
+
+C. Número de hojas
+
+D. Diámetro del tallo
+
+---
+
+### 8.
+
+¿Cuál de las siguientes es una variable ordinal?
+
+A. Especie observada
+
+B. Número de frutos
+
+C. Masa del fruto
+
+D. Nivel de daño foliar: bajo, mediano, alto
+
+---
+
+# III. Muestreo
+
+### 9.
+
+¿Cuál es la principal ventaja del muestreo aleatorio?
+
+A. Garantiza que la media de la muestra sea igual a la de la población
+
+B. Elimina la variación natural entre los individuos
+
+C. Permite medir todos los individuos de la población
+
+D. Reduce la posibilidad de sesgo de selección
+
+---
+
+### 10.
+
+Un censo consiste en estudiar:
+
+A. Todos los individuos de la población
+
+B. Una muestra aleatoria de la población
+
+C. Los individuos más accesibles al investigador
+
+D. Una fracción representativa de la población
+
+---
+
+# IV. Tablas de Frecuencia
+
+### 11.
+
+La frecuencia absoluta de una categoría es:
+
+A. La proporción de observaciones en esa categoría
+
+B. El número de observaciones en esa categoría
+
+C. El porcentaje acumulado hasta esa categoría
+
+D. El número de categorías de la variable
+
+---
+
+### 12.
+
+La frecuencia relativa de una categoría es:
+
+A. La proporción de observaciones en esa categoría
+
+B. La diferencia entre su frecuencia y la de las demás categorías
+
+C. El número de observaciones en esa categoría
+
+D. El número total de observaciones de la muestra
+
+---
+
+# V. Tendencia Central
+
+### 13.
+
+La media aritmética es:
+
+A. El valor que ocurre con mayor frecuencia
+
+B. El valor central de las observaciones ordenadas
+
+C. La diferencia entre el valor máximo y el mínimo
+
+D. La suma de las observaciones dividida entre n
+
+---
+
+### 14.
+
+En un conjunto de datos, la mediana corresponde a:
+
+A. Q25
+
+B. Q50
+
+C. Q75
+
+D. El promedio entre Q25 y Q75
+
+---
+
+### 15.
+
+La moda es:
+
+A. El valor central de las observaciones ordenadas
+
+B. El promedio aritmético de las observaciones
+
+C. El valor que ocurre con mayor frecuencia
+
+D. La observación de mayor magnitud
+
+---
+
+### 16.
+
+¿Cuál es la media de 2, 4 y 6?
+
+A. 2
+
+B. 3
+
+C. 4
+
+D. 6
+
+---
+
+### 17.
+
+¿Cuál es la mediana de 1, 3, 5, 7 y 9?
+
+A. 3
+
+B. 4
+
+C. 5
+
+D. 9
+
+---
+
+# VI. Medidas de Dispersión
+
+### 18.
+
+El rango se calcula como:
+
+A. La media menos la mediana
+
+B. La suma de las desviaciones respecto a la media
+
+C. La varianza dividida entre n
+
+D. El valor máximo menos el valor mínimo
+
+---
+
+### 19.
+
+La desviación estándar mide:
+
+A. El valor central de la distribución
+
+B. Cuánto se alejan las observaciones de la media
+
+C. Cuántas observaciones hay en cada categoría
+
+D. La diferencia entre la media y la mediana
+
+---
+
+# VII. Inferencia e Hipótesis
+
+### 20.
+
+La hipótesis nula generalmente plantea que:
+
+A. No existe diferencia o efecto
+
+B. El investigador tiene razón
+
+C. Existe una diferencia importante entre los grupos
+
+D. La muestra es representativa de la población
+
+---
+
+# VIII. Aplicación e Interpretación
+
+### 21.
+
+Se midió la altura, en cm, de siete plántulas de *Lepanthes rupestris*. La Figura 1 presenta las siete observaciones.
+
+$$2,\ 3,\ 3,\ 4,\ 4,\ 5,\ 100$$
+
+```{r fig-1, fig.width=5, fig.height=1.8, fig.align="center"}
+fig_puntos(c(2, 3, 3, 4, 4, 5, 100),
+           titulo = "Figura 1",
+           xlab = "Altura (cm)")
+```
+
+¿Cuál afirmación es correcta?
+
+A. La media y la mediana son iguales
+
+B. La mediana es mayor que la media
+
+C. La media es mayor que la mediana
+
+D. La moda es mayor que la media
+
+---
+
+### 22.
+
+En una parcela se contó el número de frutos de cinco plantas. La Figura 2 presenta el resultado.
+
+```{r fig-2, fig.width=5, fig.height=1.8, fig.align="center"}
+fig_puntos(c(8, 8, 8, 8, 8),
+           titulo = "Figura 2",
+           xlab = "Número de frutos",
+           xlim = c(0, 16))
+```
+
+Para estos datos:
+
+A. El rango es 8 y la varianza es 8
+
+B. El rango es 1 y la varianza es 0
+
+C. El rango es 0 y la varianza no puede calcularse
+
+D. El rango es 0 y la varianza es 0
+
+---
+
+### 23.
+
+La altura de varias plantas se midió en centímetros. Las unidades de la varianza y de la desviación estándar son, respectivamente:
+
+A. cm y cm
+
+B. cm y cm al cuadrado
+
+C. cm al cuadrado y cm
+
+D. Ninguna de las dos tiene unidades
+
+---
+
+### 24.
+
+La Figura 3 presenta nueve observaciones y su diagrama de caja.
+
+```{r fig-3, fig.width=5, fig.height=1.9, fig.align="center"}
+fig_caja(1:9, titulo = "Figura 3")
+```
+
+En esta figura, los valores de Q25, Q50 y Q75 son, respectivamente:
+
+A. 1, 5 y 9
+
+B. 3, 5 y 7
+
+C. 3, 4 y 7
+
+D. 2, 5 y 8
+
+---
+
+### 25.
+
+Observe la Figura 4.
+
+```{r fig-4, fig.width=4.5, fig.height=2.6, fig.align="center"}
+fig_barras(x = c(1, 2, 3, 4, 5, 6, 7),
+           y = c(2, 5, 9, 11, 9, 5, 2),
+           titulo = "Figura 4",
+           ymax = 12)
+```
+
+La distribución es:
+
+A. Aproximadamente simétrica
+
+B. Sesgada a la derecha
+
+C. Sesgada a la izquierda
+
+D. Uniforme
+
+---
+
+### 26.
+
+Observe la Figura 5.
+
+```{r fig-5, fig.width=4.5, fig.height=2.6, fig.align="center"}
+fig_barras(x = c(1, 2, 3, 4, 5, 6, 7),
+           y = c(11, 9, 7, 5, 3, 2, 1),
+           titulo = "Figura 5",
+           ymax = 12)
+```
+
+La distribución es:
+
+A. Simétrica
+
+B. Bimodal
+
+C. Sesgada a la izquierda
+
+D. Sesgada a la derecha
+
+---
+
+### 27.
+
+Observe la Figura 6.
+
+```{r fig-6, fig.width=4.5, fig.height=2.6, fig.align="center"}
+fig_barras(x = c(1, 2, 3, 4, 5, 6, 7),
+           y = c(8, 7, 8, 8, 7, 8, 7),
+           titulo = "Figura 6",
+           ymax = 12)
+```
+
+La distribución es:
+
+A. Aproximadamente uniforme
+
+B. Bimodal
+
+C. Sesgada a la derecha
+
+D. Sesgada a la izquierda
+
+---
+
+### 28.
+
+Observe la Figura 7.
+
+```{r fig-7, fig.width=4.5, fig.height=2.6, fig.align="center"}
+fig_barras(x = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+           y = c(3, 11, 14, 9, 6, 4, 3, 2, 1, 1),
+           titulo = "Figura 7",
+           ymax = 16)
+```
+
+En una distribución como esta se espera que:
+
+A. La media sea mayor que la mediana y la oblicuidad sea positiva
+
+B. La media sea menor que la mediana y la oblicuidad sea negativa
+
+C. La media y la mediana sean iguales y la oblicuidad sea cero
+
+D. La moda sea mayor que la media
+
+---
+
+### 29.
+
+Se midió el largo de la hoja en 40 individuos de una población de *Lepanthes eltoroensis* que contiene miles de individuos. El promedio de esos 40 individuos es:
+
+A. Un parámetro, simbolizado con la letra griega $\mu$
+
+B. Un parámetro, simbolizado con $\bar{x}$
+
+C. Un estadístico, simbolizado con la letra griega $\sigma$
+
+D. Un estadístico, simbolizado con $\bar{x}$
+
+---
+
+### 30.
+
+Una balanza pesó cinco veces la misma muestra. La Figura 8 presenta las cinco lecturas y el peso verdadero de la muestra.
+
+```{r fig-8, fig.width=5, fig.height=1.9, fig.align="center"}
+fig_puntos(c(10.11, 10.23, 10.31, 10.40, 10.49),
+           titulo = "Figura 8",
+           xlab = "Peso (g)",
+           linea = 12.0,
+           etiqueta_linea = "peso verdadero",
+           xlim = c(9.9, 12.3))
+```
+
+La balanza es:
+
+A. Exacta y precisa
+
+B. Exacta pero no precisa
+
+C. Precisa pero no exacta
+
+D. Ni exacta ni precisa
+
+---
+
+### 31.
+
+La siguiente tabla resume el número de frutos producidos por planta.
+
+| Clase | Frecuencia |
+|:---------|---------:|
+| 0 a 9 | 5 |
+| 10 a 19 | 15 |
+| 20 a 29 | 20 |
+| 30 a 39 | 10 |
+
+¿Qué porcentaje de las plantas produjo menos de 20 frutos?
+
+A. 20%
+
+B. 30%
+
+C. 40%
+
+D. 60%
+
+---
+
+### 32.
+
+Un investigador quiere saber si dos poblaciones de orquídeas difieren en el largo promedio de la hoja. La hipótesis nula apropiada es:
+
+A. El largo promedio de la hoja es igual en las dos poblaciones
+
+B. Las dos poblaciones difieren en el largo promedio de la hoja
+
+C. La población con la muestra más grande tiene hojas más largas
+
+D. El largo de la hoja depende de la elevación
+
+---
+
+### 33.
+
+Un investigador concluye que existe una diferencia entre dos poblaciones, pero en realidad las dos poblaciones no difieren. Este investigador cometió:
+
+A. Un error de muestreo
+
+B. Un error de tipo I
+
+C. Un error de tipo II
+
+D. Un error de medición
+
+---
+
+### 34.
+
+En una prueba estadística se obtuvo un valor de p de 0.03, con un alfa de 0.05. La interpretación correcta es:
+
+A. La probabilidad de que la hipótesis nula sea cierta es 0.03
+
+B. La hipótesis alterna tiene 97% de probabilidad de ser cierta
+
+C. El 3% de las observaciones son diferentes del resto
+
+D. El resultado observado, o uno más extremo, tiene probabilidad 0.03 si la hipótesis nula es cierta
+
+---
+
+# IX. Análisis de Conceptos
+
+### 35.
+
+La Figura 9 presenta la distribución de 30 observaciones.
+
+```{r fig-9, fig.width=4.5, fig.height=2.6, fig.align="center"}
+fig_barras(x = c(10, 11, 12, 13, 14, 15, 16),
+           y = c(1, 3, 7, 8, 7, 3, 1),
+           titulo = "Figura 9",
+           ymax = 10)
+```
+
+A cada una de esas 30 observaciones se le suma 5. Comparado con los datos originales:
+
+A. La media aumenta en 5 y la desviación estándar no cambia
+
+B. La media aumenta en 5 y la desviación estándar aumenta en 5
+
+C. La media no cambia y la desviación estándar aumenta en 5
+
+D. Ni la media ni la desviación estándar cambian
+
+---
+
+### 36.
+
+Se estudia la misma población con dos muestras, una de 25 individuos y otra de 100 individuos. Comparada con la muestra de 25, en la muestra de 100 se espera que:
+
+A. La desviación estándar sea aproximadamente la mitad y el error estándar no cambie
+
+B. La desviación estándar y el error estándar se reduzcan ambos a la mitad
+
+C. La desviación estándar sea aproximadamente la misma y el error estándar sea aproximadamente la mitad
+
+D. Ambos aumenten, porque hay más observaciones
+
+---
+
+### 37.
+
+La Figura 10 presenta el largo de la hoja de las 40 plantas de una muestra, junto al intervalo de confianza de 95% del promedio, que va de 4.2 a 5.8 cm.
+
+```{r fig-10, fig.width=5, fig.height=2.6, fig.align="center"}
+fig_ic(titulo = "Figura 10")
+```
+
+La interpretación correcta del intervalo es:
+
+A. El 95% de las hojas de la muestra miden entre 4.2 y 5.8 cm
+
+B. El 95% de las hojas de la población miden entre 4.2 y 5.8 cm
+
+C. La probabilidad de que una hoja escogida al azar mida entre 4.2 y 5.8 cm es 0.95
+
+D. Si el muestreo se repitiera muchas veces, cerca del 95% de los intervalos construidos de esa manera contendrían el promedio verdadero de la población
+
+---
+
+### 38.
+
+Los dos conjuntos de datos de la Figura 11 tienen la misma media, 5, y el mismo rango, 8.
+
+Conjunto A: $1,\ 5,\ 5,\ 5,\ 9$
+
+Conjunto B: $1,\ 1,\ 5,\ 9,\ 9$
+
+```{r fig-11, fig.width=5, fig.height=2.6, fig.align="center"}
+fig_puntos2(a = c(1, 5, 5, 5, 9),
+            b = c(1, 1, 5, 9, 9),
+            titulo = "Figura 11")
+```
+
+¿Cuál afirmación es correcta?
+
+A. Tienen la misma varianza, porque la media y el rango son iguales
+
+B. El Conjunto A tiene mayor varianza
+
+C. El Conjunto B tiene mayor varianza
+
+D. No se puede comparar la varianza sin calcularla
+
+---
+
+# X. Respuesta Corta
+
+### 39. (2 puntos)
+
+Un compañero le dice: "calculé la media de mis datos y salió 45 cm, así que la mayoría de mis plantas mide cerca de 45 cm". Explique en dos o tres oraciones por qué esa conclusión puede ser incorrecta, y mencione qué índice adicional pediría Ud. para evaluarla.
+
+```{=latex}
+\vspace{0.4cm}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{1.1cm}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{1.1cm}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{1.1cm}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.2cm}
+```
+
+```{=html}
+<div style="margin-top:0.6em;">
+  <div style="border-bottom:1px solid #555; height:2.4em;"></div>
+  <div style="border-bottom:1px solid #555; height:2.4em;"></div>
+  <div style="border-bottom:1px solid #555; height:2.4em;"></div>
+  <div style="border-bottom:1px solid #555; height:2.4em;"></div>
+</div>
+```
+
+---
+
+### 40. (2 puntos)
+
+Los dos conjuntos de datos de la Figura 12 tienen media igual a 10.
+
+Conjunto A: $9,\ 10,\ 10,\ 10,\ 11$
+
+Conjunto B: $2,\ 5,\ 10,\ 15,\ 18$
+
+```{r fig-12, fig.width=5, fig.height=2.6, fig.align="center"}
+fig_puntos2(a = c(9, 10, 10, 10, 11),
+            b = c(2, 5, 10, 15, 18),
+            titulo = "Figura 12")
+```
+
+¿Cuál conjunto tiene mayor desviación estándar? Justifique su respuesta sin calcularla.
+
+```{=latex}
+\vspace{0.4cm}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{1.1cm}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{1.1cm}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.2cm}
+```
+
+```{=html}
+<div style="margin-top:0.6em;">
+  <div style="border-bottom:1px solid #555; height:2.4em;"></div>
+  <div style="border-bottom:1px solid #555; height:2.4em;"></div>
+  <div style="border-bottom:1px solid #555; height:2.4em;"></div>
+</div>
+```

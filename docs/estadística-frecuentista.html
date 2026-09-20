@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 11 Estadística Frecuentista | BioEstadística</title>
 <meta name="author" content="">
-<meta name="description" content='Fecha de la última revisión ## [1] "2026-08-13"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
-<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta name="description" content='Fecha de la última revisión ## [1] "2026-09-20"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
 <meta property="og:title" content="Capítulo 11 Estadística Frecuentista | BioEstadística">
 <meta property="og:type" content="book">
-<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-08-13"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
+<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-09-20"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 11 Estadística Frecuentista | BioEstadística">
-<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-08-13"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
+<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-09-20"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_3-0.4.10/font.css" rel="stylesheet">
@@ -99,7 +99,7 @@
 <span class="header-section-number">Capítulo 11</span> Estadística Frecuentista<a class="anchor" aria-label="anchor" href="#estad%C3%ADstica-frecuentista"><i class="fas fa-link"></i></a>
 </h1>
 <p>Fecha de la última revisión</p>
-<pre><code>## [1] "2026-08-13"</code></pre>
+<pre><code>## [1] "2026-09-20"</code></pre>
 <hr>
 <div id="bondad-de-ajuste-y-tabla-de-contingencia" class="section level2" number="11.1">
 <h2>
@@ -147,7 +147,7 @@
 <h2>
 <span class="header-section-number">11.4</span> Instalar y activar los siguientes packages<a class="anchor" aria-label="anchor" href="#instalar-y-activar-los-siguientes-packages"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#----Instalar los paquetes si es necesario-----</span></span>
 <span><span class="co">#install.packages("gmodels")</span></span>
 <span><span class="co">#install.packages("MASS")</span></span>
@@ -252,13 +252,13 @@
 <p>La prueba de bondad de ajuste y de tabla de contingencia son pruebas que evalúa la cantidad/frecuencia en las categorías y lo compara con un modelo nulo. En este caso lo que se compará es la cantidad de la frecuencia observada <span class="math inline">\(o\)</span>, con la frecuencia esperada <span class="math inline">\(e\)</span>. La formula es la siguiente</p>
 <p><span class="math display">\[\chi^2=\sum_{i=1}^{k}\frac{(o_i-e_i)^2}{e_i}\]</span></p>
 <p>Usamos un ejemplo sencillo de los datos de Mendel haciendo los cálculos a mano de una proporción 3:1 de herencia de los fenotipos redonda:arrugada. Los datos son de la primer linea de uno de los experimentos que hizo Mendel.</p>
-<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">57</span><span class="op">*</span><span class="fl">.75</span></span></code></pre></div>
 <pre><code>## [1] 42.75</code></pre>
-<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">57</span><span class="op">*</span><span class="fl">.25</span></span></code></pre></div>
 <pre><code>## [1] 14.25</code></pre>
-<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Calculos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Observado"</span>,<span class="st">"Esperado"</span>, <span class="st">"(o-e)"</span>, <span class="st">"(o-e)^2"</span>, <span class="st">"$$\\frac{(o-e)^2}{e}$$"</span>, <span class="st">"$$\\chi_{total}^2$$"</span><span class="op">)</span>,</span>
@@ -327,7 +327,7 @@
 </ul>
 </blockquote>
 <p>Para determinar si es significado el valor de Chi Square observado se compara con el valor critico (de la tabla). Aquí usamos R para conseguir este valor. Note aquí se usa (1-0.05= 0.95) y el grado de libertad que es 1. Ahora se compara ese valor con 0.4737, Si el valor observado es menor que 3.841459, no se rechaza la hipótesis nula. En este caso no hay evidencia que los fenotipos se hereden diferente a 3:1.</p>
-<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.95</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 3.841459</code></pre>
 <p>No hay ninguna razón de hacer los cálculos a mano si tenemos a R para hacerlo. Nota aquí se hace la misma prueba con los mismos datos y tenemos el mismo resultado.</p>
@@ -349,7 +349,7 @@
 <strong>Cómo leer:</strong> el valor-p indica si las frecuencias observadas se apartan de las esperadas; p &lt; 0.05 → sí difieren.</li>
 </ul>
 </div>
-<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obs</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">45</span>,<span class="fl">12</span><span class="op">)</span> <span class="co"># los valores observado</span></span>
 <span><span class="va">esp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.75</span>,<span class="fl">0.25</span><span class="op">)</span> <span class="co"># este el modelo nulo</span></span>
 <span></span>
@@ -359,7 +359,7 @@
 ## 
 ## data:  obs
 ## X-squared = 0.47368, df = 1, p-value = 0.4913</code></pre>
-<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cuando el valor de p es mayor a 0.05 no se rechaza la hipótesis nula</span></span>
 <span><span class="co"># Es el caso presente que la la herencia es de 3:1</span></span></code></pre></div>
 <hr>
@@ -370,7 +370,7 @@
 </h2>
 <p>Ahora evaluamos si la frecuencia de semillas redondas:arrugadas de todo el experimento sigue un patrón de 3:1. Se observa un Chi cuadrado de 0.83 y un valor de p=0.36; otra vez el valor está por encima de 0.05, y se concluye que la frecuencia de semillas redondas:arrugadas no es distinta de 3:1. No se rechaza la hipótesis nula.</p>
 <p>Vemos que, al reevaluar los experimentos de G. Mendel, obtenemos un resultado que apoya sus predicciones. Nota que G. Mendel <strong>NO</strong> tenía pruebas estadísticas para determinar si las frecuencias eran diferentes o no de 3:1; él hizo observaciones y llegó a sus conclusiones. ¿Recuerdas cuándo y por quién fue desarrollado este método?</p>
-<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obs</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">336</span>,<span class="fl">101</span><span class="op">)</span></span>
 <span><span class="va">esp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.75</span>,<span class="fl">0.25</span><span class="op">)</span></span>
 <span></span>
@@ -380,7 +380,7 @@
 ## 
 ## data:  obs
 ## X-squared = 0.83066, df = 1, p-value = 0.3621</code></pre>
-<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obs</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">16</span><span class="op">)</span></span>
 <span><span class="va">esp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.50</span>,<span class="fl">0.50</span><span class="op">)</span></span>
 <span></span>
@@ -421,7 +421,7 @@
 <h2>
 <span class="header-section-number">11.9</span> Prueba de Bondad de Ajuste, Tabla de contingencia RxC<a class="anchor" aria-label="anchor" href="#prueba-de-bondad-de-ajuste-tabla-de-contingencia-rxc"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("MASS", dependencies = TRUE)</span></span></code></pre></div>
 <p>Esta prueba se usa para</p>
 <p>Los siguientes datos son de Field, Miles and Field 2012.</p>
@@ -431,7 +431,7 @@
 <p>Los datos son los siguientes:</p>
 <p>A 38 gatos se les dio una recompensa, y de estos 28 bailaron y 10 no bailaron. A 162 no se les dio recompensa, y de estos 48 bailaron y 114 no bailaron.</p>
 <p>Se crean dos listas con los resultados, se unen con <strong>cbind()</strong> y después se les añade un nombre a las filas con <strong>rownames()</strong>. Vemos ahora la tabla de frecuencias de cuantos gatos bailaron o no y si fueron entrenado por comido o cariño. Nota que no se puede añadir la tilde <strong>~</strong> a la <strong>n</strong> de cariño.</p>
-<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb460"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Crear la tabla de contingencia</span></span>
 <span></span>
 <span><span class="va">comida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">28</span><span class="op">)</span></span>
@@ -464,7 +464,7 @@
 <span class="header-section-number">11.12</span> Gráfico de Mosaico<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-mosaico"><i class="fas fa-link"></i></a>
 </h2>
 <p>Podemos visualizar la frecuencia de los datos con un gráfico de mosaico. Si la hipótesis nula fuera cierta, la organización de las cajas debería ser más o menos de la misma proporción (relativa a su frecuencia). En este caso, la caja de los que reciben comida y no bailan es mucho más pequeña que la de los que bailan y reciben comida. Nota que esto no es una prueba es una visualización de los datos y puede ayudar a entender el patrón.</p>
-<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb462"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot</a></span><span class="op">(</span><span class="va">catsTable</span>, color <span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="co"># El packete MASS</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c11-13-1.png" alt="" width="672"></div>
 <hr>
@@ -477,12 +477,12 @@
 </h2>
 <p>En ingles se le conoce como “Contingency Tables”</p>
 <p>Los valores esperados en esta caso son calculados directamente de la tabla. Para cada celda <span class="math inline">\(E_{ij}\)</span> donde la {i} representa la fila y la {j} las columnas. El valor esperado se calcula multiplicando la suma de la fila por la suma <span class="math inline">\({R_i}\)</span> de la suma de la columna <span class="math inline">\({C_j}\)</span>. La formula de los valores esperados es la siguiente, donde la N es la suma total de datos. El primer paso es sumar la filas y la columnas de la tabla.</p>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">catsTable</span></span></code></pre></div>
 <pre><code>##           comida carino
 ## No_bailan     10    114
 ## bailan        28     48</code></pre>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="va">ct</span><span class="op">=</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">fila</span>, <span class="op">~</span><span class="va">comida</span>, <span class="op">~</span><span class="va">carino</span>, <span class="op">~</span><span class="va">suma</span>,</span>
 <span>           <span class="st">"No_bailan"</span>, <span class="fl">10</span>, <span class="fl">114</span>, <span class="fl">124</span>,</span>
@@ -536,13 +536,13 @@
 <h5>
 <span class="header-section-number">11.14.0.0.2</span> N filas = 2<a class="anchor" aria-label="anchor" href="#n-filas-2"><i class="fas fa-link"></i></a>
 </h5>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb467"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span><span class="op">=</span><span class="op">(</span><span class="fl">4</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">df</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Cual es valor de Chi Cuadrado critico</p>
 <p>1-.95 = 0.05</p>
-<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb469"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">.95</span>,<span class="fl">1</span> <span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 3.841459</code></pre>
 </div>
@@ -571,7 +571,7 @@
 <p>Instalar el paquete <strong>gmodels</strong> para la función CrossTable</p>
 <p>p &lt;0.05 se rechaza la hipótesis nula</p>
 <p>p &gt;0.05 no se rechaza la hipótesis nula</p>
-<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb471"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-gregmisc/gmodels">gmodels</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">catsTable</span>, fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>           expected <span class="op">=</span> <span class="cn">TRUE</span>, sresid <span class="op">=</span> <span class="cn">TRUE</span>, format <span class="op">=</span> <span class="st">"SAS"</span><span class="op">)</span></span></code></pre></div>
@@ -686,7 +686,7 @@
 <span class="header-section-number">11.16</span> Análisis con datos en formato de tabla<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-con-datos-en-formato-de-tabla"><i class="fas fa-link"></i></a>
 </h2>
 <p>Estos son los mismos datos pero no sumado, en otra palabra es información específica sobre cada gato y su tratamiento y si bailo o no. La ventaja de este método es que uno no tiene que hacer el calculo y sumar la frecuancias, se deja la función <strong>CrossTable</strong> hacer la suma. Miran bien la tabla.</p>
-<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## La data sin sumar</span></span>
 <span></span>
 <span><span class="va">Training</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">38</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">162</span><span class="op">)</span><span class="op">)</span></span>
@@ -700,23 +700,23 @@
 <span><span class="va">catsData</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">Training</span>, <span class="va">Dance</span><span class="op">)</span></span>
 <span><span class="co">## catsData Los datos completos</span></span>
 <span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">catsData</span>, n<span class="op">=</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="jtlwczacrr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jtlwczacrr table {
+<div id="sbritgogca" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sbritgogca table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jtlwczacrr thead, #jtlwczacrr tbody, #jtlwczacrr tfoot, #jtlwczacrr tr, #jtlwczacrr td, #jtlwczacrr th {
+#sbritgogca thead, #sbritgogca tbody, #sbritgogca tfoot, #sbritgogca tr, #sbritgogca td, #sbritgogca th {
   border-style: none;
 }
 
-#jtlwczacrr p {
+#sbritgogca p {
   margin: 0;
   padding: 0;
 }
 
-#jtlwczacrr .gt_table {
+#sbritgogca .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -742,12 +742,12 @@
   border-left-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_caption {
+#sbritgogca .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jtlwczacrr .gt_title {
+#sbritgogca .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -759,7 +759,7 @@
   border-bottom-width: 0;
 }
 
-#jtlwczacrr .gt_subtitle {
+#sbritgogca .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -771,7 +771,7 @@
   border-top-width: 0;
 }
 
-#jtlwczacrr .gt_heading {
+#sbritgogca .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -783,13 +783,13 @@
   border-right-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_bottom_border {
+#sbritgogca .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_col_headings {
+#sbritgogca .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -804,7 +804,7 @@
   border-right-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_col_heading {
+#sbritgogca .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -824,7 +824,7 @@
   overflow-x: hidden;
 }
 
-#jtlwczacrr .gt_column_spanner_outer {
+#sbritgogca .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -836,15 +836,15 @@
   padding-right: 4px;
 }
 
-#jtlwczacrr .gt_column_spanner_outer:first-child {
+#sbritgogca .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jtlwczacrr .gt_column_spanner_outer:last-child {
+#sbritgogca .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jtlwczacrr .gt_column_spanner {
+#sbritgogca .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -856,11 +856,11 @@
   width: 100%;
 }
 
-#jtlwczacrr .gt_spanner_row {
+#sbritgogca .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jtlwczacrr .gt_group_heading {
+#sbritgogca .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -886,7 +886,7 @@
   text-align: left;
 }
 
-#jtlwczacrr .gt_empty_group_heading {
+#sbritgogca .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -901,15 +901,15 @@
   vertical-align: middle;
 }
 
-#jtlwczacrr .gt_from_md > :first-child {
+#sbritgogca .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jtlwczacrr .gt_from_md > :last-child {
+#sbritgogca .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jtlwczacrr .gt_row {
+#sbritgogca .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -928,7 +928,7 @@
   overflow-x: hidden;
 }
 
-#jtlwczacrr .gt_stub {
+#sbritgogca .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -941,7 +941,7 @@
   padding-right: 5px;
 }
 
-#jtlwczacrr .gt_stub_row_group {
+#sbritgogca .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -955,15 +955,15 @@
   vertical-align: top;
 }
 
-#jtlwczacrr .gt_row_group_first td {
+#sbritgogca .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jtlwczacrr .gt_row_group_first th {
+#sbritgogca .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jtlwczacrr .gt_summary_row {
+#sbritgogca .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -973,16 +973,16 @@
   padding-right: 5px;
 }
 
-#jtlwczacrr .gt_first_summary_row {
+#sbritgogca .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_first_summary_row.thick {
+#sbritgogca .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jtlwczacrr .gt_last_summary_row {
+#sbritgogca .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -992,7 +992,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_grand_summary_row {
+#sbritgogca .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1002,7 +1002,7 @@
   padding-right: 5px;
 }
 
-#jtlwczacrr .gt_first_grand_summary_row {
+#sbritgogca .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1012,7 +1012,7 @@
   border-top-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_last_grand_summary_row_top {
+#sbritgogca .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1022,11 +1022,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_striped {
+#sbritgogca .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jtlwczacrr .gt_table_body {
+#sbritgogca .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1035,7 +1035,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_footnotes {
+#sbritgogca .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1049,7 +1049,7 @@
   border-right-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_footnote {
+#sbritgogca .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1058,7 +1058,7 @@
   padding-right: 5px;
 }
 
-#jtlwczacrr .gt_sourcenotes {
+#sbritgogca .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1072,7 +1072,7 @@
   border-right-color: #D3D3D3;
 }
 
-#jtlwczacrr .gt_sourcenote {
+#sbritgogca .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1080,72 +1080,72 @@
   padding-right: 5px;
 }
 
-#jtlwczacrr .gt_left {
+#sbritgogca .gt_left {
   text-align: left;
 }
 
-#jtlwczacrr .gt_center {
+#sbritgogca .gt_center {
   text-align: center;
 }
 
-#jtlwczacrr .gt_right {
+#sbritgogca .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jtlwczacrr .gt_font_normal {
+#sbritgogca .gt_font_normal {
   font-weight: normal;
 }
 
-#jtlwczacrr .gt_font_bold {
+#sbritgogca .gt_font_bold {
   font-weight: bold;
 }
 
-#jtlwczacrr .gt_font_italic {
+#sbritgogca .gt_font_italic {
   font-style: italic;
 }
 
-#jtlwczacrr .gt_super {
+#sbritgogca .gt_super {
   font-size: 65%;
 }
 
-#jtlwczacrr .gt_footnote_marks {
+#sbritgogca .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jtlwczacrr .gt_asterisk {
+#sbritgogca .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jtlwczacrr .gt_indent_1 {
+#sbritgogca .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jtlwczacrr .gt_indent_2 {
+#sbritgogca .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jtlwczacrr .gt_indent_3 {
+#sbritgogca .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jtlwczacrr .gt_indent_4 {
+#sbritgogca .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jtlwczacrr .gt_indent_5 {
+#sbritgogca .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jtlwczacrr .katex-display {
+#sbritgogca .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jtlwczacrr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sbritgogca div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1182,25 +1182,25 @@
 </tbody>
 </table></div>
 </div>
-<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb475"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">catsData</span>, n<span class="op">=</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="qfjewksxmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qfjewksxmq table {
+<div id="ircqmiakfl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ircqmiakfl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qfjewksxmq thead, #qfjewksxmq tbody, #qfjewksxmq tfoot, #qfjewksxmq tr, #qfjewksxmq td, #qfjewksxmq th {
+#ircqmiakfl thead, #ircqmiakfl tbody, #ircqmiakfl tfoot, #ircqmiakfl tr, #ircqmiakfl td, #ircqmiakfl th {
   border-style: none;
 }
 
-#qfjewksxmq p {
+#ircqmiakfl p {
   margin: 0;
   padding: 0;
 }
 
-#qfjewksxmq .gt_table {
+#ircqmiakfl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1226,12 +1226,12 @@
   border-left-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_caption {
+#ircqmiakfl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qfjewksxmq .gt_title {
+#ircqmiakfl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1243,7 +1243,7 @@
   border-bottom-width: 0;
 }
 
-#qfjewksxmq .gt_subtitle {
+#ircqmiakfl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1255,7 +1255,7 @@
   border-top-width: 0;
 }
 
-#qfjewksxmq .gt_heading {
+#ircqmiakfl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1267,13 +1267,13 @@
   border-right-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_bottom_border {
+#ircqmiakfl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_col_headings {
+#ircqmiakfl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1288,7 +1288,7 @@
   border-right-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_col_heading {
+#ircqmiakfl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1308,7 +1308,7 @@
   overflow-x: hidden;
 }
 
-#qfjewksxmq .gt_column_spanner_outer {
+#ircqmiakfl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1320,15 +1320,15 @@
   padding-right: 4px;
 }
 
-#qfjewksxmq .gt_column_spanner_outer:first-child {
+#ircqmiakfl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qfjewksxmq .gt_column_spanner_outer:last-child {
+#ircqmiakfl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qfjewksxmq .gt_column_spanner {
+#ircqmiakfl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1340,11 +1340,11 @@
   width: 100%;
 }
 
-#qfjewksxmq .gt_spanner_row {
+#ircqmiakfl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qfjewksxmq .gt_group_heading {
+#ircqmiakfl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1370,7 +1370,7 @@
   text-align: left;
 }
 
-#qfjewksxmq .gt_empty_group_heading {
+#ircqmiakfl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1385,15 +1385,15 @@
   vertical-align: middle;
 }
 
-#qfjewksxmq .gt_from_md > :first-child {
+#ircqmiakfl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qfjewksxmq .gt_from_md > :last-child {
+#ircqmiakfl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qfjewksxmq .gt_row {
+#ircqmiakfl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1412,7 +1412,7 @@
   overflow-x: hidden;
 }
 
-#qfjewksxmq .gt_stub {
+#ircqmiakfl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1425,7 +1425,7 @@
   padding-right: 5px;
 }
 
-#qfjewksxmq .gt_stub_row_group {
+#ircqmiakfl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1439,15 +1439,15 @@
   vertical-align: top;
 }
 
-#qfjewksxmq .gt_row_group_first td {
+#ircqmiakfl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qfjewksxmq .gt_row_group_first th {
+#ircqmiakfl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qfjewksxmq .gt_summary_row {
+#ircqmiakfl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1457,16 +1457,16 @@
   padding-right: 5px;
 }
 
-#qfjewksxmq .gt_first_summary_row {
+#ircqmiakfl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_first_summary_row.thick {
+#ircqmiakfl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qfjewksxmq .gt_last_summary_row {
+#ircqmiakfl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1476,7 +1476,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_grand_summary_row {
+#ircqmiakfl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1486,7 +1486,7 @@
   padding-right: 5px;
 }
 
-#qfjewksxmq .gt_first_grand_summary_row {
+#ircqmiakfl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1496,7 +1496,7 @@
   border-top-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_last_grand_summary_row_top {
+#ircqmiakfl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1506,11 +1506,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_striped {
+#ircqmiakfl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qfjewksxmq .gt_table_body {
+#ircqmiakfl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1519,7 +1519,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_footnotes {
+#ircqmiakfl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1533,7 +1533,7 @@
   border-right-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_footnote {
+#ircqmiakfl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1542,7 +1542,7 @@
   padding-right: 5px;
 }
 
-#qfjewksxmq .gt_sourcenotes {
+#ircqmiakfl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1556,7 +1556,7 @@
   border-right-color: #D3D3D3;
 }
 
-#qfjewksxmq .gt_sourcenote {
+#ircqmiakfl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1564,72 +1564,72 @@
   padding-right: 5px;
 }
 
-#qfjewksxmq .gt_left {
+#ircqmiakfl .gt_left {
   text-align: left;
 }
 
-#qfjewksxmq .gt_center {
+#ircqmiakfl .gt_center {
   text-align: center;
 }
 
-#qfjewksxmq .gt_right {
+#ircqmiakfl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qfjewksxmq .gt_font_normal {
+#ircqmiakfl .gt_font_normal {
   font-weight: normal;
 }
 
-#qfjewksxmq .gt_font_bold {
+#ircqmiakfl .gt_font_bold {
   font-weight: bold;
 }
 
-#qfjewksxmq .gt_font_italic {
+#ircqmiakfl .gt_font_italic {
   font-style: italic;
 }
 
-#qfjewksxmq .gt_super {
+#ircqmiakfl .gt_super {
   font-size: 65%;
 }
 
-#qfjewksxmq .gt_footnote_marks {
+#ircqmiakfl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qfjewksxmq .gt_asterisk {
+#ircqmiakfl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qfjewksxmq .gt_indent_1 {
+#ircqmiakfl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qfjewksxmq .gt_indent_2 {
+#ircqmiakfl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qfjewksxmq .gt_indent_3 {
+#ircqmiakfl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qfjewksxmq .gt_indent_4 {
+#ircqmiakfl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qfjewksxmq .gt_indent_5 {
+#ircqmiakfl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qfjewksxmq .katex-display {
+#ircqmiakfl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qfjewksxmq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ircqmiakfl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1669,7 +1669,7 @@
 <h2>
 <span class="header-section-number">11.17</span> Prueba de independencia<a class="anchor" aria-label="anchor" href="#prueba-de-independencia"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># usando los datos en formato de data frame **catsData**</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">catsData</span><span class="op">$</span><span class="va">Training</span>, <span class="va">catsData</span><span class="op">$</span><span class="va">Dance</span>, </span>
 <span>           fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, expected <span class="op">=</span> <span class="cn">TRUE</span>, </span>
@@ -1743,7 +1743,7 @@
 ## 
 ##  
 ##        Minimum expected frequency: 14.44</code></pre>
-<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Se puede hacer un grafico de los resultados</span></span>
 <span></span>
 <span><span class="va">Ta2</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/xtabs.html">xtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">Training</span><span class="op">+</span><span class="va">Dance</span>, data<span class="op">=</span><span class="va">catsData</span><span class="op">)</span></span>
@@ -1752,7 +1752,7 @@
 ## Training               No Yes
 ##   Food as Reward       28  10
 ##   Affection as Reward  48 114</code></pre>
-<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot</a></span><span class="op">(</span><span class="va">Ta2</span>, shade<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c11-21-1.png" alt="" width="672"></div>
 <hr>
@@ -1792,7 +1792,7 @@
 </tbody>
 </table></div>
 <p>Creamos</p>
-<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Negro</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">32</span>,<span class="fl">55</span><span class="op">)</span></span>
 <span><span class="va">Marron</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">43</span>, <span class="fl">65</span><span class="op">)</span></span>
 <span><span class="va">Rubio</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">16</span>,<span class="fl">64</span><span class="op">)</span></span>
@@ -1815,7 +1815,7 @@
 </ul>
 <p>¿Cuál es la hipótesis nula? ¿Cuál es la hipótesis alterna?</p>
 <p>El resultado de la prueba. ¿Se acepta o rechaza la hipótesis nula?</p>
-<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">HairColour</span>, fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, expected <span class="op">=</span> <span class="cn">TRUE</span>, sresid <span class="op">=</span> <span class="cn">TRUE</span>, format <span class="op">=</span> <span class="st">"SPSS"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
@@ -1871,15 +1871,15 @@
 ## 
 ##  
 ##        Minimum expected frequency: 8.333333</code></pre>
-<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#df=(R-1)*(C-1)</span></span>
 <span><span class="va">df</span><span class="op">=</span><span class="op">(</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">4</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">df</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">.2</span><span class="op">*</span><span class="fl">8</span></span></code></pre></div>
 <pre><code>## [1] 1.6</code></pre>
-<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb489"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">.95</span>,<span class="fl">3</span> <span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 7.814728</code></pre>
 <div id="este-ejercicio-cumple-con-los-supuestos-4" class="section level3" number="11.18.1">
@@ -1911,7 +1911,7 @@
 </ul>
 </blockquote>
 <p>Usando los datos de serpientes del ejemplo 7.4 del libro de Havel et al.</p>
-<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">responde</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">no_responde</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">6</span><span class="op">)</span></span>
 <span><span class="va">serpiente</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">responde</span>, <span class="va">no_responde</span><span class="op">)</span></span>
@@ -1921,7 +1921,7 @@
 <pre><code>##                  responde no_responde
 ## Estimulo_arriba         6           1
 ## Estimulo_lateral        3           6</code></pre>
-<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb493"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">serpiente</span>, fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>           expected <span class="op">=</span> <span class="cn">TRUE</span>, sresid <span class="op">=</span> <span class="cn">TRUE</span>, format <span class="op">=</span> <span class="st">"SAS"</span><span class="op">)</span> <span class="co"># esa prueba no deberia usarse</span></span></code></pre></div>
 <pre><code>## 
@@ -1992,15 +1992,15 @@
 ## 
 ## 
 ## </code></pre>
-<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">### ¿Este ejercicio cumple con los supuestos?</span></span></code></pre></div>
 <p>Se puede visualizar los datos con el Mosaico</p>
-<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb496"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot</a></span><span class="op">(</span><span class="va">serpiente</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c11-26-1.png" alt="" width="672"></div>
 <p>Nota que se usa la misma función que anterior pero en los resultados hay que fijarse en la sección que dice <strong>Fisher’s Exact test</strong>. Lo que uno observa es que el valor de <strong>p</strong> es menor de 0.05 por consecuencia se rechaza la hipótesis nula. Esto significa que, para la serpiente, el ángulo del que proviene el estímulo produce una respuesta diferente.</p>
 <hr>
-<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/fisher.test.html">fisher.test</a></span><span class="op">(</span><span class="va">serpiente</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Fisher's Exact Test for Count Data
@@ -2073,7 +2073,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-08-13.</p>
+    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-09-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

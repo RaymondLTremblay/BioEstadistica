@@ -187,6 +187,21 @@ mode <- function(x, na.rm = FALSE) {
 ```
 
 
+```{r}
+#install.packages("DescTools")
+
+
+library(DescTools)
+Mode(c(1, 2, 2, 3, 3, 3, 4))
+
+Mode(b)
+
+n=c(1,1, 2,3,4,5,6,7,8,9, 9)
+
+Mode(n)
+
+
+```
 
 
 
@@ -195,7 +210,7 @@ Ya pueden usar `mode()` para encontrar la moda del conjunto de datos. Vemos que 
 
 
 ```{r c06-moda-b}
-mode(b)
+Mode(b)
 ```
 
 ***
@@ -215,10 +230,19 @@ mode(bebe)
 Los tres valores de tendencia central coinciden (o casi) cuando la distribución es **simétrica**, como la distribución normal en forma de campana. Aquí preparo una lista de datos con una distribución aproximadamente simétrica y evaluamos dónde quedan los tres valores. Se usa la función **rpois** (distribución de **Poisson**, que con una media grande se aproxima a la normal) para crear un conjunto de 5000 datos al azar con una media de 100.   
 
 ```{r c06-poisson-datos, warning=FALSE, message=FALSE}
-df=rpois(5000, 100)
-df
-df1=data.frame(df)
+
+set.seed(4356)
+datos=rpois(5000, 100)
+datos
+df1=data.frame(datos)
 head(df1)
+```
+
+```{r}
+mean(datos)
+mean(df1$datos)
+median(df1$datos)
+mode(df1$datos)
 ```
 
 
@@ -226,9 +250,9 @@ Lo que uno observa es que los tres valores son muy cercanos entre sí.
 
 ```{r c06-poisson-medidas, warning=FALSE, message=FALSE}
 
-mean(df1$df)
-median(df1$df)
-mode(df1$df)
+mean(df1$datos)
+median(df1$datos)
+mode(df1$datos)
 ```
 
 Podemos visualizar estos datos usando dos gráficos. En el de la izquierda se ve la distribución con las tres líneas (promedio, mediana y moda). En el de la derecha se observa la misma información pero solo los valores entre 94 y 105. Se ve que la mediana y el promedio son casi iguales y la moda varía un poco (se encuentra donde la barra es más alta). Los tres valores quedan cerca del centro.  
@@ -236,16 +260,16 @@ Podemos visualizar estos datos usando dos gráficos. En el de la izquierda se ve
 
 ```{r c06-poisson-valores, warning=FALSE, message=FALSE}
 
-pro=mean(df1$df)
-med=median(df1$df)
-mod99=mode(df1$df)
+pro=mean(df1$datos)
+med=median(df1$datos)
+mod99=mode(df1$datos)
 mod99
 ```
 
 ```{r c06-hist-completo, warning=FALSE, message=FALSE}
 library(ggplot2)
 
-a=ggplot(df1, aes(df))+
+a=ggplot(df1, aes(datos))+
   geom_histogram(fill="orange", colour="white", binwidth = 1)+
   geom_vline(aes(xintercept = pro), colour="red")+
   geom_vline(aes(xintercept = med), colour="blue")+
@@ -258,7 +282,7 @@ a
 
 ```{r c06-hist-zoom, warning=FALSE, message=FALSE}
 library(ggplot2)
-b=ggplot(df1, aes(df))+
+b=ggplot(df1, aes(datos))+
   geom_histogram(fill="orange", colour="white", binwidth = 1)+
   geom_vline(aes(xintercept = pro), colour="red")+
   geom_vline(aes(xintercept = med), colour="blue")+

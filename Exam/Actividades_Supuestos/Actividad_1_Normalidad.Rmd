@@ -1,0 +1,265 @@
+---
+title: "Actividad 1: Normalidad, simetría y valores atípicos"
+subtitle: "BIOL3740 - Biometría | Capítulo 10, Supuestos"
+author: "Escribe aquí tu nombre"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Antes de comenzar
+
+**Lectura requerida:** capítulo 10 del libro *BioEstadística*, secciones "¿Qué son supuestos?", "Supuesto de normalidad", "El gráfico Q-Q", "La distribución normal", "geom_density", "Pruebas formales de normalidad", "Simetría de las distribuciones" y "Causas principales de los valores sesgados".
+
+**Tiempo estimado total: 1 hora y 30 minutos**, distribuido así:
+
+| Parte | Actividad | Tiempo |
+|:---|:---|:---:|
+| Lectura | Secciones indicadas del capítulo 10 | 20 min |
+| Ejercicios 1 a 3 | Evaluación visual de la normalidad | 30 min |
+| Ejercicios 4 y 5 | Simetría y prueba formal | 20 min |
+| Ejercicio 6 | Valores atípicos | 15 min |
+| Entrega | Compilar (*Knit*) y someter | 5 min |
+
+**Cómo se entrega.** Completa los bloques de código donde dice `# ESCRIBE TU CÓDIGO AQUÍ` y escribe tus respuestas debajo de cada pregunta, donde dice **Respuesta:**. Cuando termines, oprime el botón **Knit** en RStudio para generar el archivo HTML. Entrega **los dos archivos**: el `.Rmd` completado y el `.html` compilado.
+
+**Importante:** si el documento no compila, no se puede corregir. Compila temprano y compila a menudo, no solamente al final.
+
+***
+
+# Preparación
+
+```{r paquetes}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, ggversa, gridExtra, e1071, nortest)
+
+library(tidyverse)
+library(ggversa)   # contiene los datos de la orquídea Dipodium
+library(gridExtra)
+library(e1071)     # función skewness
+library(nortest)   # función ad.test
+```
+
+## Los datos
+
+Trabajaremos con la orquídea *Dipodium*, la misma base de datos que se usa en el capítulo. Nos concentraremos en dos variables muy distintas entre sí:
+
+- **Height_Inflo**: la altura de la inflorescencia, una medida continua en centímetros.
+- **Number_of_fruits**: la cantidad de frutos producidos, una variable de **conteo**.
+
+```{r datos}
+orquidea <- dipodium %>% 
+  dplyr::select(Height_Inflo, Number_of_Flowers,
+                Number_of_fruits, DBH) %>% 
+  drop_na(Height_Inflo, Number_of_fruits)
+
+# Mira la estructura y el tamaño de muestra
+glimpse(orquidea)
+nrow(orquidea)
+```
+
+**Pregunta previa (2 min).** ¿Cuántas observaciones quedaron después de remover los `NA`? ¿Por qué el tamaño de muestra es relevante antes de evaluar normalidad?
+
+**Respuesta:** 
+
+***
+
+# Ejercicio 1: Histograma con la curva normal teórica (12 min)
+
+Construye un histograma de **Height_Inflo** con la curva normal teórica superpuesta, siguiendo el modelo de la sección "La distribución normal" del capítulo. Recuerda que hay que incluir `aes(y = after_stat(density))` en el histograma para que ambas capas queden en la misma escala.
+
+```{r ej1a}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: ggplot(orquidea, aes(Height_Inflo)) +
+#          geom_histogram(aes(y = after_stat(density)), ...) +
+#          stat_function(fun = dnorm, args = list(mean = ..., sd = ...), ...)
+
+
+```
+
+Ahora repite exactamente lo mismo, pero para **Number_of_fruits**.
+
+```{r ej1b}
+# ESCRIBE TU CÓDIGO AQUÍ
+
+
+```
+
+**Pregunta 1.1.** Describe la forma de cada una de las dos distribuciones. ¿Cuál de las dos se aparta más de la curva roja, y de qué manera se aparta (hacia dónde queda la cola larga)?
+
+**Respuesta:** 
+
+**Pregunta 1.2.** Una de las dos variables es un conteo y la otra es una medida continua. ¿Tiene esto algo que ver con la forma que observaste? Explica en dos o tres oraciones.
+
+**Respuesta:** 
+
+***
+
+# Ejercicio 2: El gráfico Q-Q (10 min)
+
+Construye el gráfico Q-Q de cada una de las dos variables usando `geom_qq()` y `geom_qq_line()`, y colócalos lado a lado con `grid.arrange()`.
+
+```{r ej2}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Recuerda: dentro de aes() se usa sample = nombre_de_la_variable
+
+
+```
+
+**Pregunta 2.1.** En el capítulo se explica que la **dirección** en que los puntos se apartan de la línea informa sobre el tipo de problema. Para cada variable, indica en cuál extremo (izquierdo, derecho o ambos) los puntos se apartan de la línea y qué te dice eso sobre la distribución.
+
+**Respuesta:** 
+
+**Pregunta 2.2.** Compara lo que concluiste aquí con lo que concluiste en el ejercicio 1. ¿Las dos herramientas te llevan a la misma conclusión? ¿Cuál de las dos te resultó más fácil de leer, y por qué?
+
+**Respuesta:** 
+
+***
+
+# Ejercicio 3: Curvas de densidad por grupo (8 min)
+
+La variable `pardalinum_or_roseum` identifica dos formas de la orquídea. Construye una curva de densidad de **Height_Inflo** separada por esa variable, usando `geom_density()` con transparencia (`alpha = 0.4`).
+
+```{r ej3}
+# Primero prepara los datos con la variable de agrupación
+orquidea2 <- dipodium %>% 
+  dplyr::select(Height_Inflo, pardalinum_or_roseum) %>% 
+  drop_na()
+
+# ESCRIBE TU CÓDIGO AQUÍ
+
+
+# Cuántas observaciones hay en cada grupo
+table(orquidea2$pardalinum_or_roseum)
+```
+
+**Pregunta 3.1.** ¿Las dos curvas tienen una forma parecida? ¿Alguna de las dos se ve más simétrica que la otra?
+
+**Respuesta:** 
+
+**Pregunta 3.2.** Mira el resultado de `table()`. Si uno de los grupos tiene muchas menos observaciones que el otro, ¿cómo debe eso afectar la confianza con que interpretas la forma de su curva? El capítulo discute este punto en la sección de **stat_function**.
+
+**Respuesta:** 
+
+***
+
+# Ejercicio 4: El índice de oblicuidad (10 min)
+
+Calcula el índice de oblicuidad (*skewness*) de las dos variables del ejercicio 1.
+
+```{r ej4}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: e1071::skewness(orquidea$Height_Inflo, na.rm = TRUE)
+
+
+```
+
+**Pregunta 4.1.** Anota los dos valores. ¿El **signo** de cada uno concuerda con la dirección de la cola larga que observaste en el ejercicio 1? Si no concuerda, revisa tu código antes de seguir.
+
+**Respuesta:** 
+
+**Pregunta 4.2.** Aplica la transformación logarítmica a la variable más sesgada de las dos y vuelve a calcular la oblicuidad. Usa `log(x + 1)` en lugar de `log(x)`, y explica en tu respuesta por qué hace falta el `+ 1` en este caso particular.
+
+```{r ej4b}
+# ESCRIBE TU CÓDIGO AQUÍ
+
+
+```
+
+**Respuesta:** 
+
+**Pregunta 4.3.** ¿La transformación redujo la asimetría? Construye el histograma de la variable transformada para acompañar tu respuesta con evidencia visual.
+
+```{r ej4c}
+# ESCRIBE TU CÓDIGO AQUÍ
+
+
+```
+
+**Respuesta:** 
+
+***
+
+# Ejercicio 5: La prueba de Shapiro-Wilk (10 min)
+
+Aplica la prueba de Shapiro-Wilk a las dos variables originales y también a la variable transformada del ejercicio 4.
+
+```{r ej5}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: shapiro.test(orquidea$Height_Inflo)
+
+
+```
+
+**Pregunta 5.1.** Escribe explícitamente la hipótesis nula y la alternativa de esta prueba. Para cada variable, indica si se rechaza o no se rechaza Ho, y qué significa eso en términos de normalidad.
+
+**Respuesta:** 
+
+**Pregunta 5.2.** Supón que una de tus variables te dio un valor-*p* menor de 0.05, pero su histograma y su gráfico Q-Q se veían bastante normales. Según la advertencia del capítulo sobre estas pruebas, ¿cuál es la explicación más probable? ¿Qué decisión tomarías, y por qué?
+
+**Respuesta:** 
+
+***
+
+# Ejercicio 6: Valores atípicos (15 min)
+
+Construye un gráfico de cajas de **Number_of_Flowers** y luego identifica las observaciones extremas.
+
+```{r ej6a}
+# ESCRIBE TU CÓDIGO AQUÍ (gráfico de cajas)
+
+
+```
+
+```{r ej6b}
+# Identifica las observaciones más extremas
+orquidea %>% 
+  arrange(desc(Number_of_Flowers)) %>% 
+  head(10)
+
+orquidea %>% 
+  arrange(Number_of_Flowers) %>% 
+  head(10)
+```
+
+**Pregunta 6.1.** ¿Cuántos puntos aparecen fuera de los bigotes del gráfico de cajas? Anota los valores de los tres más extremos.
+
+**Respuesta:** 
+
+**Pregunta 6.2.** El capítulo lista tres causas por las que un valor puede ser atípico. Enumera esas tres causas y evalúa, para los valores que identificaste, si alguna de ellas es plausible. Recuerda que también es posible que el valor sea biológicamente real.
+
+**Respuesta:** 
+
+**Pregunta 6.3.** Mira la fila completa de la observación con más flores (usa `head(10)` arriba y fíjate en las otras columnas). ¿Los valores de las demás variables de esa planta son consistentes con tener tantas flores? Justifica tu respuesta.
+
+**Respuesta:** 
+
+**Pregunta 6.4.** Decide: ¿removerías ese valor del análisis? Escribe tu decisión y la justificación, en no más de cuatro oraciones. Si tu decisión es no removerlo, explica qué harías en su lugar.
+
+**Respuesta:** 
+
+***
+
+# Reflexión final (5 min)
+
+**Pregunta final.** En esta actividad usaste cuatro herramientas distintas para evaluar el mismo supuesto: el histograma con la curva teórica, el gráfico Q-Q, el índice de oblicuidad y la prueba de Shapiro-Wilk. Si solo pudieras usar dos de ellas, ¿cuáles escogerías y por qué? Tu respuesta debe conectar con lo que dice el capítulo sobre la relación entre las herramientas visuales y las pruebas formales.
+
+**Respuesta:** 
+
+***
+
+# Lista de cotejo antes de entregar
+
+- [ ] Todos los bloques de código corren sin error.
+- [ ] El documento compila (*Knit*) y produce un archivo HTML.
+- [ ] Escribí mi nombre en el encabezado (campo `author`).
+- [ ] Contesté **todas** las preguntas, no solamente el código.
+- [ ] Entrego los dos archivos: el `.Rmd` y el `.html`.

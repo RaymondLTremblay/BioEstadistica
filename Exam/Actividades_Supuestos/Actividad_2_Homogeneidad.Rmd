@@ -1,0 +1,318 @@
+---
+title: "Actividad 2: Homogeneidad de varianza, residuales y colinealidad"
+subtitle: "BIOL3740 - Biometría | Capítulo 10, Supuestos"
+author: "Escribe aquí tu nombre"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Antes de comenzar
+
+**Lectura requerida:** capítulo 10 del libro *BioEstadística*, secciones "Homogeneidad de varianza", "Gráficos de cajas condicionales", "Pruebas formales de homogeneidad de varianza", "Homogeneidad de varianza en modelos de regresión", "Los residuales de Student", "Valores sesgados con la Distancia de Cook" y "Colinealidad entre covariables".
+
+**Tiempo estimado total: 1 hora y 30 minutos**, distribuido así:
+
+| Parte | Actividad | Tiempo |
+|:---|:---|:---:|
+| Lectura | Secciones indicadas del capítulo 10 | 20 min |
+| Ejercicios 1 y 2 | Homogeneidad entre grupos | 25 min |
+| Ejercicios 3 y 4 | Residuales de un modelo de regresión | 25 min |
+| Ejercicio 5 | Colinealidad | 15 min |
+| Entrega | Compilar (*Knit*) y someter | 5 min |
+
+**Cómo se entrega.** Completa los bloques de código donde dice `# ESCRIBE TU CÓDIGO AQUÍ` y escribe tus respuestas debajo de cada pregunta, donde dice **Respuesta:**. Cuando termines, oprime el botón **Knit** en RStudio para generar el archivo HTML. Entrega **los dos archivos**: el `.Rmd` completado y el `.html` compilado.
+
+**Recuerda la lógica al revés.** En las pruebas de esta actividad la hipótesis nula es que **sí** se cumple el supuesto. Por lo tanto, un valor-*p* **grande** es el resultado que uno desea. Esto es lo contrario de lo que ocurre en la mayoría de las pruebas del curso, y es la fuente de error más común en esta actividad.
+
+***
+
+# Preparación
+
+```{r paquetes}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, ggversa, gridExtra, car, GGally, knitr)
+
+library(tidyverse)
+library(ggversa)   # contiene los datos de los gorriones y de Dipodium
+library(gridExtra)
+library(car)       # función leveneTest y durbinWatsonTest
+library(GGally)    # función ggpairs
+library(knitr)
+```
+
+***
+
+# Parte A: Homogeneidad de varianza entre grupos
+
+Usaremos la base de datos **SparrowsElphick**, que contiene el peso (`wt`) de gorriones capturados en seis meses distintos. La pregunta biológica es si el peso de las aves cambia a lo largo de la temporada. Antes de contestarla con un ANOVA habría que verificar el supuesto de homogeneidad de varianza entre los meses.
+
+```{r datosA}
+Gorriones <- SparrowsElphick
+
+Gorriones$fMes <- factor(Gorriones$Month,
+                         levels = c(5, 6, 7, 8, 9, 10),
+                         labels = c("Mayo", "Junio", "Julio",
+                                    "Agosto", "Sept.", "Oct."))
+
+Gorriones <- Gorriones %>% drop_na(wt, fMes)
+
+# Tamaño de muestra por mes
+table(Gorriones$fMes)
+```
+
+## Ejercicio 1: El gráfico de cajas condicional (12 min)
+
+Construye un gráfico de cajas del peso (`wt`) por mes (`fMes`), con nombres de ejes apropiados en español.
+
+```{r ej1}
+# ESCRIBE TU CÓDIGO AQUÍ
+
+
+```
+
+Ahora calcula la desviación estándar y el tamaño de muestra de cada mes.
+
+```{r ej1b}
+resumen <- Gorriones %>% 
+  group_by(fMes) %>% 
+  summarise(n = n(),
+            promedio = mean(wt),
+            desv_est = sd(wt))
+kable(resumen, digits = 2)
+
+# La razón entre la desviación estándar mayor y la menor
+max(resumen$desv_est) / min(resumen$desv_est)
+```
+
+**Pregunta 1.1.** Al evaluar homogeneidad de varianza en un gráfico de cajas, ¿qué característica de las cajas hay que mirar: su **posición** vertical o su **altura**? Explica por qué.
+
+**Respuesta:** 
+
+**Pregunta 1.2.** Según lo que ves en el gráfico, ¿dirías que las varianzas son similares entre los seis meses? Identifica el mes con más dispersión y el mes con menos.
+
+**Respuesta:** 
+
+**Pregunta 1.3.** El capítulo menciona una regla práctica basada en la razón entre la desviación estándar del grupo más variable y la del menos variable. ¿Cuál es esa regla y qué indica el valor que calculaste arriba?
+
+**Respuesta:** 
+
+**Pregunta 1.4.** Mira la tabla de tamaños de muestra. El capítulo advierte que la desigualdad de varianza hace más daño bajo cierta condición. ¿Cuál es esa condición, y se cumple aquí?
+
+**Respuesta:** 
+
+## Ejercicio 2: Las pruebas formales (13 min)
+
+Aplica las tres pruebas de homogeneidad de varianza al peso de los gorriones por mes.
+
+```{r ej2}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: leveneTest(wt ~ fMes, data = Gorriones)
+#        bartlett.test(...)
+#        fligner.test(...)
+
+
+```
+
+**Pregunta 2.1.** Escribe la hipótesis nula y la alternativa de estas pruebas. Anota los tres valores-*p* obtenidos.
+
+**Respuesta:** 
+
+**Pregunta 2.2.** ¿Las tres pruebas concuerdan? Si alguna difiere de las demás, usa lo que dice el capítulo sobre las diferencias entre ellas (en qué se basa cada una, a qué es sensible cada una) para proponer una explicación.
+
+**Respuesta:** 
+
+**Pregunta 2.3.** Compara el resultado de las pruebas con tu conclusión visual del ejercicio 1. Si concuerdan, explica qué te da esa concordancia. Si no concuerdan, explica a cuál de las dos fuentes de evidencia le darías más peso y por qué.
+
+**Respuesta:** 
+
+**Pregunta 2.4.** Supón que las pruebas indican que las varianzas **no** son homogéneas y que de todas formas necesitas comparar el peso entre dos de los meses. ¿Qué alternativa menciona el capítulo para ese caso específico, y qué tiene de particular esa alternativa en R?
+
+**Respuesta:** 
+
+***
+
+# Parte B: Residuales de un modelo de regresión
+
+Ahora trabajaremos con la orquídea *Dipodium*. La pregunta es si el diámetro del árbol hospedero (`DBH`) predice la cantidad de flores que produce la orquídea.
+
+```{r datosB}
+orquidea <- dipodium %>% 
+  dplyr::select(Number_of_Flowers, DBH, Height_Inflo,
+                Number_of_fruits, Distance) %>% 
+  drop_na(Number_of_Flowers, DBH)
+
+nrow(orquidea)
+
+modelo <- lm(Number_of_Flowers ~ DBH, data = orquidea)
+summary(modelo)
+```
+
+## Ejercicio 3: Residuales contra valores estimados (13 min)
+
+Construye el gráfico de residuales contra valores estimados para `modelo`, con una línea horizontal punteada en cero.
+
+```{r ej3}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: ggplot(modelo, aes(.fitted, .resid)) + geom_point() + geom_hline(...)
+
+
+```
+
+**Pregunta 3.1.** Define, en tus propias palabras, qué es un residual y qué significa que un residual sea negativo.
+
+**Respuesta:** 
+
+**Pregunta 3.2.** El capítulo describe cuatro patrones posibles en este gráfico: una nube sin forma, un embudo, una curva y rachas de puntos. ¿Cuál de los cuatro se parece más a lo que obtuviste? ¿Qué implica eso sobre el supuesto de homogeneidad?
+
+**Respuesta:** 
+
+**Pregunta 3.3.** Ahora evalúa la normalidad de los residuales de este modelo con un gráfico Q-Q y con la prueba de Shapiro-Wilk.
+
+```{r ej3b}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: shapiro.test(residuals(modelo))
+
+
+```
+
+**Respuesta:** 
+
+**Pregunta 3.4.** Explica por qué en este modelo evaluamos la normalidad de los **residuales** y no la de `Number_of_Flowers`. Esta distinción aparece en la tabla "¿Qué supone cada prueba?" al comienzo del capítulo.
+
+**Respuesta:** 
+
+## Ejercicio 4: Observaciones influyentes (12 min)
+
+Calcula la distancia de Cook para cada observación y grafícala, dibujando la línea de corte de $4/n$.
+
+```{r ej4}
+n_obs <- nrow(orquidea)
+corte <- 4 / n_obs
+n_obs
+corte
+
+# ESCRIBE TU CÓDIGO AQUÍ (el gráfico de barras de la distancia de Cook)
+
+
+```
+
+```{r ej4b}
+# Cuenta las observaciones que exceden cada criterio
+sum(cooks.distance(modelo) > 1)
+sum(cooks.distance(modelo) > corte)
+```
+
+**Pregunta 4.1.** El capítulo distingue entre un valor **atípico** y un valor **influyente**. Explica la diferencia y da un ejemplo de un punto que sería atípico pero no influyente.
+
+**Respuesta:** 
+
+**Pregunta 4.2.** ¿Cuántas observaciones exceden el criterio de $D_i > 1$? ¿Cuántas exceden el de $D_i > 4/n$? ¿Por qué los dos criterios dan respuestas tan distintas?
+
+**Respuesta:** 
+
+**Pregunta 4.3.** Ajusta el modelo otra vez, esta vez removiendo la observación con la distancia de Cook más alta, y compara la pendiente con la del modelo original.
+
+```{r ej4c}
+# Identifica la observación más influyente
+cual <- which.max(cooks.distance(modelo))
+cual
+
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: modelo2 <- lm(Number_of_Flowers ~ DBH, data = orquidea[-cual, ])
+
+
+```
+
+**Pregunta 4.4.** ¿Cambió la pendiente de forma apreciable? Según la recomendación del capítulo sobre correr el análisis con y sin el valor dudoso, ¿qué reportarías en un manuscrito con base en este resultado?
+
+**Respuesta:** 
+
+***
+
+# Parte C: Colinealidad
+
+## Ejercicio 5: Correlación entre covariables (15 min)
+
+Supón ahora que quieres construir un modelo de regresión **múltiple** para predecir la cantidad de frutos (`Number_of_fruits`) usando varias variables de la planta a la vez. Antes de ajustarlo hay que verificar que las predictoras no lleven información redundante.
+
+```{r ej5a}
+covariables <- dipodium %>% 
+  dplyr::select(DBH, Distance, Number_of_Flowers, Height_Inflo)
+
+# Tabla de correlaciones de Pearson
+kable(signif(cor(covariables, use = "pairwise.complete.obs"), 2))
+```
+
+Ahora calcula la misma tabla con el método de Spearman.
+
+```{r ej5b}
+# ESCRIBE TU CÓDIGO AQUÍ
+
+
+```
+
+Y produce la figura de `ggpairs` con esas cuatro variables.
+
+```{r ej5c, fig.width=9, fig.height=7}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: ggpairs(covariables)
+
+
+```
+
+**Pregunta 5.1.** Define colinealidad en tus propias palabras y explica por qué es un problema en una regresión múltiple pero no en una regresión simple.
+
+**Respuesta:** 
+
+**Pregunta 5.2.** ¿Cuál par de variables muestra la correlación más alta? Anota el valor de Pearson y el de Spearman para ese par.
+
+**Respuesta:** 
+
+**Pregunta 5.3.** ¿Los dos métodos, Pearson y Spearman, dan un resultado parecido para ese par? ¿Qué supone Pearson que Spearman no supone, y cuál de los dos es más apropiado según lo que viste en la diagonal de `ggpairs`?
+
+**Respuesta:** 
+
+**Pregunta 5.4.** El capítulo describe un patrón característico que delata la colinealidad en la salida de un modelo: el modelo completo es significativo pero ningún coeficiente individual lo es. Ajusta el modelo múltiple con las cuatro covariables y examina si ese patrón aparece.
+
+```{r ej5d}
+# ESCRIBE TU CÓDIGO AQUÍ
+# Pista: modelo_multiple <- lm(Number_of_fruits ~ DBH + Distance +
+#                              Number_of_Flowers + Height_Inflo, data = dipodium)
+#        summary(modelo_multiple)
+
+
+```
+
+**Respuesta:** 
+
+**Pregunta 5.5.** Con base en toda la evidencia anterior, ¿cuál de las cuatro covariables removerías del modelo, y por qué esa y no la otra del par?
+
+**Respuesta:** 
+
+***
+
+# Reflexión final (5 min)
+
+**Pregunta final.** En la Parte A evaluaste homogeneidad de varianza **entre grupos**, y en la Parte B la evaluaste **dentro de un modelo de regresión**. Es el mismo supuesto en los dos casos, pero las herramientas son distintas. Explica en qué se parecen las dos situaciones y por qué hacen falta herramientas diferentes para cada una.
+
+**Respuesta:** 
+
+***
+
+# Lista de cotejo antes de entregar
+
+- [ ] Todos los bloques de código corren sin error.
+- [ ] El documento compila (*Knit*) y produce un archivo HTML.
+- [ ] Escribí mi nombre en el encabezado (campo `author`).
+- [ ] Contesté **todas** las preguntas, no solamente el código.
+- [ ] Verifiqué que interpreté los valores-*p* en la dirección correcta (un valor-*p* grande favorece el supuesto).
+- [ ] Entrego los dos archivos: el `.Rmd` y el `.html`.

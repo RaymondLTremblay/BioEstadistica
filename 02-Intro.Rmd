@@ -64,7 +64,7 @@ Todo comienza con una pregunta que te llama la atención. Esta pregunta proviene
 El próximo paso es desarrollar una hipótesis. Hay dos tipos de hipótesis, la hipótesis nula y la hipótesis alterna. SIEMPRE uno comprueba la hipótesis NULA. La nula en la forma más sencilla, es que los grupos son iguales. En otras palabras, si regresamos a la pregunta del primer paso, el rendimiento de los estudiantes es irrelevante de la cantidad de estudiantes en el salón; en otras palabras, es igual si hay pocos o muchos estudiantes. La hipótesis alterna es que "que la cantidad de estudiantes en un salón impacta el rendimiento de los estudiantes". Hay otros tipos de hipótesis nula que veremos más tarde.
 
 ::: definicion
-La **hipótesis nula (**$H_0$) propone que no hay efecto ni diferencia entre los grupos. La **hipótesis alterna (**$H_1$) propone que sí existe un efecto o diferencia. En una prueba estadística **siempre se pone a prueba la hipótesis nula**.
+La **hipótesis nula (**$H_0$\$H_0\$\$H_0\$\$H_0\$\$H_0\$) propone que no hay efecto ni diferencia entre los grupos. La **hipótesis alterna (**$H_1$) propone que sí existe un efecto o diferencia. En una prueba estadística **siempre se pone a prueba la hipótesis nula**.
 :::
 
 - Si **no se rechaza** la hipótesis nula, quiere decir que NO hay evidencia suficiente de que los grupos sean diferentes (ojo: esto no prueba que sean iguales).

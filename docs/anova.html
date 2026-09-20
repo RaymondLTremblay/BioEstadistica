@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 16 ANOVA | BioEstadística</title>
 <meta name="author" content="">
-<meta name="description" content='Fecha de la última revisión ## [1] "2026-08-13" Chunk para poder cambiar el color del texto  16.0.1 Instalar libreria si es necesario #install.packages("car") #install.packages("pastecs")...'>
-<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta name="description" content='Fecha de la última revisión ## [1] "2026-09-20" Chunk para poder cambiar el color del texto  16.0.1 Instalar libreria si es necesario #install.packages("car") #install.packages("pastecs")...'>
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
 <meta property="og:title" content="Capítulo 16 ANOVA | BioEstadística">
 <meta property="og:type" content="book">
-<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-08-13" Chunk para poder cambiar el color del texto  16.0.1 Instalar libreria si es necesario #install.packages("car") #install.packages("pastecs")...'>
+<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-09-20" Chunk para poder cambiar el color del texto  16.0.1 Instalar libreria si es necesario #install.packages("car") #install.packages("pastecs")...'>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 16 ANOVA | BioEstadística">
-<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-08-13" Chunk para poder cambiar el color del texto  16.0.1 Instalar libreria si es necesario #install.packages("car") #install.packages("pastecs")...'>
+<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-09-20" Chunk para poder cambiar el color del texto  16.0.1 Instalar libreria si es necesario #install.packages("car") #install.packages("pastecs")...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_3-0.4.10/font.css" rel="stylesheet">
@@ -99,14 +99,14 @@
 <span class="header-section-number">Capítulo 16</span> ANOVA<a class="anchor" aria-label="anchor" href="#anova"><i class="fas fa-link"></i></a>
 </h1>
 <p>Fecha de la última revisión</p>
-<pre><code>## [1] "2026-08-13"</code></pre>
+<pre><code>## [1] "2026-09-20"</code></pre>
 <p><img src="Graficos/hex_ggversa.png" alt="" width="20%"><img src="Graficos/hex_error.png" alt="" width="20%"></p>
 <p>Chunk para poder cambiar el color del texto</p>
 <div id="instalar-libreria-si-es-necesario" class="section level3" number="16.0.1">
 <h3>
 <span class="header-section-number">16.0.1</span> Instalar libreria si es necesario<a class="anchor" aria-label="anchor" href="#instalar-libreria-si-es-necesario"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb530"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb625"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("car")</span></span>
 <span><span class="co">#install.packages("pastecs")</span></span>
 <span><span class="co">#install.packages("multcomp")</span></span>
@@ -117,7 +117,7 @@
 <h3>
 <span class="header-section-number">16.0.2</span> Activar libreria<a class="anchor" aria-label="anchor" href="#activar-libreria"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb531"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb626"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -154,7 +154,7 @@ que se hace una prueba t hay 5% de error. Por consiguiente, si uno hace
 múltiples pruebas t, hay una posibilidad de que se rechace la hipótesis
 nula cuando no se debería rechazar. ¿Cuán grande es ese error si uno hace
 múltiples pruebas t?</p>
-<div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb627"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span>
 <span><span class="va">Tipo_errorI</span><span class="op">=</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">Cantidad_Grupo_k</span>, <span class="op">~</span><span class="va">C</span>, <span class="op">~</span><span class="st">"0.05"</span>, <span class="op">~</span><span class="st">"0.01"</span>,</span>
@@ -276,7 +276,7 @@ millón) en las plantas es igual en los tres lagos.</p>
 concentración de fósforo diferente</li>
 </ul>
 </blockquote>
-<div class="sourceCode" id="cb533"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb628"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">id</span><span class="op">&lt;-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span></span>
 <span><span class="va">Cant_Fos</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>,<span class="fl">56</span>,<span class="fl">64</span>,<span class="fl">45</span>,<span class="fl">44</span>,</span>
 <span>            <span class="fl">37</span>,<span class="fl">36</span>,<span class="fl">35</span>,<span class="fl">38</span>,<span class="fl">39</span>,</span>
@@ -391,11 +391,11 @@ Vemos que muchos de los valores de las plantas están por debajo de la
 línea y muchos otros están por encima. Se observa
 que la concentración de fósforo en las plantas que provienen de los lagos
 Caraizo y Guineo está lejos del promedio.</p>
-<div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb629"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mean_fosforo</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fosforo</span><span class="op">$</span><span class="va">Cant_Fos</span><span class="op">)</span></span>
 <span><span class="va">mean_fosforo</span></span></code></pre></div>
 <pre><code>## [1] 33.75</code></pre>
-<div class="sourceCode" id="cb536"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb631"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">fosforo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Lagos</span>, <span class="va">Cant_Fos</span>, colour<span class="op">=</span><span class="va">Lagos</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">mean_fosforo</span><span class="op">)</span> <span class="co"># geom_hline = linea horizontal</span></span></code></pre></div>
@@ -405,7 +405,7 @@ observar las diferencias entre el valor de la “y” y el promedio, o sea
 los residuales.
 <span style="color: blue;">Nota que esto se parece a la grafica de residuales de la regresión lineal</span>.
 Vimos también este tipo de gráfico para la prueba de t.</p>
-<div class="sourceCode" id="cb537"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb632"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span>, <span class="va">Cant_Fos</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">60</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"y"</span>, xlab <span class="op">=</span> <span class="st">"order"</span>, pch<span class="op">=</span><span class="fl">21</span>, bg<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Cant_Fos</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">i</span>,<span class="va">i</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Cant_Fos</span><span class="op">)</span>, <span class="va">Cant_Fos</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"green"</span><span class="op">)</span></span></code></pre></div>
@@ -416,7 +416,7 @@ de cada grupo. Se observa en este caso que hay mucho menos
 varianza entre los valores de un mismo grupo. Este es un indicio de que los
 lagos explican (en parte) la varianza en la concentración de fósforo en las
 plantas.</p>
-<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb633"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span>, <span class="va">Cant_Fos</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">70</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"y"</span>, xlab <span class="op">=</span> <span class="st">"order"</span>, pch<span class="op">=</span><span class="fl">21</span>, bg<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Cant_Fos</span><span class="op">[</span><span class="va">Lagos</span><span class="op">==</span><span class="st">"Caraizo"</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Cant_Fos</span><span class="op">[</span><span class="va">Lagos</span><span class="op">==</span><span class="st">"DosBocas"</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
@@ -437,7 +437,7 @@ plantas.</p>
 <p>En este ejemplo vemos dos de los grupos donde los residuales se solapan;
 es probable que estos dos grupos (azul y rojo) no sean
 diferentes.</p>
-<div class="sourceCode" id="cb539"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb634"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">id</span><span class="op">&lt;-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span></span>
 <span><span class="va">Cant_Fos</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">52</span>,<span class="fl">66</span>,<span class="fl">60</span>,<span class="fl">54</span>,<span class="fl">64</span>,</span>
 <span>            <span class="fl">56</span>,<span class="fl">58</span>,<span class="fl">65</span>,<span class="fl">49</span>,<span class="fl">58</span>,</span>
@@ -448,7 +448,7 @@ diferentes.</p>
 <span><span class="va">fosforo2</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">id</span>,<span class="va">Cant_Fos</span>,<span class="va">Lagos</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/attach.html">attach</a></span><span class="op">(</span><span class="va">fosforo2</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb635"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span>, <span class="va">Cant_Fos</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">70</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"y"</span>, xlab <span class="op">=</span> <span class="st">"order"</span>, pch<span class="op">=</span><span class="fl">21</span>, bg<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Cant_Fos</span><span class="op">[</span><span class="va">Lagos</span><span class="op">==</span><span class="st">"Caraizo"</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Cant_Fos</span><span class="op">[</span><span class="va">Lagos</span><span class="op">==</span><span class="st">"DosBocas"</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
@@ -481,7 +481,7 @@ cada grupo: 1. los datos con <code><a href="https://ggplot2.tidyverse.org/refere
 <code>stat_summary(fun = mean, geom = "point")</code>, para calcular el promedio
 del grupo; 3. una línea que une los promedios con <code>stat_summary(fun = mean, geom = "line")</code>. Nota la diferencia entre los dos: uno usa “point”
 y el otro usa “line”.</p>
-<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb636"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">fosforo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Lagos</span>, y<span class="op">=</span><span class="va">Cant_Fos</span>, colour<span class="op">=</span><span class="va">Lagos</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
@@ -503,7 +503,7 @@ los grupos groupvars=“Lagos”. Esto crea un nuevo data frame con los
 datos resumidos que incluye, el nombre de los grupos (Lagos), el tamaño
 de muestra (N), el promedio de la variable (Cant_Fos), la desviación
 estándar (sd), el error estándar (se) y el intervalo de confianza (ci).</p>
-<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb637"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">Rmisc</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sum</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/Rmisc/man/summarySE.html">summarySE</a></span><span class="op">(</span><span class="va">fosforo</span>, </span>
@@ -564,7 +564,7 @@ estándar (sd), el error estándar (se) y el intervalo de confianza (ci).</p>
 siguiente fórmula <span class="math inline">\(\overline{x}\ \pm2\cdot se\)</span>. Las barras representan el
 95% de donde pudiese estar el promedio si repitiéramos el mismo experimento
 100 veces.</p>
-<div class="sourceCode" id="cb543"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb638"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sum</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Lagos</span>, </span>
 <span>                y<span class="op">=</span><span class="va">Cant_Fos</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span><span class="op">+</span> </span>
@@ -578,7 +578,7 @@ siguiente fórmula <span class="math inline">\(\overline{x}\ \pm2\cdot se\)</spa
 <h2>
 <span class="header-section-number">16.8</span> Estadística descriptiva de los Lagos<a class="anchor" aria-label="anchor" href="#estad%C3%ADstica-descriptiva-de-los-lagos"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb639"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/SciViews/pastecs">pastecs</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/by.html">by</a></span><span class="op">(</span><span class="va">fosforo</span><span class="op">$</span><span class="va">Cant_Fos</span>, <span class="va">fosforo</span><span class="op">$</span><span class="va">Lagos</span>, <span class="va">stat.desc</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## fosforo$Lagos: Caraizo
@@ -675,7 +675,7 @@ hipótesis nula.
 lagos, la prueba de Levene da un resultado de p &gt; 0.21, lo que indica
 que no hay evidencia de que la varianza sea distinta entre los grupos; por
 consiguiente, no se rechaza la hipótesis nula.</p>
-<div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb641"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bprice2652/car_repo">car</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="va">fosforo</span><span class="op">$</span><span class="va">Cant_Fos</span>, <span class="va">fosforo</span><span class="op">$</span><span class="va">Lagos</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="huxtable" data-quarto-disable-processing="true" style="margin-left: auto; margin-right: auto;" id="tab:c16-18">
@@ -717,14 +717,14 @@ más sencillo sería cambiar la primera línea del siguiente script:
 <strong>ggplot(fosforo, aes(sample = Cant_Fos, group=Lagos))</strong>. En este caso
 tendríamos 3 líneas.
 <span style="color: red;">Si no se cumple el supuesto de normalidad, ver el módulo de Kruskal-Wallis para una alternativa de cómo evaluar los datos</span></p>
-<div class="sourceCode" id="cb547"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb642"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">fosforo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="va">Cant_Fos</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq_line</a></span><span class="op">(</span>colour<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Valores teóricos"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Valores observados"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c16-19-1.png" alt="" width="672"></div>
-<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb643"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">fosforo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="va">Cant_Fos</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq_line</a></span><span class="op">(</span>colour<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span><span class="op">+</span></span>
@@ -759,7 +759,7 @@ nula (p &lt; 0.05). Ya sabemos que por lo menos uno de los grupos no es
 igual a los demás, pero todavía no sabemos qué pares son diferentes ni si
 lo son todos. En la segunda línea se observan los otros datos del experimento,
 lo que aquí se llama los residuales.</p>
-<div class="sourceCode" id="cb549"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb644"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">LagosModel</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Cant_Fos</span><span class="op">~</span><span class="va">Lagos</span>, data <span class="op">=</span> <span class="va">fosforo</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -783,7 +783,7 @@ la línea entrecortada, se asume que tienen una distribución normal. Nota
 que hay tres datos que aparecen con números (5, 3, 12); estos son datos que
 posiblemente sean atípicos, y hay que evaluar si impactan el
 resultado (veremos esto más tarde, con la distancia de Cook).</p>
-<div class="sourceCode" id="cb551"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb646"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">LagosModel</span><span class="op">)</span></span></code></pre></div>
 <p><img src="BioEstadistica_files/figure-html/c16-21-1.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c16-21-2.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c16-21-3.png" alt="" width="672"><img src="BioEstadistica_files/figure-html/c16-21-4.png" alt="" width="672"></p>
 </div>
@@ -826,7 +826,7 @@ pruebas.</p>
 </div>
 <p>Vemos ahora que se hicieron 3 pruebas, y cada una tiene un valor de p menor
 de 5%; por consiguiente, cada grupo es distinto de los otros.</p>
-<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb647"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/pairwise.t.test.html">pairwise.t.test</a></span><span class="op">(</span><span class="va">fosforo</span><span class="op">$</span><span class="va">Cant_Fos</span>, <span class="va">fosforo</span><span class="op">$</span><span class="va">Lagos</span>, p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span> <span class="co"># Nota aqui se usa los datos originales, el error de todos las pruebas se limita a 5%.  </span></span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
@@ -872,7 +872,7 @@ significativamente diferente de los otros. En muchas ocasiones el resultado
 puede diferir. Si esto ocurre, hay que evaluar bien cuál es el nivel de
 confiabilidad que queremos. Algunas pruebas Post-Hoc tienden a rechazar
 con más frecuencia que otras.</p>
-<div class="sourceCode" id="cb554"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb649"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://codeberg.org/thothorn/multcomp">multcomp</a></span><span class="op">)</span></span>
 <span><span class="va">postHocs.1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">glht</a></span><span class="op">(</span><span class="va">LagosModel</span>, linfct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">mcp</a></span><span class="op">(</span>Lagos <span class="op">=</span> <span class="st">"Tukey"</span><span class="op">)</span><span class="op">)</span>  </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">postHocs.1</span><span class="op">)</span></span></code></pre></div>
@@ -886,7 +886,7 @@ con más frecuencia que otras.</p>
 ## 
 ## Linear Hypotheses:
 ##                         Estimate Std. Error t value Pr(&gt;|t|)    
-## DosBocas - Caraizo == 0  -15.800      3.999  -3.951  0.00456 ** 
+## DosBocas - Caraizo == 0  -15.800      3.999  -3.951  0.00427 ** 
 ## Guineo - Caraizo == 0    -37.633      3.828  -9.830  &lt; 0.001 ***
 ## Guineo - DosBocas == 0   -21.833      3.828  -5.703  &lt; 0.001 ***
 ## ---
@@ -965,7 +965,7 @@ con más frecuencia que otras.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-08-13.</p>
+    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-09-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -43,8 +43,21 @@ library(knitr) # un grupo de función para incluyendo tablas bonitas con kable.
 library(tidyverse)
 library(gridExtra)
 library(e1071)
+library(datos)
+```
+
+```{r}
+pinguinos
+
+unique(pinguinos$especie)
 
 ```
+
+
+```{r}
+summary(pinguinos)
+```
+
 
 ***
 ## Estadística descriptiva
@@ -187,12 +200,16 @@ Nota que hay muchos más parámetros calculados.  Aparece en la lista en orden e
 ```{r c08-11, warning=FALSE}
 
 library(pastecs)
+stat.desc(pinguinos)
+
 stat.desc(dlf[,c("day1")])
 
 round(stat.desc(dlf[,c("day1")]), 2)  
 ```
 
 ***
+
+
 
 ## Resumen Estadístico de multiples variables
 
@@ -248,7 +265,40 @@ El índice de oblicuidad describe la (a)simetría de una distribución alrededor
 
 La fórmula es la siguiente. Es muy similar a la de la varianza, pero note que las diferencias se elevan a la potencia 3. Para más información vea este enlace <https://en.wikipedia.org/wiki/Skewness>.     
 
-$$\text{Oblicuidad} = \frac{1}{N}\sum_{i=1}^N\left(\frac{x_i-\overline{x}}{\sigma}\right)^3$$
+$$\text{Oblicuidad} = \
+
+frac{1}{N}\sum_{i=1}^N\left(\frac{x_i-\overline{x}}{\sigma}\right)^3$$
+
+Pinguin skewness
+
+```{r}
+
+library(e1071)
+New_pinguin=pinguinos |> 
+  drop_na() |> 
+  group_by(especie) |> 
+  summarise(mean_wing=mean(largo_aleta_mm),
+            var_wing=var(largo_aleta_mm),
+            sd_wing=sd(largo_aleta_mm),
+            skew_wing=skewness(largo_aleta_mm))
+
+
+
+New_pinguin
+```
+
+
+```{r}
+ggplot(pinguinos, aes(largo_aleta_mm, fill=especie))+
+  geom_histogram(color="white")+
+  facet_wrap(~especie)
+
+
+ggplot(pinguinos, aes(largo_pico_mm, fill=especie))+
+  geom_histogram(color="white")+
+  facet_wrap(~especie)
+```
+
 
 Primero voy a crear tres conjuntos de datos
 

@@ -1,0 +1,718 @@
+---
+title: "Biometría I - Examen Parcial I"
+author: ""
+format:
+  html: default
+  docx: default
+toc: false
+number-sections: false
+---
+
+# BIOMETRÍA I
+
+## Examen Parcial I
+
+**Nombre:** ____________________________________
+
+**Fecha:** ______________________________________
+
+**Sección:** _____________________________________
+
+**Valor Total: 80 puntos**
+
+### Instrucciones
+
+- Seleccione la mejor contestación.
+- Cada pregunta vale 2 puntos.
+- No se permite calculadora.
+- Marque una sola respuesta por pregunta.
+
+---
+
+# I. Conceptos Fundamentales
+
+### 1.
+
+¿Cuál es el propósito principal de la estadística?
+
+A. Organizar, resumir e interpretar datos
+
+B. Reducir la variación observada en una población
+
+C. Sustituir la necesidad de recopilar datos
+
+D. Confirmar que una hipótesis es correcta
+
+---
+
+### 2.
+
+Una población es:
+
+A. El conjunto de individuos seleccionados para estudio
+
+B. Todos los individuos u observaciones de interés
+
+C. El subconjunto utilizado para estimar parámetros
+
+D. Los individuos incluidos en una muestra aleatoria
+
+---
+
+### 3.
+
+Una muestra es:
+
+A. El conjunto completo de observaciones de interés
+
+B. Un valor calculado a partir de datos
+
+C. Un subconjunto de la población seleccionado para estudio
+
+D. Una característica medida en cada individuo
+
+---
+
+### 4.
+
+¿Cuál situación requiere el uso de estadística?
+
+A. Identificar una especie desconocida
+
+B. Medir una sola planta
+
+C. Clasificar organismos taxonómicamente
+
+D. Comparar el crecimiento de dos grupos utilizando datos
+
+---
+
+### 5.
+
+La bioestadística se utiliza principalmente para:
+
+A. Analizar datos biológicos
+
+B. Estudiar únicamente reacciones químicas
+
+C. Analizar exclusivamente fenómenos astronómicos
+
+D. Diseñar instrumentos de laboratorio
+
+---
+
+# II. Variables y Tipos de Datos
+
+### 6.
+
+¿Cuál es una variable cuantitativa continua?
+
+A. Altura de una planta
+
+B. Tipo de suelo
+
+C. Color de pétalos
+
+D. Especie observada
+
+---
+
+### 7.
+
+¿Cuál es una variable cuantitativa discreta?
+
+A. Longitud de una hoja
+
+B. Temperatura ambiental
+
+C. Número de semillas producidas
+
+D. Peso seco
+
+---
+
+### 8.
+
+¿Cuál es una variable nominal?
+
+A. Color de flor
+
+B. Nivel educativo
+
+C. Altura de una planta
+
+D. Número de semillas
+
+---
+
+### 9.
+
+¿Cuál es una variable ordinal?
+
+A. Especie observada
+
+B. Nivel educativo
+
+C. Peso corporal
+
+D. Número de hojas
+
+
+---
+
+### 10.
+
+¿Cuál variable puede tomar valores decimales?
+
+A. Número de estudiantes
+
+B. Número de flores
+
+C. Cantidad de frutos
+
+D. Altura de una planta
+
+---
+
+# III. Muestreo
+
+### 11.
+
+El objetivo principal del muestreo es:
+
+A. Eliminar la variabilidad
+
+B. Obtener información sobre una población utilizando un subconjunto
+
+C. Sustituir completamente a la población
+
+D. Garantizar resultados exactos
+
+---
+
+### 12.
+
+¿Cuál es una ventaja del muestreo aleatorio?
+
+¿Cuál es una ventaja del muestreo aleatorio?
+
+A. Reduce la posibilidad de sesgo de selección
+
+B. Garantiza que todos los individuos sean incluidos
+
+C. Elimina la variación natural de la población
+
+D. Produce muestras idénticas en cada estudio
+
+---
+
+### 13.
+
+Una muestra representativa es aquella que:
+
+A. Refleja adecuadamente las características de la población
+
+B. Tiene el mismo tamaño que la población
+
+C. Contiene únicamente individuos extremos
+
+D. Produce la media más alta
+
+---
+
+### 14.
+
+Seleccionar únicamente amigos para una encuesta es un ejemplo de:
+
+A. Muestreo estratificado
+
+B. Muestreo sistemático
+
+C. Muestreo aleatorio simple
+
+D. Muestreo sesgado
+
+---
+
+### 15.
+
+Un censo consiste en estudiar:
+
+A. Una muestra aleatoria
+
+B. Todos los individuos de la población
+
+C. Solamente individuos disponibles
+
+D. Una fracción representativa
+
+---
+
+# IV. Tablas de Frecuencia
+
+### 16.
+
+¿Cuál es la principal función de una tabla de frecuencia?
+
+A. Organizar y resumir observaciones
+
+B. Calcular hipótesis
+
+C. Estimar causalidad
+
+D. Eliminar errores experimentales
+
+---
+
+### 17.
+
+La frecuencia absoluta corresponde a:
+
+A. El porcentaje de individuos en una categoría
+
+B. El porcentaje acumulado hasta una categoría
+
+C. El número de observaciones en una categoría
+
+D. El número total de categorías observadas
+
+---
+
+### 18.
+
+La frecuencia relativa corresponde a:
+
+A. El número de observaciones en una categoría
+
+B. La proporción de observaciones en una categoría
+
+C. La diferencia entre dos frecuencias
+
+D. El número total de observaciones
+
+---
+
+### 19.
+
+Si una categoría aparece 20 veces en una muestra de 100 observaciones, su frecuencia relativa es:
+
+A. 5%
+
+B. 10%
+
+C. 80%
+
+D. 20%
+
+---
+
+### 20.
+
+La siguiente tabla resume el color de flores observadas.
+
+| Color | Frecuencia |
+|---------|---------:|
+| Rojo | 10 |
+| Blanco | 15 |
+| Amarillo | 5 |
+
+¿Cuál color fue observado con mayor frecuencia?
+
+A. Rojo
+
+B. Blanco
+
+C. Amarillo
+
+D. No puede determinarse
+
+---
+
+# V. Gráficos
+
+### 21.
+
+Si una distribución contiene varios valores extremadamente grandes, ¿cuál medida de tendencia central suele verse más afectada?
+
+A. Moda
+
+B. Mediana
+
+C. Media
+
+D. Cuartil
+
+---
+
+### 22.
+
+¿Cuál gráfico es más apropiado para representar una variable continua?
+
+A. Histograma
+
+B. Diagrama de barras
+
+C. Diagrama circular
+
+D. Tabla de frecuencia
+
+---
+
+### 23.
+
+¿Cuál gráfico se utiliza para examinar la relación entre dos variables cuantitativas?
+
+A. Histograma
+
+B. Diagrama de dispersión
+
+C. Diagrama circular
+
+D. Diagrama de barras
+
+---
+
+### 24.
+
+Observe la Figura 1.
+
+```{mermaid}
+xychart-beta
+    title "Figura 1"
+    x-axis [1,2,3,4,5,6,7]
+    y-axis Frecuencia 0 --> 12
+    bar [2,5,9,11,9,5,2]
+```
+
+La distribución parece:
+
+A. Sesgada a la izquierda
+
+B. Uniforme
+
+C. Simétrica
+
+D. Sesgada a la derecha
+
+---
+
+### 25.
+
+Observe la Figura 2.
+
+```{mermaid}
+xychart-beta
+    title "Figura 2"
+    x-axis [1,2,3,4,5,6,7]
+    y-axis Frecuencia 0 --> 12
+    bar [11,9,7,5,3,2,1]
+```
+
+La distribución parece:
+
+A. Sesgada a la izquierda
+
+B. Bimodal
+
+C. Simétrica
+
+D. Sesgada a la derecha
+
+---
+
+### 26.
+
+Observe la Figura 3.
+
+```{mermaid}
+xychart-beta
+    title "Figura 3"
+    x-axis [1,2,3,4,5,6,7]
+    y-axis Frecuencia 0 --> 12
+    bar [2,8,10,3,10,8,2]
+```
+
+La distribución es:
+
+A. Uniforme
+
+B. Simétrica con una sola moda
+
+C. Bimodal
+
+D. Sesgada a la derecha
+
+---
+
+### 27.
+
+Observe la Figura 4.
+
+```{mermaid}
+xychart-beta
+    title "Frecuencia por especie"
+    x-axis [A,B,C,D]
+    y-axis Frecuencia 0 --> 20
+    bar [8,12,17,10]
+```
+
+¿Cuál categoría presenta la frecuencia más alta?
+
+A. Especie C
+
+B. Especie D
+
+C. Especie A
+
+D. Especie B
+
+---
+---
+
+# VI. Tendencia Central
+
+### 28.
+
+La media representa:
+
+A. El valor más frecuente
+
+B. El promedio aritmético de las observaciones
+
+C. El valor central de los datos ordenados
+
+D. La diferencia entre el mayor y el menor valor
+
+
+---
+
+### 29.
+
+La mediana representa:
+
+A. El promedio de las observaciones.
+
+B. El valor más frecuente.
+
+C. El valor central cuando las observaciones se ordenan.
+
+D. Una medida de dispersión.
+
+---
+
+### 30.
+
+La moda representa:
+
+A. El valor que ocurre con mayor frecuencia.
+
+B. El valor central de los datos.
+
+C. El promedio aritmético.
+
+D. La dispersión de los datos.
+
+---
+
+### 31.
+
+¿Cuál es la media de 2, 4 y 6?
+
+A. 2
+
+B. 3
+
+C. 4
+
+D. 6
+
+---
+
+### 32.
+
+¿Cuál es la mediana de 1, 3, 5, 7 y 9?
+
+A. 3
+
+B. 5
+
+C. 6
+
+D. 7
+
+---
+
+# VII. Variabilidad y Fórmulas
+
+### 33.
+
+El rango se calcula como:
+
+A. Media − Mediana
+
+B. Máximo − Mínimo
+
+C. Suma de todos los valores
+
+D. Media ÷ n
+
+---
+
+### 34.
+
+Si todos los valores observados son iguales, el rango es:
+
+A. Igual a la media
+
+B. 1
+
+C. No puede calcularse
+
+D. 0
+
+---
+
+### 35.
+
+Observe la Figura 5.
+
+```{mermaid}
+xychart-beta
+    title "Figura 5"
+    x-axis [1,2,3,4,5,6,7]
+    y-axis Frecuencia 0 --> 12
+    bar [5,5,6,2,6,5,5]
+```
+
+Una varianza grande indica:
+
+A. Los datos presentan poca dispersión
+
+B. Los datos están concentrados cerca de la media
+
+C. Los datos presentan mayor dispersión
+
+D. La distribución es necesariamente asimétrica
+
+---
+
+### 36.
+
+La fórmula
+
+$$
+\bar{x}=\frac{\sum x}{n}
+$$
+
+calcula:
+
+A. Mediana
+
+B. Moda
+
+C. Media
+
+D. Rango
+
+---
+
+### 37.
+
+La fórmula
+
+$$
+s^2=\frac{\sum(x_i-\bar{x})^2}{n-1}
+$$
+
+se utiliza para medir:
+
+A. La tendencia central de los datos
+
+B. La frecuencia relativa
+
+C. La dispersión de los datos respecto a la media
+
+D. La asimetría de una distribución
+
+---
+
+### 38.
+
+La fórmula
+
+$$
+\frac{f}{n}\times100
+$$
+
+se utiliza para calcular:
+
+A. Frecuencia porcentual
+
+B. Varianza
+
+C. Media
+
+D. Mediana
+
+---
+
+# VIII. Respuesta Corta
+
+### 39. (2 puntos)
+
+Explique brevemente la diferencia entre una población y una muestra.
+
+\vspace{1cm}
+
+---
+
+### 40. (2 puntos)
+
+Mencione una ventaja del muestreo aleatorio.
+
+\vspace{1cm}
+
+\newpage
+
+# CLAVE DE RESPUESTAS
+
+| Pregunta | Respuesta |
+|-----------|-----------|
+| 1 | A |
+| 2 | B |
+| 3 | C |
+| 4 | D |
+| 5 | A |
+| 6 | A |
+| 7 | C |
+| 8 | B |
+| 9 | D |
+| 10 | D |
+| 11 | B |
+| 12 | C |
+| 13 | A |
+| 14 | D |
+| 15 | B |
+| 16 | A |
+| 17 | C |
+| 18 | B |
+| 19 | D |
+| 20 | C |
+| 21 | C |
+| 22 | A |
+| 23 | B |
+| 24 | C |
+| 25 | D |
+| 26 | C |
+| 27 | A |
+| 28 | B |
+| 29 | C |
+| 30 | A |
+| 31 | C |
+| 32 | B |
+| 33 | B |
+| 34 | D |
+| 35 | A |
+| 36 | C |
+| 37 | C |
+| 38 | A |

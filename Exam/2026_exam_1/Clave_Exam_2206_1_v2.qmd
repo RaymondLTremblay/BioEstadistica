@@ -1,0 +1,159 @@
+---
+format:
+  html:
+    embed-resources: true
+  pdf:
+    documentclass: article
+    papersize: legal
+    geometry:
+      - legalpaper
+      - margin=1in
+toc: false
+number-sections: false
+---
+
+```{=html}
+<style>
+@page { size: 8.5in 14in; margin: 1in; }
+@media print { body { max-width: 6.5in; } }
+</style>
+```
+
+```{r logo, echo=FALSE, fig.align="left", out.width="1.5in"}
+if (file.exists("logo_uprh.png")) knitr::include_graphics("logo_uprh.png")
+```
+
+**UNIVERSIDAD DE PUERTO RICO EN HUMACAO**\
+**Departamento de Biología**\
+**BIOL3740 - Biometry**
+
+# CLAVE DE RESPUESTAS
+
+Corresponde a `Exam_2206_1_v2.qmd`. **NO distribuir con el examen.**
+
+Alcance: capítulos 02, 03, 04, 06, 07 y 08. El capítulo 05 (Historia breve) no se
+incluye. El capítulo 09 (Gráficos) tampoco: las preguntas 25 a 27 evalúan la forma
+de la distribución, que se discute en los capítulos 06 y 08.
+
+## Distribución por nivel de dificultad
+
+| Nivel | Preguntas | Cantidad | Por ciento |
+|:--|:--|--:|--:|
+| Sencillo | 1 a 20 | 20 | 50% |
+| Intermedio | 21 a 34, 39, 40 | 16 | 40% |
+| Difícil | 35 a 38 | 4 | 10% |
+| **Total** | | **40** | **100%** |
+
+Todas las preguntas valen 2 puntos, para un total de 80 puntos. Si prefiere ponderar
+por dificultad, una alternativa es 2 puntos las sencillas, 2 las intermedias y 4 las
+difíciles, para un total de 88 puntos.
+
+## Clave
+
+| Pregunta | Respuesta | Nivel | Capítulo |
+|:--------:|:---------:|:------|:---------|
+| 1 | A | Sencillo | 02 |
+| 2 | D | Sencillo | 03 |
+| 3 | B | Sencillo | 03 |
+| 4 | C | Sencillo | 02 |
+| 5 | D | Sencillo | 02 |
+| 6 | B | Sencillo | 02 |
+| 7 | B | Sencillo | 02 |
+| 8 | D | Sencillo | 02 |
+| 9 | D | Sencillo | 03 |
+| 10 | A | Sencillo | 03 |
+| 11 | B | Sencillo | 08 |
+| 12 | A | Sencillo | 08 |
+| 13 | D | Sencillo | 06 |
+| 14 | B | Sencillo | 06 |
+| 15 | C | Sencillo | 06 |
+| 16 | C | Sencillo | 06 |
+| 17 | C | Sencillo | 06 |
+| 18 | D | Sencillo | 07 |
+| 19 | B | Sencillo | 07 |
+| 20 | A | Sencillo | 04 |
+| 21 | C | Intermedio | 06 |
+| 22 | D | Intermedio | 07 |
+| 23 | C | Intermedio | 07 |
+| 24 | B | Intermedio | 07 |
+| 25 | A | Intermedio | 06, 08 |
+| 26 | D | Intermedio | 08 |
+| 27 | A | Intermedio | 06, 08 |
+| 28 | A | Intermedio | 06, 08 |
+| 29 | D | Intermedio | 03 |
+| 30 | C | Intermedio | 03 |
+| 31 | C | Intermedio | 08 |
+| 32 | A | Intermedio | 04 |
+| 33 | B | Intermedio | 04 |
+| 34 | D | Intermedio | 04 |
+| 35 | A | Difícil | 06, 07 |
+| 36 | C | Difícil | 07 |
+| 37 | D | Difícil | 07 |
+| 38 | C | Difícil | 07 |
+
+Distribución de las respuestas: A = 9, B = 8, C = 10, D = 11.
+
+## Figuras
+
+El examen tiene 12 figuras, todas generadas con ggplot2 dentro del documento.
+
+| Figura | Pregunta | Qué muestra |
+|:--:|:--:|:--|
+| 1 | 21 | Diagrama de puntos con un valor extremo de 100 cm |
+| 2 | 22 | Cinco observaciones idénticas, dispersión cero |
+| 3 | 24 | Diagrama de caja de nueve valores, la caja va de 3 a 7 y la línea interior está en 5 |
+| 4 | 25 | Distribución aproximadamente simétrica |
+| 5 | 26 | Distribución sesgada a la derecha |
+| 6 | 27 | Distribución aproximadamente uniforme, con variación menor entre las barras |
+| 7 | 28 | Distribución unimodal con cola larga hacia la derecha |
+| 8 | 30 | Cinco lecturas agrupadas, lejos del peso verdadero |
+| 9 | 35 | Distribución de 30 observaciones, antes de sumar la constante |
+| 10 | 37 | Las 40 observaciones y el intervalo de confianza del promedio |
+| 11 | 38 | Dos conjuntos con igual media e igual rango |
+| 12 | 40 | Dos conjuntos con igual media y distinta dispersión |
+
+La Figura 10 es la más importante del examen desde el punto de vista pedagógico:
+muestra que las observaciones se extienden de 2 a 9 cm mientras el intervalo de
+confianza ocupa apenas de 4.2 a 5.8 cm, de modo que los distractores A, B y C se
+pueden descartar mirando la figura.
+
+En la Figura 9 se presenta solamente la distribución original. El estudiante tiene
+que imaginar el desplazamiento, no leerlo de la figura.
+
+## Notas sobre las preguntas difíciles
+
+- **35.** Sumar una constante desplaza toda la distribución sin cambiar las distancias
+  entre las observaciones. La media aumenta en 5 y la desviación estándar no cambia.
+- **36.** La desviación estándar estima la variabilidad de la población y no depende
+  del tamaño de la muestra. El error estándar es $s/\sqrt{n}$, así que al pasar de
+  n = 25 a n = 100 se reduce aproximadamente a la mitad, porque $\sqrt{100}/\sqrt{25} = 2$.
+- **37.** El distractor A y el distractor B son los errores más comunes: el intervalo
+  de confianza describe la incertidumbre sobre el promedio, no el rango donde caen
+  las observaciones individuales.
+- **38.** Ambos conjuntos tienen media 5 y rango 8. Las desviaciones del Conjunto A
+  son $-4, 0, 0, 0, 4$ y las del Conjunto B son $-4, -4, 0, 4, 4$, de modo que el
+  Conjunto B tiene mayor varianza. El punto del ejercicio es que el rango ignora
+  lo que ocurre en el interior de la distribución.
+
+## Nota sobre los cuartiles
+
+La pregunta 14 pide recordar que la mediana es Q50. La pregunta 24 pide leer Q25 y
+Q75 en los extremos de la caja, y Q50 en la línea interior. El enunciado de la 24 ya
+no dice qué representa la caja: el estudiante tiene que saberlo.
+
+Para estos nueve valores, `quantile(1:9)` en R devuelve Q25 = 3, Q50 = 5 y Q75 = 7,
+de modo que el rango intercuartil es 4. El distractor C (3, 4 y 7) corresponde al
+estudiante que lee bien la caja pero ubica mal la línea interior.
+
+## Criterios para las respuestas cortas
+
+**39. (2 puntos)** La media sola no describe la distribución. Se otorga 1 punto por
+señalar que la media no informa sobre la dispersión ni sobre la forma, y que un valor
+extremo o una distribución bimodal puede dejar a la media en un lugar donde hay pocas
+observaciones. Se otorga 1 punto por pedir un índice adicional apropiado: desviación
+estándar, rango intercuartil, mediana, o un histograma.
+
+**40. (2 puntos)** La respuesta es el Conjunto B. Se otorga 1 punto por identificarlo
+y 1 punto por la justificación: las observaciones del Conjunto B se alejan mucho más
+de la media de 10, mientras que las del Conjunto A están casi todas sobre la media.
+No se otorga el punto de justificación si el estudiante solamente calcula.

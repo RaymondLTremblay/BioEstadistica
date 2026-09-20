@@ -1,0 +1,451 @@
+# Medidas de tendencia central
+
+Fecha de la última revisión
+```{r c06-fecha, echo=FALSE}
+
+Sys.Date()
+```
+
+```{r c06-hex, echo=FALSE, fig.show="hold", out.width="20%", fig.align="default"}
+knitr::include_graphics(c("Graficos/hex_ggversa.png", "Graficos/hex_error.png"))
+```
+
+
+```{r c06-colorize, eval=TRUE, echo=FALSE}
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color, 
+      x)
+  } else x
+}
+
+#`r colorize("some words in red", "red")`
+```
+
+```{r c06-libs, message=FALSE}
+library(ggplot2)
+library(Hmisc)
+library(gridExtra) # Un paquete para organizar las figuras de ggplot2
+```
+
+***
+
+Las medidas de tendencia central se llaman así porque su valor tiende a ubicarse en **el centro** de la distribución de los datos. Hay por lo menos 16 tipos de medidas de tendencia central (<https://en.wikipedia.org/wiki/Central_tendency>). En este curso mencionaremos solamente 3 de ellas.
+
+  - El promedio aritmético
+  - La mediana
+  - La moda
+
+::: {.definicion}
+El **promedio** (media) es la suma de los valores dividida entre $n$. La **mediana** es el valor central de los datos ordenados. La **moda** es el valor que aparece con más frecuencia.
+
+::: {.historia}
+El **promedio aritmético** se usa desde la antigüedad, pero se volvió central en la ciencia con **Gauss** y **Laplace** al promediar mediciones astronómicas. El término **mediana** lo popularizó **Francis Galton** en 1881 como una medida robusta del centro.
+:::
+:::
+
+
+***
+
+## Calculando el promedio
+
+::: {.funcion}
+**`mean(x)`** — promedio aritmético.
+
+- **Qué hace:** suma los valores de `x` y los divide entre la cantidad de datos.
+- **Cuidado:** es sensible a los valores atípicos; si hay `NA`, usa `mean(x, na.rm = TRUE)`.
+:::
+
+Aquí creamos una lista de datos con la función **c( )** y con la función **mean** podemos calcular el promedio.   El promedio es la suma de los valores dividida por la cantidad de valores en la lista.  
+$$\bar{x}=\frac{\sum_{i=1}^{n}x_i}n$$
+
+
+
+```{r c06-promedio}
+x=c(0,1,2,3,4,5,6,7,8,9,10)
+
+mean(x)
+
+```
+
+***
+
+## Cuando el promedio no está localizado en el centro
+
+Digamos que yo tengo la cantidad de semillas producida por 11 plantas, la primera no produjo semillas, la segunda 2 semillas y así sucesivamente, hasta la última que produjo 1000 semillas. Nota que en este caso el promedio no se encuentra en el centro de los datos, por lo que NO es un buen indicador de la tendencia central.  Cuando esto ocurre uno no debería usar el promedio para describir la tendencia central de los datos.
+
+::: {.advertencia}
+El **promedio es muy sensible a valores atípicos** (*outliers*) y a las distribuciones sesgadas: un solo valor extremo puede arrastrarlo lejos del centro. En esos casos la **mediana** describe mejor la tendencia central.
+:::
+
+```{r c06-promedio-atipico}
+x=c(0,1,2,3,4,5,6,7,8,9,1000)
+
+
+sum(x)/length(x)
+
+
+mean(x)
+
+```
+
+***
+
+## La mediana
+
+::: {.funcion}
+**`median(x)`** — mediana.
+
+- **Qué hace:** ordena los datos y devuelve el valor central (o el promedio de los dos centrales si `n` es par).
+- **Ventaja:** es **robusta** a los valores atípicos, por eso describe mejor el centro en distribuciones sesgadas.
+:::
+
+## Con **n** impares
+Cuando el promedio no es un índice adecuado de la tendencia central tenemos dos alternativas: la mediana y la moda.  La mediana es el valor en el centro después de haber organizado los datos del más pequeño al más grande.  
+
+$$\text{Mediana} = x_{\left(\frac{n+1}{2}\right)}$$
+Donde **n** es la cantidad de valores ordenados del más pequeño al más grande; se selecciona el valor que queda en el centro. Lo que hace la función `median()` es poner los valores en orden y determinar cuál es el valor central. Aquí, para demostrar lo que hace la función: 1) creo una lista de valores, 2) los pongo en orden y 3) al mirarlos en orden vemos que el valor **6** queda en el centro. Pero este paso no es necesario, ya que la función `median()` lo hace automáticamente.  
+
+
+
+```{r c06-mediana-impar}
+b=c(247,0,3,43626,26,23,1,2,4,5,24,6,7)
+b=sort(b)
+b
+length(b)
+median(b)
+
+mean(b)
+```
+
+```{r c06-mediana-muchos}
+
+muchos=c(0:100000, 1000000)
+
+
+
+mean(muchos)
+median(muchos)
+
+```
+
+
+
+## Ejemplo # 2 de mediana
+
+```{r c06-mediana-ej2}
+datos=c(1:100)
+datos
+median(datos)
+```
+
+
+```{r c06-mediana-km}
+
+km=c(37, 13, 19, 4.35, 46, 28.2)
+
+sort(km)
+median(km)
+```
+
+
+
+## Con **n** pares
+
+Cuando hay una cantidad **par** de datos, se suman los dos valores centrales y se calcula su promedio. 
+
+$$\text{Mediana} = \frac{1}{2}\left( x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)} \right)$$
+En el siguiente caso tanto el valor 6 como el 7 quedan en el centro, por lo que la mediana es el promedio de estos dos valores.  
+```{r c06-mediana-par}
+b=c(247,0,3,43626,26,23,1,2,4,5,24,6,7,7)
+b=sort(b)
+b
+median(b)
+```
+
+***
+
+## La moda
+
+La moda es el valor más común. Para encontrar la moda hay que crear una función, ya que R base no incluye una para ello.
+
+```{r c06-moda-funcion}
+
+# Create mode() function to calculate mode
+mode <- function(x, na.rm = FALSE) {
+  
+  if(na.rm){ #if na.rm is TRUE, remove NA values from input x
+    x = x[!is.na(x)]
+  }
+
+  val <- unique(x)
+  return(val[which.max(tabulate(match(x, val)))])
+}
+
+```
+
+
+```{r}
+#install.packages("DescTools")
+
+
+library(DescTools)
+Mode(c(1, 2, 2, 3, 3, 3, 4))
+
+Mode(b)
+
+n=c(1,1, 2,3,4,5,6,7,8,9, 9)
+
+Mode(n)
+
+
+```
+
+
+
+
+Ya pueden usar `mode()` para encontrar la moda del conjunto de datos. Vemos que el valor **7** es el más común en la lista.   
+
+
+```{r c06-moda-b}
+Mode(b)
+```
+
+***
+
+
+```{r c06-moda-bebe}
+bebe=c(2, 2,4, 17, 1, 2, .5, 3, 2, 2)
+
+mode(bebe)
+```
+
+
+
+## Cuando es que el promedio, mediana y moda son iguales?
+
+
+Los tres valores de tendencia central coinciden (o casi) cuando la distribución es **simétrica**, como la distribución normal en forma de campana. Aquí preparo una lista de datos con una distribución aproximadamente simétrica y evaluamos dónde quedan los tres valores. Se usa la función **rpois** (distribución de **Poisson**, que con una media grande se aproxima a la normal) para crear un conjunto de 5000 datos al azar con una media de 100.   
+
+```{r c06-poisson-datos, warning=FALSE, message=FALSE}
+
+set.seed(4356)
+datos=rpois(5000, 100)
+datos
+df1=data.frame(datos)
+head(df1)
+```
+
+```{r}
+mean(datos)
+mean(df1$datos)
+median(df1$datos)
+mode(df1$datos)
+```
+
+
+Lo que uno observa es que los tres valores son muy cercanos entre sí.   
+
+```{r c06-poisson-medidas, warning=FALSE, message=FALSE}
+
+mean(df1$df)
+median(df1$df)
+mode(df1$df)
+```
+
+Podemos visualizar estos datos usando dos gráficos. En el de la izquierda se ve la distribución con las tres líneas (promedio, mediana y moda). En el de la derecha se observa la misma información pero solo los valores entre 94 y 105. Se ve que la mediana y el promedio son casi iguales y la moda varía un poco (se encuentra donde la barra es más alta). Los tres valores quedan cerca del centro.  
+
+
+```{r c06-poisson-valores, warning=FALSE, message=FALSE}
+
+pro=mean(df1$df)
+med=median(df1$df)
+mod99=mode(df1$df)
+mod99
+```
+
+```{r c06-hist-completo, warning=FALSE, message=FALSE}
+library(ggplot2)
+
+a=ggplot(df1, aes(df))+
+  geom_histogram(fill="orange", colour="white", binwidth = 1)+
+  geom_vline(aes(xintercept = pro), colour="red")+
+  geom_vline(aes(xintercept = med), colour="blue")+
+  geom_vline(aes(xintercept = mod99), colour="green")+
+  theme(legend.position = "none")
+a
+```
+
+
+
+```{r c06-hist-zoom, warning=FALSE, message=FALSE}
+library(ggplot2)
+b=ggplot(df1, aes(df))+
+  geom_histogram(fill="orange", colour="white", binwidth = 1)+
+  geom_vline(aes(xintercept = pro), colour="red")+
+  geom_vline(aes(xintercept = med), colour="blue")+
+  geom_vline(aes(xintercept = mod99), colour="green")+
+  xlim(94,105)+
+  theme(legend.position = "none")
+b
+
+```
+
+```{r c06-hist-grid, warning=FALSE, message=FALSE}
+
+
+gridExtra::grid.arrange(a,b, ncol=2)
+
+```
+
+***
+
+## Distribución cuando los tres valores de tendencia central no son iguales
+
+En estas distribuciones (sesgadas) hay un exceso de valores pequeños o grandes. Esto hace que los tres índices de tendencia central no queden cerca unos de otros. 
+
+```{r c06-beta-datos, warning=FALSE, message=FALSE}
+library(tidyverse)
+dfb1=round(rbeta(10000, 3,1, ncp = 0),3)
+dfb1=tibble(dfb1)
+#head(dfb)
+df2= round(rbeta(10000, 1,3, ncp = 0),3)
+df2=tibble(df2)
+#head(df2)
+```
+
+
+1. ¿Cuál es la línea del promedio, la moda y la mediana en cada gráfico?
+
+```{r c06-beta-graficos, warning=FALSE, message=FALSE}
+mea=mean(dfb1$dfb1)
+med=median(dfb1$dfb1)
+mod=statip::mfv1(dfb1$dfb1)
+
+meab=mean(df2$df2)
+medb=median(df2$df2)
+modb=statip::mfv1(df2$df2)
+
+
+SesgadoDerecho=ggplot(dfb1, aes(dfb1))+
+  geom_histogram(fill="orange", colour="white")+
+  geom_vline(aes(xintercept = mea), colour="red")+
+  geom_vline(aes(xintercept = med), colour="blue")+
+  geom_vline(aes(xintercept = mod), colour="green")+
+  theme(legend.position = "none")
+
+SesgadoIzquierda=ggplot(df2, aes(df2))+
+  geom_histogram(fill="orange", colour="white")+
+  geom_vline(aes(xintercept = meab), colour="red")+
+  geom_vline(aes(xintercept = medb), colour="blue")+
+  geom_vline(aes(xintercept = modb), colour="green")+
+  theme(legend.position = "none")
+
+SesgadoDerecho
+SesgadoIzquierda
+
+library(ggpubr)
+#ggarrange(c,d, nrow=2, ncol=1)
+
+library(grid)
+#grid.arrange(rectGrob(), rectGrob())
+#marrangeGrob(c,d, nrow=2)
+
+```
+
+
+```{r c06-beta-extra}
+#c
+#d
+#library(scater)
+#multiplot(c,d, ncol=2)
+```
+
+
+***
+
+## Variables binomial
+
+En el siguiente ejemplo podemos ver claramente que las medidas de tendencia central no son adecuadas.
+
+Primero producimos un conjunto de datos que tiene solamente dos alternativas 0 y 1.  Para facilitar los datos e imaginar lo que quiere decir estos datos que cuando es un 0 la persona no tiene hijos y cuando es un 1 tiene hijos. 
+
+
+```{r c06-binomial-datos, warning=FALSE, message=FALSE}
+dfBin=replicate(10000,rbinom(length(.6), size=1,prob =0.6))
+dfBin=data.frame(dfBin)
+head(dfBin)
+```
+Ahora vamos a producir el gráfico. Lo que uno observa es que el promedio está en el centro, cerca de 0.6, pero no hay ningún dato cerca de ese valor. El promedio no representa la "tendencia central" de esta distribución.
+
+::: {.nota}
+Con datos **binarios** (0/1), el promedio es en realidad una **proporción** (la fracción de unos). Las medidas de tendencia central no son apropiadas para describir este tipo de datos.
+:::  
+
+```{r c06-binomial-grafico, warning=FALSE, message=FALSE}
+mea=mean(dfBin$dfBin)
+med=median(dfBin$dfBin)
+mod=mode(dfBin$dfBin)
+mea
+
+
+ggplot(dfBin, aes(dfBin))+
+  geom_histogram(fill="orange", colour="white")+
+  geom_vline(aes(xintercept = mea), colour="red")+
+  geom_vline(aes(xintercept = med), colour="blue")+
+  geom_vline(aes(xintercept = mod), colour="green")+
+  theme(legend.position = "none")
+```
+
+
+***
+
+### Preguntas de practica sobre medidas de tendencias central.
+
+
+1. ¿Cuando es que el promedio, mediana y moda son iguales?
+
+2. ¿Cuál es la moda de este conjunto de datos?
+
+```{r c06-ej-moda1}
+x=c(3,5,2,3,6,7,8,9, 1)
+x
+```
+
+
+3. ¿Cuál es la mediana de este conjunto de datos? Estos son la cantidad de cursos.
+
+
+```{r c06-ej-mediana1}
+y=c(3,5,2,3,6,7,8,9, 1)
+y
+```
+
+
+4. ¿Cuál es la mediana de este conjunto de datos?
+
+
+```{r c06-ej-mediana2}
+y=c(3,5,2,3,6,7,8,9, 1, 6)
+sort(y)
+```
+
+5. Para describir la medida central de este conjunto de datos, ¿se debería usar el promedio, la mediana o la moda?
+
+```{r c06-ej-medida}
+z=c(1,2,2,3,4,10, 100, 1000)
+z
+
+```
+
+
+6. ¿Cuál es la moda de los siguientes datos? Número de hijos que tienen los estudiantes universitarios.
+
+```{r c06-ej-moda2}
+Numero_hijos=c(1,0,0,0,0,0,0,0,0,0,1,3)
+
+Numero_hijos
+```
+
