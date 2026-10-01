@@ -6,21 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 11 Estadística Frecuentista | BioEstadística</title>
 <meta name="author" content="">
-<meta name="description" content='Fecha de la última revisión ## [1] "2026-09-20"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
+<meta name="description" content='Fecha de la última revisión ## [1] "2026-10-01"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba se conoce frecuentemente, de forma errónea, como la prueba de Chi cuadrado. Los...'>
 <meta name="generator" content="bookdown 0.48 with bs4_book()">
 <meta property="og:title" content="Capítulo 11 Estadística Frecuentista | BioEstadística">
 <meta property="og:type" content="book">
-<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-09-20"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
+<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-10-01"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba se conoce frecuentemente, de forma errónea, como la prueba de Chi cuadrado. Los...'>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 11 Estadística Frecuentista | BioEstadística">
-<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-09-20"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos...'>
+<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-10-01"  11.1 Bondad de ajuste y Tabla de contingencia Este tipo de prueba se conoce frecuentemente, de forma errónea, como la prueba de Chi cuadrado. Los...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_3-0.4.10/font.css" rel="stylesheet">
 <link href="libs/Fira_Code-0.4.10/font.css" rel="stylesheet">
 <link href="libs/Lora-0.4.10/font.css" rel="stylesheet">
 <script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link rel="icon" type="image/x-icon" href="favicon.ico">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/huxtable-6.0.2/huxtable.css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -99,16 +100,16 @@
 <span class="header-section-number">Capítulo 11</span> Estadística Frecuentista<a class="anchor" aria-label="anchor" href="#estad%C3%ADstica-frecuentista"><i class="fas fa-link"></i></a>
 </h1>
 <p>Fecha de la última revisión</p>
-<pre><code>## [1] "2026-09-20"</code></pre>
+<pre><code>## [1] "2026-10-01"</code></pre>
 <hr>
 <div id="bondad-de-ajuste-y-tabla-de-contingencia" class="section level2" number="11.1">
 <h2>
 <span class="header-section-number">11.1</span> Bondad de ajuste y Tabla de contingencia<a class="anchor" aria-label="anchor" href="#bondad-de-ajuste-y-tabla-de-contingencia"><i class="fas fa-link"></i></a>
 </h2>
-<p>Este tipo de prueba es frecuentemente conocido erróneamente como la prueba de Chi cuadrado. Los tipos de datos necesarios son distintos a las pruebas anteriores. En las pruebas que en los próximos módulos siempre habrá por lo menos una variable donde la unidad era el número de individuos, el largo o ancho en una unidad (cm, metro, celsius, etc) o sea una variable continua. Ahora para la pruebas de Bondad de ajuste y Tabla de Contingencia se contabiliza el número de eventos por categoría. En otras palabras, es la frecuencia con que ocurre un evento.</p>
+<p>Este tipo de prueba se conoce frecuentemente, de forma errónea, como la prueba de Chi cuadrado. Los tipos de datos necesarios son distintos a los de las otras pruebas. En las pruebas de los próximos módulos siempre habrá por lo menos una variable continua, donde la unidad es el largo o el ancho en una unidad de medida (cm, metros, grados Celsius, etc.). Ahora, para las pruebas de Bondad de ajuste y Tabla de contingencia, se contabiliza el número de eventos por categoría. En otras palabras, es la frecuencia con que ocurre un evento.</p>
 <p>En esta sección no estamos interesados en evaluar datos continuos como la altura o el tamaño. Las variables que se usan son categóricas; es decir, los valores son la frecuencia de un evento (o su ausencia).</p>
 <blockquote>
-<p>Los datos tienen que caer exactamente en una categoría, por ejemplo</p>
+<p>Los datos tienen que caer exactamente en una categoría, por ejemplo:</p>
 </blockquote>
 <blockquote>
 <ul>
@@ -116,15 +117,15 @@
 <li>presente o ausente.</li>
 <li>blanco, rojo, verde, azul.</li>
 <li>estar embarazada o no.</li>
-<li>Tiene el fenotipo dominante o recesivo.</li>
-<li>En una herencia mendeliana, los individuos son homocigóticos recesivo, dominantes o heterocigóticos.</li>
+<li>tener el fenotipo dominante o recesivo.</li>
+<li>en una herencia mendeliana, los individuos son homocigóticos recesivos, homocigóticos dominantes o heterocigóticos.</li>
 </ul>
 </blockquote>
 <hr>
 </div>
-<div id="qué-son-supuestos-1" class="section level2" number="11.2">
+<div id="qué-son-los-supuestos" class="section level2" number="11.2">
 <h2>
-<span class="header-section-number">11.2</span> Qué son supuestos<a class="anchor" aria-label="anchor" href="#qu%C3%A9-son-supuestos-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> Qué son los supuestos<a class="anchor" aria-label="anchor" href="#qu%C3%A9-son-los-supuestos"><i class="fas fa-link"></i></a>
 </h2>
 <p>Cuando hablamos de supuestos estamos hablando de las condiciones necesarias para que la prueba sea utilizada. El incumplimiento de los supuestos hace que los resultados de la prueba tengan una tasa de error de tipo I y de tipo II mayor que la especificada (por ejemplo, si se elige un <span class="math inline">\(\alpha\)</span> de 0.05, el error real sería mayor). Si se usan datos erróneos, la prueba puede ser completamente inválida.</p>
 <hr>
@@ -157,21 +158,21 @@
 <span><span class="co">#------Activar los paquetes-----</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-gregmisc/gmodels">gmodels</a></span><span class="op">)</span> <span class="co">## Análisis de datos de frecuencia</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span> <span class="co">## graficar los datos con la función "mosaicpLot"</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span> <span class="co">## "Grammer of Tables", tablas más bonitas</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span> <span class="co">## funciones y datos de apoyo (nota: "mosaicplot" es de R base, paquete graphics)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span> <span class="co">## "Grammar of Tables", tablas más bonitas</span></span></code></pre></div>
 <hr>
 </div>
-<div id="gregory-mendel-y-sus-guisantes" class="section level2" number="11.5">
+<div id="gregor-mendel-y-sus-guisantes" class="section level2" number="11.5">
 <h2>
-<span class="header-section-number">11.5</span> Gregory Mendel y sus guisantes<a class="anchor" aria-label="anchor" href="#gregory-mendel-y-sus-guisantes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.5</span> Gregor Mendel y sus guisantes<a class="anchor" aria-label="anchor" href="#gregor-mendel-y-sus-guisantes"><i class="fas fa-link"></i></a>
 </h2>
 <div class="historia">
 <p><strong>Gregor Mendel</strong>, un monje agustino, sentó las bases de la genética moderna con sus experimentos con guisantes (publicados en 1866). Las proporciones que predijo (como 3:1) son el ejemplo clásico para la prueba de bondad de ajuste, que compara las frecuencias observadas con las esperadas por una teoría.</p>
 </div>
-<p>Gregor Mendel (1822–1884), el padre de la herencia “mendeliana”, estaba interesado en determinar cómo se heredan las características de los organismos. En clases de biología y genética uno de los primeros ejemplos de herencia mendeliana es evaluar si cumple con lo que Mendel sugerió que es la razón de herencia. Si un fenotipo es heredado por un mecanismo sencillo de un gen con solamente dos alelos donde uno de los alelos es dominante y el otro es recesivo entonces hay solamente dos fenotipos posible. Por consecuencia lo más básico es determinar si la frecuencia de los fenotipos en una población sigue una razón mendeliana de 3:1, en otra palabra por cada 3 individuos de un fenotipo “x” hay un individuo del fenotipo “y”.</p>
+<p>Gregor Mendel (1822–1884), el padre de la herencia “mendeliana”, estaba interesado en determinar cómo se heredan las características de los organismos. En clases de biología y genética uno de los primeros ejemplos de herencia mendeliana es evaluar si se cumple lo que Mendel sugirió que es la razón de herencia. Si un fenotipo es heredado por un mecanismo sencillo de un gen con solamente dos alelos donde uno de los alelos es dominante y el otro es recesivo, entonces hay solamente dos fenotipos posibles. Por consecuencia, lo más básico es determinar si la frecuencia de los fenotipos en una población sigue una razón mendeliana de 3:1; en otras palabras, por cada 3 individuos de un fenotipo “x” hay un individuo del fenotipo “y”.</p>
 <p>Los datos que usaremos provienen directamente de los trabajos de Mendel. Aquí está la publicación original en alemán y la referencia a la traducción en inglés.</p>
 <p>Mendel, J.G. (1866). “Versuche über Pflanzenhybriden”, Verhandlungen des naturforschenden Vereines in Brünn, Bd. IV für das Jahr, 1865, Abhandlungen: 3–47, [1]. For the English translation, see: Druery, C.T.; Bateson, William (1901). “Experiments in plant hybridization” (PDF). Journal of the Royal Horticultural Society. 26: 1–32.</p>
-<p>Tabla de los resultados de experimentos original de Gregor Mendel con semillas redondas y arrugadas. Cada uno represente un experimento y la cantidad de guisantes redondos o arrugadas.</p>
+<p>Tabla de los resultados del experimento original de Gregor Mendel con semillas redondas y arrugadas. Cada fila representa una planta y la cantidad de guisantes redondos o arrugados.</p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
 <th>Plantas</th>
@@ -236,7 +237,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>En la pagina número 10 del articulo observamos los resultados de diferentes experimentos. En el experimento 1, la Planta #1, produjo un total de 57 semillas donde 45 eran redonda y 12 eran arrugadas. Si lo que esperamos es una razón de 3:1, las proporciones esperadas serían 0.75:0.25. Creamos un vector de datos de los valores observados (obs) y un vector de datos para la proporción esperada (esp).</p>
+<p>En la página número 10 del artículo observamos los resultados de diferentes experimentos. En el experimento 1, la Planta #1, produjo un total de 57 semillas, de las cuales 45 eran redondas y 12 eran arrugadas. Si lo que esperamos es una razón de 3:1, las proporciones esperadas serían 0.75:0.25. Creamos un vector de datos de los valores observados (obs) y un vector de datos para la proporción esperada (esp).</p>
 <hr>
 </div>
 <div id="bondad-de-ajuste." class="section level2" number="11.6">
@@ -249,9 +250,9 @@
 <div class="definicion">
 <p>La prueba <strong>ji-cuadrado (<span class="math inline">\(\chi^2\)</span>)</strong> compara las frecuencias <strong>observadas</strong> con las <strong>esperadas</strong> bajo la hipótesis nula. La <strong>bondad de ajuste</strong> compara una variable con proporciones teóricas; la <strong>tabla de contingencia</strong> evalúa si dos variables categóricas son independientes.</p>
 </div>
-<p>La prueba de bondad de ajuste y de tabla de contingencia son pruebas que evalúa la cantidad/frecuencia en las categorías y lo compara con un modelo nulo. En este caso lo que se compará es la cantidad de la frecuencia observada <span class="math inline">\(o\)</span>, con la frecuencia esperada <span class="math inline">\(e\)</span>. La formula es la siguiente</p>
+<p>Las pruebas de bondad de ajuste y de tabla de contingencia evalúan la frecuencia en las categorías y la comparan con un modelo nulo. En este caso lo que se compara es la frecuencia observada <span class="math inline">\(o\)</span> con la frecuencia esperada <span class="math inline">\(e\)</span>. La fórmula es la siguiente:</p>
 <p><span class="math display">\[\chi^2=\sum_{i=1}^{k}\frac{(o_i-e_i)^2}{e_i}\]</span></p>
-<p>Usamos un ejemplo sencillo de los datos de Mendel haciendo los cálculos a mano de una proporción 3:1 de herencia de los fenotipos redonda:arrugada. Los datos son de la primer linea de uno de los experimentos que hizo Mendel.</p>
+<p>Usamos un ejemplo sencillo de los datos de Mendel haciendo los cálculos a mano de una proporción 3:1 de herencia de los fenotipos redonda:arrugada. Los datos son de la primera línea de uno de los experimentos que hizo Mendel.</p>
 <div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">57</span><span class="op">*</span><span class="fl">.75</span></span></code></pre></div>
 <pre><code>## [1] 42.75</code></pre>
@@ -314,32 +315,32 @@
 </tbody>
 </table></div>
 <blockquote>
-<p>Los pasos para calcular el Chi Cuadrado:</p>
+<p>Los pasos para calcular el Chi cuadrado:</p>
 </blockquote>
 <blockquote>
 <ul>
-<li>Los valores esperados, en este caso fue una proporción de 3:1</li>
-<li>Las diferencias</li>
+<li>Calcular los valores esperados, en este caso con una proporción de 3:1</li>
+<li>Calcular las diferencias</li>
 <li>Cuadrar las diferencias</li>
-<li>División por el valor esperado (da los Chi Square parcial)</li>
-<li>Sumar los valores en #4.</li>
-<li>buscar en una tabla de Chi Square el valor critico de Chi Square para la cantidad de grupos menos 1 y el <span class="math inline">\(\alpha\)</span> correspondiente. En este caso se busca un <span class="math inline">\(\alpha\)</span> de 0.05 y el grado de libertad (n-1) = 2-1, n es el número de grupos.</li>
+<li>Dividir por el valor esperado (da los Chi cuadrado parciales)</li>
+<li>Sumar los valores del paso anterior.</li>
+<li>Buscar en una tabla de Chi cuadrado el valor crítico para la cantidad de categorías menos 1 y el <span class="math inline">\(\alpha\)</span> correspondiente. En este caso se busca un <span class="math inline">\(\alpha\)</span> de 0.05 y el grado de libertad (k-1) = 2-1 = 1, donde k es el número de categorías.</li>
 </ul>
 </blockquote>
-<p>Para determinar si es significado el valor de Chi Square observado se compara con el valor critico (de la tabla). Aquí usamos R para conseguir este valor. Note aquí se usa (1-0.05= 0.95) y el grado de libertad que es 1. Ahora se compara ese valor con 0.4737, Si el valor observado es menor que 3.841459, no se rechaza la hipótesis nula. En este caso no hay evidencia que los fenotipos se hereden diferente a 3:1.</p>
+<p>Para determinar si el valor de Chi cuadrado observado es significativo, se compara con el valor crítico (de la tabla). Aquí usamos R para conseguir este valor. Nota que aquí se usa (1-0.05 = 0.95) y el grado de libertad, que es 1. Ahora se compara ese valor con 0.4737. Si el valor observado es menor que 3.841459, no se rechaza la hipótesis nula. En este caso no hay evidencia de que los fenotipos se hereden de forma diferente a 3:1.</p>
 <div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.95</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 3.841459</code></pre>
-<p>No hay ninguna razón de hacer los cálculos a mano si tenemos a R para hacerlo. Nota aquí se hace la misma prueba con los mismos datos y tenemos el mismo resultado.</p>
+<p>No hay ninguna razón para hacer los cálculos a mano si tenemos a R para hacerlos. Nota que aquí se hace la misma prueba con los mismos datos y obtenemos el mismo resultado.</p>
 <hr>
 </div>
 <div id="primer-ejemplo" class="section level2" number="11.7">
 <h2>
 <span class="header-section-number">11.7</span> Primer ejemplo<a class="anchor" aria-label="anchor" href="#primer-ejemplo"><i class="fas fa-link"></i></a>
 </h2>
-<p>Lo que uno observa es el valor de la prueba de Bondad de ajuste tiene un Chi Cuadrado de 0.48, p =.49. Como el valor de <em>p</em> es mayor a 0.05, no se rechaza la hipótesis nula y que la frecuencia no es diferente de una proporción de 3:1.</p>
+<p>Lo que uno observa es que la prueba de Bondad de ajuste tiene un Chi cuadrado de 0.47, <em>p</em> = 0.49. Como el valor de <em>p</em> es mayor a 0.05, no se rechaza la hipótesis nula: la frecuencia no es diferente de una proporción de 3:1.</p>
 <div class="funcion">
-<p><strong><code>chisq.test(x, p)</code></strong> — prueba de ji-cuadrado.</p>
+<p><strong><code>chisq.test(x, p)</code></strong>: prueba de ji-cuadrado.</p>
 <ul>
 <li>
 <strong>Bondad de ajuste:</strong> <code>x</code> es un vector de frecuencias observadas y <code>p</code> las proporciones esperadas por la teoría (deben sumar 1).</li>
@@ -361,14 +362,14 @@
 ## X-squared = 0.47368, df = 1, p-value = 0.4913</code></pre>
 <div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cuando el valor de p es mayor a 0.05 no se rechaza la hipótesis nula</span></span>
-<span><span class="co"># Es el caso presente que la la herencia es de 3:1</span></span></code></pre></div>
+<span><span class="co"># En el caso presente no se rechaza que la herencia es de 3:1</span></span></code></pre></div>
 <hr>
 </div>
 <div id="segundo-ejemplo" class="section level2" number="11.8">
 <h2>
 <span class="header-section-number">11.8</span> Segundo ejemplo<a class="anchor" aria-label="anchor" href="#segundo-ejemplo"><i class="fas fa-link"></i></a>
 </h2>
-<p>Ahora evaluamos si la frecuencia de semillas redondas:arrugadas de todo el experimento sigue un patrón de 3:1. Se observa un Chi cuadrado de 0.83 y un valor de p=0.36; otra vez el valor está por encima de 0.05, y se concluye que la frecuencia de semillas redondas:arrugadas no es distinta de 3:1. No se rechaza la hipótesis nula.</p>
+<p>Ahora evaluamos si la frecuencia de semillas redondas:arrugadas de todo el experimento sigue un patrón de 3:1. Se observa un Chi cuadrado de 0.83 y un valor de <em>p</em> = 0.36; otra vez el valor está por encima de 0.05, y se concluye que la frecuencia de semillas redondas:arrugadas no es distinta de 3:1. No se rechaza la hipótesis nula.</p>
 <p>Vemos que, al reevaluar los experimentos de G. Mendel, obtenemos un resultado que apoya sus predicciones. Nota que G. Mendel <strong>NO</strong> tenía pruebas estadísticas para determinar si las frecuencias eran diferentes o no de 3:1; él hizo observaciones y llegó a sus conclusiones. ¿Recuerdas cuándo y por quién fue desarrollado este método?</p>
 <div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obs</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">336</span>,<span class="fl">101</span><span class="op">)</span></span>
@@ -380,58 +381,29 @@
 ## 
 ## data:  obs
 ## X-squared = 0.83066, df = 1, p-value = 0.3621</code></pre>
-<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obs</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">16</span><span class="op">)</span></span>
-<span><span class="va">esp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.50</span>,<span class="fl">0.50</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">obs</span>, p<span class="op">=</span><span class="va">esp</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-##  Chi-squared test for given probabilities
-## 
-## data:  obs
-## X-squared = 4.5455, df = 1, p-value = 0.03301</code></pre>
 <div id="este-ejercicio-cumple-con-los-supuestos" class="section level3" number="11.8.1">
 <h3>
 <span class="header-section-number">11.8.1</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos"><i class="fas fa-link"></i></a>
 </h3>
 <hr>
-<div class="inline-figure"><img src="Graficos/Tweety.svg.png" alt="" width="25%" style="float:right; padding:10px"></div>
-<ol style="list-style-type: decimal">
-<li>
-<p>Ejercicio: Cien pajaritos recibieron semillas de girasol con rayas negras o semillas negras. Setenta y cinco eligieron semillas negras. ¿Podemos concluir que la población de la que se tomó esta muestra tiene preferencia por las semillas de girasol negras sobre las semillas de girasol rayadas? (traducido del extracto 7.1 de Havel et al.).</p>
-<ul>
-<li>¿Cuál es la hipótesis nula?</li>
-<li>¿Cuál es la hipótesis alterna?</li>
-<li>Calcula los valores esperados</li>
-<li>Calcula el chi cuadrado</li>
-<li>¿Se rechaza o no se rechaza la Ho?</li>
-</ul>
-</li>
-</ol>
-</div>
-<div id="este-ejercicio-cumple-con-los-supuestos-1" class="section level3" number="11.8.2">
-<h3>
-<span class="header-section-number">11.8.2</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos-1"><i class="fas fa-link"></i></a>
-</h3>
-<hr>
 <hr>
 </div>
 </div>
-<div id="prueba-de-bondad-de-ajuste-tabla-de-contingencia-rxc" class="section level2" number="11.9">
+<div id="prueba-de-independencia-tabla-de-contingencia-rxc" class="section level2" number="11.9">
 <h2>
-<span class="header-section-number">11.9</span> Prueba de Bondad de Ajuste, Tabla de contingencia RxC<a class="anchor" aria-label="anchor" href="#prueba-de-bondad-de-ajuste-tabla-de-contingencia-rxc"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.9</span> Prueba de independencia, Tabla de contingencia RxC<a class="anchor" aria-label="anchor" href="#prueba-de-independencia-tabla-de-contingencia-rxc"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("MASS", dependencies = TRUE)</span></span></code></pre></div>
-<p>Esta prueba se usa para</p>
+<p>Esta prueba se usa para evaluar si dos variables categóricas son independientes.</p>
 <p>Los siguientes datos son de Field, Miles and Field 2012.</p>
-<p>Este conjunto de datos represente un experimento ficticio de tratar de entrenar 200 gatos para que bailen según si se les da una recompensa o no. Está basado en el concepto del psicólogo ruso Iván Pávlov (1849–1936) de que se puede motivar una acción dando una recompensa. Ese proceso se llama “condicionamiento”: un aprendizaje que ocurre por la asociación entre un estímulo ambiental y un comportamiento.</p>
+<p>Este conjunto de datos representa un experimento ficticio en el que se trata de entrenar 200 gatos para que bailen según si se les da una recompensa o no. Está basado en el concepto del psicólogo ruso Iván Pávlov (1849–1936) de que se puede motivar una acción dando una recompensa. Ese proceso se llama “condicionamiento”: un aprendizaje que ocurre por la asociación entre un estímulo ambiental y un comportamiento.</p>
 <p>&lt;<a href="https://en.wikipedia.org/wiki/Ivan_Pavlov" class="uri">https://en.wikipedia.org/wiki/Ivan_Pavlov</a>&gt;</p>
-<p>Primero entramos los datos directamente en una tabla</p>
+<p>Primero entramos los datos directamente en una tabla.</p>
 <p>Los datos son los siguientes:</p>
 <p>A 38 gatos se les dio una recompensa, y de estos 28 bailaron y 10 no bailaron. A 162 no se les dio recompensa, y de estos 48 bailaron y 114 no bailaron.</p>
-<p>Se crean dos listas con los resultados, se unen con <strong>cbind()</strong> y después se les añade un nombre a las filas con <strong>rownames()</strong>. Vemos ahora la tabla de frecuencias de cuantos gatos bailaron o no y si fueron entrenado por comido o cariño. Nota que no se puede añadir la tilde <strong>~</strong> a la <strong>n</strong> de cariño.</p>
-<div class="sourceCode" id="cb460"><pre class="downlit sourceCode r">
+<p>Se crean dos listas con los resultados, se unen con <strong>cbind()</strong> y después se les añade un nombre a las filas con <strong>rownames()</strong>. Vemos ahora la tabla de frecuencias de cuántos gatos bailaron o no y si fueron entrenados con comida o cariño. Nota que no se puede añadir la tilde <strong>~</strong> a la <strong>n</strong> de cariño.</p>
+<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Crear la tabla de contingencia</span></span>
 <span></span>
 <span><span class="va">comida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">28</span><span class="op">)</span></span>
@@ -457,15 +429,15 @@
 <h2>
 <span class="header-section-number">11.11</span> La hipótesis alterna<a class="anchor" aria-label="anchor" href="#la-hip%C3%B3tesis-alterna"><i class="fas fa-link"></i></a>
 </h2>
-<p>La cantidad de gatos que bailan depende que si recibieron cariño o comida.</p>
+<p>La cantidad de gatos que bailan depende de si recibieron cariño o comida.</p>
 </div>
 <div id="gráfico-de-mosaico" class="section level2" number="11.12">
 <h2>
 <span class="header-section-number">11.12</span> Gráfico de Mosaico<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-mosaico"><i class="fas fa-link"></i></a>
 </h2>
-<p>Podemos visualizar la frecuencia de los datos con un gráfico de mosaico. Si la hipótesis nula fuera cierta, la organización de las cajas debería ser más o menos de la misma proporción (relativa a su frecuencia). En este caso, la caja de los que reciben comida y no bailan es mucho más pequeña que la de los que bailan y reciben comida. Nota que esto no es una prueba es una visualización de los datos y puede ayudar a entender el patrón.</p>
-<div class="sourceCode" id="cb462"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot</a></span><span class="op">(</span><span class="va">catsTable</span>, color <span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="co"># El packete MASS</span></span></code></pre></div>
+<p>Podemos visualizar la frecuencia de los datos con un gráfico de mosaico. Si la hipótesis nula fuera cierta, la organización de las cajas debería ser más o menos de la misma proporción (relativa a su frecuencia). En este caso, la caja de los que reciben comida y no bailan es mucho más pequeña que la de los que bailan y reciben comida. Nota que esto no es una prueba, es una visualización de los datos que puede ayudar a entender el patrón.</p>
+<div class="sourceCode" id="cb460"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot</a></span><span class="op">(</span><span class="va">catsTable</span>, color <span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="co"># función de R base (paquete graphics)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c11-13-1.png" alt="" width="672"></div>
 <hr>
 <p>Haz una tabla con diferentes frecuencias y grafícalas con mosaicplot para evaluar cómo cambia el gráfico.</p>
@@ -475,80 +447,82 @@
 <h2>
 <span class="header-section-number">11.13</span> Prueba de Independencia de frecuencia.<a class="anchor" aria-label="anchor" href="#prueba-de-independencia-de-frecuencia."><i class="fas fa-link"></i></a>
 </h2>
-<p>En ingles se le conoce como “Contingency Tables”</p>
-<p>Los valores esperados en esta caso son calculados directamente de la tabla. Para cada celda <span class="math inline">\(E_{ij}\)</span> donde la {i} representa la fila y la {j} las columnas. El valor esperado se calcula multiplicando la suma de la fila por la suma <span class="math inline">\({R_i}\)</span> de la suma de la columna <span class="math inline">\({C_j}\)</span>. La formula de los valores esperados es la siguiente, donde la N es la suma total de datos. El primer paso es sumar la filas y la columnas de la tabla.</p>
-<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
+<p>En inglés se le conoce como “Contingency Tables”.</p>
+<p>Los valores esperados en este caso son calculados directamente de la tabla. Para cada celda <span class="math inline">\(E_{ij}\)</span>, la <em>i</em> representa la fila y la <em>j</em> la columna. El valor esperado se calcula multiplicando la suma de la fila <span class="math inline">\({R_i}\)</span> por la suma de la columna <span class="math inline">\({C_j}\)</span> y dividiendo por N. La fórmula de los valores esperados es la siguiente, donde la N es la suma total de datos. El primer paso es sumar las filas y las columnas de la tabla.</p>
+<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">catsTable</span></span></code></pre></div>
 <pre><code>##           comida carino
 ## No_bailan     10    114
 ## bailan        28     48</code></pre>
-<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="va">ct</span><span class="op">=</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">fila</span>, <span class="op">~</span><span class="va">comida</span>, <span class="op">~</span><span class="va">carino</span>, <span class="op">~</span><span class="va">suma</span>,</span>
 <span>           <span class="st">"No_bailan"</span>, <span class="fl">10</span>, <span class="fl">114</span>, <span class="fl">124</span>,</span>
-<span>           <span class="st">"bailan"</span>, <span class="fl">28</span>, <span class="fl">48</span>, <span class="fl">64</span>,</span>
+<span>           <span class="st">"bailan"</span>, <span class="fl">28</span>, <span class="fl">48</span>, <span class="fl">76</span>,</span>
 <span>           <span class="st">"suma"</span>, <span class="fl">38</span>, <span class="fl">162</span>, <span class="fl">200</span><span class="op">)</span></span>
 <span><span class="va">ct</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 × 4
 ##   fila      comida carino  suma
 ##   &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
 ## 1 No_bailan     10    114   124
-## 2 bailan        28     48    64
+## 2 bailan        28     48    76
 ## 3 suma          38    162   200</code></pre>
 <ul>
 <li>R= Rows</li>
 <li>C= Columns</li>
-<li>E = Estimate</li>
-<li>N = Sum</li>
+<li>E = Expected</li>
+<li>N = Total sum</li>
 </ul>
 <p><span class="math display">\[E_{ij}=\frac{\left(R_i\cdot C_j\right)}{N}\]</span></p>
 <ul>
 <li>F= Fila</li>
 <li>C= Columna</li>
-<li>E = Estimado</li>
-<li>N = Suma</li>
+<li>E = Esperado</li>
+<li>N = Suma total</li>
 </ul>
 <p><span class="math display">\[E_{ij}=\frac{\left(F_i\cdot C_j\right)}{N}\]</span>.</p>
 <p>Calculemos dos de los valores esperados</p>
 <ul>
 <li>Los gatos que reciben comida y bailan</li>
 </ul>
-<p><span class="math display">\[E_{12}=\frac{\left(R_2\cdot C_1\right)}{N}= \frac{(38*76)}{200}=14.44\]</span></p>
+<p><span class="math display">\[E_{21}=\frac{\left(R_2\cdot C_1\right)}{N}= \frac{(76*38)}{200}=14.44\]</span></p>
 <ul>
 <li>Los gatos que reciben cariño y no bailan</li>
 </ul>
-<p><span class="math display">\[E_{21}=\frac{\left(R_1\cdot C_2\right)}{N}= \frac{(124*162)}{200}=100.44\]</span> La prueba es exactamente igual como la anterior donde comparamos el valor observado con el valor esperado. Por ser más de una fila la formula cambia.</p>
+<p><span class="math display">\[E_{12}=\frac{\left(R_1\cdot C_2\right)}{N}= \frac{(124*162)}{200}=100.44\]</span></p>
+<p>La prueba es exactamente igual como la anterior donde comparamos el valor observado con el valor esperado. Por tener más de una fila, la fórmula cambia.</p>
 <p><span class="math display">\[\chi^2=\sum_{i}\sum_{j}\frac{(o_{ij}-e_{ij})^2}{e_{ij}}\]</span></p>
-<p>El Chi Cuadrado final es</p>
+<p>El Chi cuadrado final es</p>
 <p><span class="math display">\[\chi^2=\frac{(10-23.56)^2}{23.56}+\frac{(28-14.44)^2}{14.44}+\frac{(114-100.44)^2}{100.44}+\frac{(48-61.56)^2}{61.56}=25.36\]</span></p>
 <p><span class="math display">\[\chi^2=25.36\]</span></p>
 </div>
-<div id="como-calcular-el-grado-de-libertad" class="section level2" number="11.14">
+<div id="cómo-calcular-el-grado-de-libertad" class="section level2" number="11.14">
 <h2>
-<span class="header-section-number">11.14</span> Como calcular el grado de libertad<a class="anchor" aria-label="anchor" href="#como-calcular-el-grado-de-libertad"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.14</span> Cómo calcular el grado de libertad<a class="anchor" aria-label="anchor" href="#c%C3%B3mo-calcular-el-grado-de-libertad"><i class="fas fa-link"></i></a>
 </h2>
-<div id="n-columnas-4" class="section level5" number="11.14.0.0.1">
+<div id="n-filas-2" class="section level5" number="11.14.0.0.1">
 <h5>
-<span class="header-section-number">11.14.0.0.1</span> N columnas = 4<a class="anchor" aria-label="anchor" href="#n-columnas-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.14.0.0.1</span> N filas = 2<a class="anchor" aria-label="anchor" href="#n-filas-2"><i class="fas fa-link"></i></a>
 </h5>
 </div>
-<div id="n-filas-2" class="section level5" number="11.14.0.0.2">
+<div id="n-columnas-2" class="section level5" number="11.14.0.0.2">
 <h5>
-<span class="header-section-number">11.14.0.0.2</span> N filas = 2<a class="anchor" aria-label="anchor" href="#n-filas-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.14.0.0.2</span> N columnas = 2<a class="anchor" aria-label="anchor" href="#n-columnas-2"><i class="fas fa-link"></i></a>
 </h5>
-<div class="sourceCode" id="cb467"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span><span class="op">=</span><span class="op">(</span><span class="fl">4</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#df=(R-1)*(C-1)</span></span>
+<span><span class="va">df</span><span class="op">=</span><span class="op">(</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">df</span></span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-<p>Cual es valor de Chi Cuadrado critico</p>
+<pre><code>## [1] 1</code></pre>
+<p>¿Cuál es el valor de Chi cuadrado crítico?</p>
 <p>1-.95 = 0.05</p>
-<div class="sourceCode" id="cb469"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb467"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">.95</span>,<span class="fl">1</span> <span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 3.841459</code></pre>
 </div>
-<div id="este-ejercicio-cumple-con-los-supuestos-2" class="section level3" number="11.14.1">
+<div id="este-ejercicio-cumple-con-los-supuestos-1" class="section level3" number="11.14.1">
 <h3>
-<span class="header-section-number">11.14.1</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.14.1</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos-1"><i class="fas fa-link"></i></a>
 </h3>
 <hr>
 </div>
@@ -566,12 +540,12 @@
 <strong>Útil:</strong> <code>expected = TRUE</code> permite ver si se cumple el supuesto de frecuencias esperadas ≥ 5.</li>
 </ul>
 </div>
-<p>Con esta función se calcula el chi cuadrado con los valores esperados. Nota la leyenda al principio para poder entender la organización de los datos. El grado de liberta se calcula con la siguiente formula, el numero de filas -1 multiplicado por la cantidad de columnas -1, df= (R-1)(C-1). df = es para grado de libertad. Si tiene solamente 1 grado de libertad hay que usar el resultado de la prueba de <strong>Yates de continuidad</strong>, que hace una corrección para la poca cantidad de grados de libertad.</p>
+<p>Con esta función se calcula el chi cuadrado con los valores esperados. Nota la leyenda al principio para poder entender la organización de los datos. El grado de libertad se calcula con la siguiente fórmula: el número de filas -1 multiplicado por la cantidad de columnas -1, df = (R-1)(C-1); df significa grado de libertad. Si tiene solamente 1 grado de libertad hay que usar el resultado de la prueba de <strong>Yates de continuidad</strong>, que hace una corrección por usar una distribución continua (la <span class="math inline">\(\chi^2\)</span>) para aproximar frecuencias que son discretas (tabla 2x2).</p>
 <p><span class="math display">\[\chi^2=\sum_{i}\sum_{j}\frac{(|o_{ij}-e_{ij}|-0.5)^2}{e_{ij}}\]</span></p>
 <p>Instalar el paquete <strong>gmodels</strong> para la función CrossTable</p>
 <p>p &lt;0.05 se rechaza la hipótesis nula</p>
 <p>p &gt;0.05 no se rechaza la hipótesis nula</p>
-<div class="sourceCode" id="cb471"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb469"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-gregmisc/gmodels">gmodels</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">catsTable</span>, fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>           expected <span class="op">=</span> <span class="cn">TRUE</span>, sresid <span class="op">=</span> <span class="cn">TRUE</span>, format <span class="op">=</span> <span class="st">"SAS"</span><span class="op">)</span></span></code></pre></div>
@@ -643,11 +617,13 @@
 ## 
 ## 
 ## </code></pre>
-<p>p = 0.000000477</p>
+<p>Pearson: <span class="math inline">\(\chi^2\)</span> = 25.36, df = 1, p = 0.000000477</p>
+<p>Con la corrección de Yates: <span class="math inline">\(\chi^2\)</span> = 23.52, df = 1, p = 0.0000012</p>
+<p>En ambos casos se rechaza la hipótesis nula.</p>
 <hr>
 <p><a href="https://www.youtube.com/watch?v=Uw6W8NaJmfo">Enlace a un Video de la serpiente</a></p>
 <div class="inline-figure"><img src="Graficos/Northern_Water_Snake.jpg" alt="" width="60%" style="float:right; padding:10px"></div>
-<ol start="2" style="list-style-type: decimal">
+<ol style="list-style-type: decimal">
 <li>Ejercicio: Un herpetólogo sospecha que las serpientes de agua hembras que se alimentan en el lago Michigan migran a los estanques del interior en el otoño para dar a luz a sus crías. Si esta hipótesis es correcta, cabría esperar que las hembras fueran mucho más propensas a migrar en ese momento que los machos. Se recopilaron los siguientes datos. (De Havel et al.)</li>
 </ol>
 <div class="inline-table"><table class="table table-sm">
@@ -670,14 +646,14 @@
 </tbody>
 </table></div>
 <pre><code>- ¿Cuál es la hipótesis nula?
-- ¿cual es la hipótesis alterna?
-- calcula los valores esperados
-- calcula el chi cuadrado
+- ¿Cuál es la hipótesis alterna?
+- Calcula los valores esperados
+- Calcula el Chi cuadrado
 - ¿Se rechaza o no se rechaza la Ho?</code></pre>
 <hr>
-<div id="este-ejercicio-cumple-con-los-supuestos-3" class="section level3" number="11.15.1">
+<div id="este-ejercicio-cumple-con-los-supuestos-2" class="section level3" number="11.15.1">
 <h3>
-<span class="header-section-number">11.15.1</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.15.1</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos-2"><i class="fas fa-link"></i></a>
 </h3>
 </div>
 </div>
@@ -685,13 +661,13 @@
 <h2>
 <span class="header-section-number">11.16</span> Análisis con datos en formato de tabla<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-con-datos-en-formato-de-tabla"><i class="fas fa-link"></i></a>
 </h2>
-<p>Estos son los mismos datos pero no sumado, en otra palabra es información específica sobre cada gato y su tratamiento y si bailo o no. La ventaja de este método es que uno no tiene que hacer el calculo y sumar la frecuancias, se deja la función <strong>CrossTable</strong> hacer la suma. Miran bien la tabla.</p>
-<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## La data sin sumar</span></span>
+<p>Estos son los mismos datos pero no sumados; en otras palabras, es información específica sobre cada gato, su tratamiento y si bailó o no. La ventaja de este método es que uno no tiene que hacer el cálculo y sumar las frecuencias: se deja que la función <strong>CrossTable</strong> haga la suma. Miren bien la tabla.</p>
+<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Los datos sin sumar</span></span>
 <span></span>
 <span><span class="va">Training</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">38</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">162</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">Dance</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">28</span><span class="op">)</span>,  <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">114</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">48</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">Dance</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">28</span><span class="op">)</span>,  <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">114</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">48</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">Training</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Training</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Food as Reward"</span>, <span class="st">"Affection as Reward"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1157,32 +1133,32 @@
 <tbody class="gt_table_body">
 <tr>
 <td headers="Training" class="gt_row gt_center">Food as Reward</td>
-<td headers="Dance" class="gt_row gt_center">Yes</td>
+<td headers="Dance" class="gt_row gt_center">No</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Food as Reward</td>
-<td headers="Dance" class="gt_row gt_center">Yes</td>
+<td headers="Dance" class="gt_row gt_center">No</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Food as Reward</td>
-<td headers="Dance" class="gt_row gt_center">Yes</td>
+<td headers="Dance" class="gt_row gt_center">No</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Food as Reward</td>
-<td headers="Dance" class="gt_row gt_center">Yes</td>
+<td headers="Dance" class="gt_row gt_center">No</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Food as Reward</td>
-<td headers="Dance" class="gt_row gt_center">Yes</td>
+<td headers="Dance" class="gt_row gt_center">No</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Food as Reward</td>
-<td headers="Dance" class="gt_row gt_center">Yes</td>
+<td headers="Dance" class="gt_row gt_center">No</td>
 </tr>
 </tbody>
 </table></div>
 </div>
-<div class="sourceCode" id="cb475"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">catsData</span>, n<span class="op">=</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div id="ircqmiakfl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#ircqmiakfl table {
@@ -1641,23 +1617,23 @@
 <tbody class="gt_table_body">
 <tr>
 <td headers="Training" class="gt_row gt_center">Affection as Reward</td>
-<td headers="Dance" class="gt_row gt_center">No</td>
+<td headers="Dance" class="gt_row gt_center">Yes</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Affection as Reward</td>
-<td headers="Dance" class="gt_row gt_center">No</td>
+<td headers="Dance" class="gt_row gt_center">Yes</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Affection as Reward</td>
-<td headers="Dance" class="gt_row gt_center">No</td>
+<td headers="Dance" class="gt_row gt_center">Yes</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Affection as Reward</td>
-<td headers="Dance" class="gt_row gt_center">No</td>
+<td headers="Dance" class="gt_row gt_center">Yes</td>
 </tr>
 <tr>
 <td headers="Training" class="gt_row gt_center">Affection as Reward</td>
-<td headers="Dance" class="gt_row gt_center">No</td>
+<td headers="Dance" class="gt_row gt_center">Yes</td>
 </tr>
 </tbody>
 </table></div>
@@ -1669,7 +1645,7 @@
 <h2>
 <span class="header-section-number">11.17</span> Prueba de independencia<a class="anchor" aria-label="anchor" href="#prueba-de-independencia"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># usando los datos en formato de data frame **catsData**</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">catsData</span><span class="op">$</span><span class="va">Training</span>, <span class="va">catsData</span><span class="op">$</span><span class="va">Dance</span>, </span>
 <span>           fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, expected <span class="op">=</span> <span class="cn">TRUE</span>, </span>
@@ -1691,24 +1667,24 @@
 ##                     | catsData$Dance 
 ##   catsData$Training |       No  |      Yes  | Row Total | 
 ## --------------------|-----------|-----------|-----------|
-##      Food as Reward |       28  |       10  |       38  | 
-##                     |   14.440  |   23.560  |           | 
-##                     |   12.734  |    7.804  |           | 
-##                     |   73.684% |   26.316% |   19.000% | 
-##                     |   36.842% |    8.065% |           | 
-##                     |   14.000% |    5.000% |           | 
-##                     |    3.568  |   -2.794  |           | 
+##      Food as Reward |       10  |       28  |       38  | 
+##                     |   23.560  |   14.440  |           | 
+##                     |    7.804  |   12.734  |           | 
+##                     |   26.316% |   73.684% |   19.000% | 
+##                     |    8.065% |   36.842% |           | 
+##                     |    5.000% |   14.000% |           | 
+##                     |   -2.794  |    3.568  |           | 
 ## --------------------|-----------|-----------|-----------|
-## Affection as Reward |       48  |      114  |      162  | 
-##                     |   61.560  |  100.440  |           | 
-##                     |    2.987  |    1.831  |           | 
-##                     |   29.630% |   70.370% |   81.000% | 
-##                     |   63.158% |   91.935% |           | 
-##                     |   24.000% |   57.000% |           | 
-##                     |   -1.728  |    1.353  |           | 
+## Affection as Reward |      114  |       48  |      162  | 
+##                     |  100.440  |   61.560  |           | 
+##                     |    1.831  |    2.987  |           | 
+##                     |   70.370% |   29.630% |   81.000% | 
+##                     |   91.935% |   63.158% |           | 
+##                     |   57.000% |   24.000% |           | 
+##                     |    1.353  |   -1.728  |           | 
 ## --------------------|-----------|-----------|-----------|
-##        Column Total |       76  |      124  |      200  | 
-##                     |   38.000% |   62.000% |           | 
+##        Column Total |      124  |       76  |      200  | 
+##                     |   62.000% |   38.000% |           | 
 ## --------------------|-----------|-----------|-----------|
 ## 
 ##  
@@ -1726,40 +1702,40 @@
 ##  
 ## Fisher's Exact Test for Count Data
 ## ------------------------------------------------------------
-## Sample estimate odds ratio:  6.579265 
+## Sample estimate odds ratio:  0.1519927 
 ## 
 ## Alternative hypothesis: true odds ratio is not equal to 1
 ## p =  1.311709e-06 
-## 95% confidence interval:  2.837773 16.42969 
+## 95% confidence interval:  0.06086544 0.352389 
 ## 
 ## Alternative hypothesis: true odds ratio is less than 1
-## p =  0.9999999 
-## 95% confidence interval:  0 14.25436 
+## p =  7.7122e-07 
+## 95% confidence interval:  0 0.3131634 
 ## 
 ## Alternative hypothesis: true odds ratio is greater than 1
-## p =  7.7122e-07 
-## 95% confidence interval:  3.193221 Inf 
+## p =  0.9999999 
+## 95% confidence interval:  0.07015399 Inf 
 ## 
 ## 
 ##  
 ##        Minimum expected frequency: 14.44</code></pre>
-<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Se puede hacer un grafico de los resultados</span></span>
+<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Se puede hacer un gráfico de los resultados</span></span>
 <span></span>
 <span><span class="va">Ta2</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/xtabs.html">xtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">Training</span><span class="op">+</span><span class="va">Dance</span>, data<span class="op">=</span><span class="va">catsData</span><span class="op">)</span></span>
 <span><span class="va">Ta2</span></span></code></pre></div>
 <pre><code>##                      Dance
 ## Training               No Yes
-##   Food as Reward       28  10
-##   Affection as Reward  48 114</code></pre>
-<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
+##   Food as Reward       10  28
+##   Affection as Reward 114  48</code></pre>
+<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot</a></span><span class="op">(</span><span class="va">Ta2</span>, shade<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c11-21-1.png" alt="" width="672"></div>
 <hr>
 </div>
 <div id="el-color-de-pelo-es-independiente-del-sexo" class="section level2" number="11.18">
 <h2>
-<span class="header-section-number">11.18</span> El color de pelo es independiente del sexo<a class="anchor" aria-label="anchor" href="#el-color-de-pelo-es-independiente-del-sexo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.18</span> ¿El color de pelo es independiente del sexo?<a class="anchor" aria-label="anchor" href="#el-color-de-pelo-es-independiente-del-sexo"><i class="fas fa-link"></i></a>
 </h2>
 <p>En la siguiente tabla se encuentra el color de pelo de estudiantes de la UPR. La hipótesis es que el color de pelo no está asociado al sexo de los estudiantes.</p>
 <div class="inline-table"><table class="table table-sm">
@@ -1791,8 +1767,8 @@
 </tr>
 </tbody>
 </table></div>
-<p>Creamos</p>
-<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
+<p>Creamos la tabla de contingencia.</p>
+<div class="sourceCode" id="cb479"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Negro</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">32</span>,<span class="fl">55</span><span class="op">)</span></span>
 <span><span class="va">Marron</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">43</span>, <span class="fl">65</span><span class="op">)</span></span>
 <span><span class="va">Rubio</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">16</span>,<span class="fl">64</span><span class="op">)</span></span>
@@ -1808,14 +1784,14 @@
 <ul>
 <li>Cada categoría tiene una <strong>frecuencia esperada</strong> suficientemente grande:
 <ul>
-<li>ninguna de las <strong>frecuencia esperada</strong> sea menor de 5 cuando hay 4 o menos categorías</li>
-<li>no más de 20% de las categorías que tengan un valor esperado de &lt; 5 cuando hay más de 5 categorías y ninguna tiene un valor <strong>esperado</strong> menor de 1. Puediese tener valores esperados entre 1 y 5 pero no más de 20% de las categorias</li>
+<li>ninguna de las <strong>frecuencias esperadas</strong> es menor de 5 cuando hay 4 o menos categorías</li>
+<li>no más de 20% de las categorías tienen un valor esperado &lt; 5 cuando hay más de 4 categorías, y ninguna tiene un valor <strong>esperado</strong> menor de 1. Puede haber valores esperados entre 1 y 5, pero en no más de 20% de las categorías.</li>
 </ul>
 </li>
 </ul>
 <p>¿Cuál es la hipótesis nula? ¿Cuál es la hipótesis alterna?</p>
-<p>El resultado de la prueba. ¿Se acepta o rechaza la hipótesis nula?</p>
-<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
+<p>El resultado de la prueba. ¿Se rechaza o no se rechaza la hipótesis nula?</p>
+<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">HairColour</span>, fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, expected <span class="op">=</span> <span class="cn">TRUE</span>, sresid <span class="op">=</span> <span class="cn">TRUE</span>, format <span class="op">=</span> <span class="st">"SPSS"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
@@ -1871,20 +1847,20 @@
 ## 
 ##  
 ##        Minimum expected frequency: 8.333333</code></pre>
-<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#df=(R-1)*(C-1)</span></span>
 <span><span class="va">df</span><span class="op">=</span><span class="op">(</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">4</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">df</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">.2</span><span class="op">*</span><span class="fl">8</span></span></code></pre></div>
 <pre><code>## [1] 1.6</code></pre>
-<div class="sourceCode" id="cb489"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">.95</span>,<span class="fl">3</span> <span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 7.814728</code></pre>
-<div id="este-ejercicio-cumple-con-los-supuestos-4" class="section level3" number="11.18.1">
+<div id="este-ejercicio-cumple-con-los-supuestos-3" class="section level3" number="11.18.1">
 <h3>
-<span class="header-section-number">11.18.1</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.18.1</span> ¿Este ejercicio cumple con los supuestos?<a class="anchor" aria-label="anchor" href="#este-ejercicio-cumple-con-los-supuestos-3"><i class="fas fa-link"></i></a>
 </h3>
 <hr>
 </div>
@@ -1893,14 +1869,14 @@
 <h2>
 <span class="header-section-number">11.19</span> Prueba Exacta de Fisher<a class="anchor" aria-label="anchor" href="#prueba-exacta-de-fisher"><i class="fas fa-link"></i></a>
 </h2>
-<p>La prueba Exacta de Fisher es similar a la de Bondad de Ajuste para evaluar si hay asociación entre dos variables categóricas. La diferencia importante es que no es necesario que el valor esperado sea mayor de 5. Por consecuencia se puede usar con muestras más pequeñas.</p>
+<p>La prueba Exacta de Fisher es similar a la prueba de independencia (tabla de contingencia) para evaluar si hay asociación entre dos variables categóricas. La diferencia importante es que no es necesario que el valor esperado sea mayor de 5. Por consecuencia, se puede usar con muestras más pequeñas.</p>
 <div class="consejo">
 <p>Cuando alguna frecuencia esperada es pequeña (&lt; 5) en una tabla 2×2, usa la <strong>prueba exacta de Fisher</strong> en lugar de la ji-cuadrado: no depende de la aproximación de frecuencias grandes.</p>
 </div>
 <hr>
-<div id="los-supuestos-de-las-prueba-exacta-de-fisher." class="section level3" number="11.19.1">
+<div id="los-supuestos-de-la-prueba-exacta-de-fisher." class="section level3" number="11.19.1">
 <h3>
-<span class="header-section-number">11.19.1</span> Los supuestos de las prueba Exacta de Fisher.<a class="anchor" aria-label="anchor" href="#los-supuestos-de-las-prueba-exacta-de-fisher."><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.19.1</span> Los supuestos de la prueba Exacta de Fisher.<a class="anchor" aria-label="anchor" href="#los-supuestos-de-la-prueba-exacta-de-fisher."><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <ul>
@@ -1911,8 +1887,8 @@
 </ul>
 </blockquote>
 <p>Usando los datos de serpientes del ejemplo 7.4 del libro de Havel et al.</p>
-<div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">responde</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">3</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb489"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">responde</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">no_responde</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">6</span><span class="op">)</span></span>
 <span><span class="va">serpiente</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">responde</span>, <span class="va">no_responde</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">serpiente</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Estimulo_arriba"</span>, <span class="st">"Estimulo_lateral"</span><span class="op">)</span> <span class="co"># Añade el nombre a las filas</span></span>
@@ -1920,10 +1896,10 @@
 <span><span class="va">serpiente</span></span></code></pre></div>
 <pre><code>##                  responde no_responde
 ## Estimulo_arriba         6           1
-## Estimulo_lateral        3           6</code></pre>
-<div class="sourceCode" id="cb493"><pre class="downlit sourceCode r">
+## Estimulo_lateral        1           6</code></pre>
+<div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">serpiente</span>, fisher <span class="op">=</span> <span class="cn">TRUE</span>, chisq <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>           expected <span class="op">=</span> <span class="cn">TRUE</span>, sresid <span class="op">=</span> <span class="cn">TRUE</span>, format <span class="op">=</span> <span class="st">"SAS"</span><span class="op">)</span> <span class="co"># esa prueba no deberia usarse</span></span></code></pre></div>
+<span>           expected <span class="op">=</span> <span class="cn">TRUE</span>, sresid <span class="op">=</span> <span class="cn">TRUE</span>, format <span class="op">=</span> <span class="st">"SAS"</span><span class="op">)</span> <span class="co"># esa prueba no debería usarse</span></span></code></pre></div>
 <pre><code>## 
 ##  
 ##    Cell Contents
@@ -1937,28 +1913,28 @@
 ## |-------------------------|
 ## 
 ##  
-## Total Observations in Table:  16 
+## Total Observations in Table:  14 
 ## 
 ##  
 ##                  |  
 ##                  |    responde | no_responde |   Row Total | 
 ## -----------------|-------------|-------------|-------------|
 ##  Estimulo_arriba |           6 |           1 |           7 | 
-##                  |       3.938 |       3.062 |             | 
-##                  |       1.080 |       1.389 |             | 
-##                  |       0.857 |       0.143 |       0.438 | 
-##                  |       0.667 |       0.143 |             | 
-##                  |       0.375 |       0.062 |             | 
+##                  |       3.500 |       3.500 |             | 
+##                  |       1.786 |       1.786 |             | 
+##                  |       0.857 |       0.143 |       0.500 | 
+##                  |       0.857 |       0.143 |             | 
+##                  |       0.429 |       0.071 |             | 
 ## -----------------|-------------|-------------|-------------|
-## Estimulo_lateral |           3 |           6 |           9 | 
-##                  |       5.062 |       3.938 |             | 
-##                  |       0.840 |       1.080 |             | 
-##                  |       0.333 |       0.667 |       0.562 | 
-##                  |       0.333 |       0.857 |             | 
-##                  |       0.188 |       0.375 |             | 
+## Estimulo_lateral |           1 |           6 |           7 | 
+##                  |       3.500 |       3.500 |             | 
+##                  |       1.786 |       1.786 |             | 
+##                  |       0.143 |       0.857 |       0.500 | 
+##                  |       0.143 |       0.857 |             | 
+##                  |       0.071 |       0.429 |             | 
 ## -----------------|-------------|-------------|-------------|
-##     Column Total |           9 |           7 |          16 | 
-##                  |       0.562 |       0.438 |             | 
+##     Column Total |           7 |           7 |          14 | 
+##                  |       0.500 |       0.500 |             | 
 ## -----------------|-------------|-------------|-------------|
 ## 
 ##  
@@ -1967,52 +1943,52 @@
 ## 
 ## Pearson's Chi-squared test 
 ## ------------------------------------------------------------
-## Chi^2 =  4.390023     d.f. =  1     p =  0.03614983 
+## Chi^2 =  7.142857     d.f. =  1     p =  0.007526315 
 ## 
 ## Pearson's Chi-squared test with Yates' continuity correction 
 ## ------------------------------------------------------------
-## Chi^2 =  2.519526     d.f. =  1     p =  0.1124444 
+## Chi^2 =  4.571429     d.f. =  1     p =  0.03250944 
 ## 
 ##  
 ## Fisher's Exact Test for Count Data
 ## ------------------------------------------------------------
-## Sample estimate odds ratio:  10.02595 
+## Sample estimate odds ratio:  23.4961 
 ## 
 ## Alternative hypothesis: true odds ratio is not equal to 1
-## p =  0.06013986 
-## 95% confidence interval:  0.7110878 638.2231 
+## p =  0.02913753 
+## 95% confidence interval:  1.250285 1881.882 
 ## 
 ## Alternative hypothesis: true odds ratio is less than 1
-## p =  0.9968531 
-## 95% confidence interval:  0 314.7984 
+## p =  0.9997086 
+## 95% confidence interval:  0 936.8179 
 ## 
 ## Alternative hypothesis: true odds ratio is greater than 1
-## p =  0.05454545 
-## 95% confidence interval:  0.9601491 Inf 
+## p =  0.01456876 
+## 95% confidence interval:  1.721066 Inf 
 ## 
 ## 
 ## </code></pre>
-<div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb493"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">### ¿Este ejercicio cumple con los supuestos?</span></span></code></pre></div>
-<p>Se puede visualizar los datos con el Mosaico</p>
-<div class="sourceCode" id="cb496"><pre class="downlit sourceCode r">
+<p>Se pueden visualizar los datos con el gráfico de mosaico.</p>
+<div class="sourceCode" id="cb494"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot</a></span><span class="op">(</span><span class="va">serpiente</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="BioEstadistica_files/figure-html/c11-26-1.png" alt="" width="672"></div>
-<p>Nota que se usa la misma función que anterior pero en los resultados hay que fijarse en la sección que dice <strong>Fisher’s Exact test</strong>. Lo que uno observa es que el valor de <strong>p</strong> es menor de 0.05 por consecuencia se rechaza la hipótesis nula. Esto significa que, para la serpiente, el ángulo del que proviene el estímulo produce una respuesta diferente.</p>
+<p>Nota que se usa la misma función que antes, pero en los resultados hay que fijarse en la sección que dice <strong>Fisher’s Exact test</strong>. Lo que uno observa es que el valor de <em>p</em> es menor de 0.05; por consecuencia, se rechaza la hipótesis nula. Esto significa que, para la serpiente, el ángulo del que proviene el estímulo produce una respuesta diferente.</p>
 <hr>
-<div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/fisher.test.html">fisher.test</a></span><span class="op">(</span><span class="va">serpiente</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Fisher's Exact Test for Count Data
 ## 
 ## data:  serpiente
-## p-value = 0.06014
+## p-value = 0.02914
 ## alternative hypothesis: true odds ratio is not equal to 1
 ## 95 percent confidence interval:
-##    0.7110878 638.2231455
+##     1.250285 1881.881639
 ## sample estimates:
 ## odds ratio 
-##   10.02595</code></pre>
+##    23.4961</code></pre>
 
 </div>
 </div>
@@ -2025,36 +2001,33 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#estad%C3%ADstica-frecuentista"><span class="header-section-number">11</span> Estadística Frecuentista</a></li>
 <li><a class="nav-link" href="#bondad-de-ajuste-y-tabla-de-contingencia"><span class="header-section-number">11.1</span> Bondad de ajuste y Tabla de contingencia</a></li>
-<li><a class="nav-link" href="#qu%C3%A9-son-supuestos-1"><span class="header-section-number">11.2</span> Qué son supuestos</a></li>
+<li><a class="nav-link" href="#qu%C3%A9-son-los-supuestos"><span class="header-section-number">11.2</span> Qué son los supuestos</a></li>
 <li><a class="nav-link" href="#los-supuestos-de-las-pruebas-de-frecuencias."><span class="header-section-number">11.3</span> Los supuestos de las pruebas de frecuencias.</a></li>
 <li><a class="nav-link" href="#instalar-y-activar-los-siguientes-packages"><span class="header-section-number">11.4</span> Instalar y activar los siguientes packages</a></li>
-<li><a class="nav-link" href="#gregory-mendel-y-sus-guisantes"><span class="header-section-number">11.5</span> Gregory Mendel y sus guisantes</a></li>
+<li><a class="nav-link" href="#gregor-mendel-y-sus-guisantes"><span class="header-section-number">11.5</span> Gregor Mendel y sus guisantes</a></li>
 <li><a class="nav-link" href="#bondad-de-ajuste."><span class="header-section-number">11.6</span> Bondad de Ajuste.</a></li>
 <li><a class="nav-link" href="#primer-ejemplo"><span class="header-section-number">11.7</span> Primer ejemplo</a></li>
 <li>
-<a class="nav-link" href="#segundo-ejemplo"><span class="header-section-number">11.8</span> Segundo ejemplo</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos"><span class="header-section-number">11.8.1</span> ¿Este ejercicio cumple con los supuestos?</a></li>
-<li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos-1"><span class="header-section-number">11.8.2</span> ¿Este ejercicio cumple con los supuestos?</a></li>
-</ul>
+<a class="nav-link" href="#segundo-ejemplo"><span class="header-section-number">11.8</span> Segundo ejemplo</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos"><span class="header-section-number">11.8.1</span> ¿Este ejercicio cumple con los supuestos?</a></li></ul>
 </li>
-<li><a class="nav-link" href="#prueba-de-bondad-de-ajuste-tabla-de-contingencia-rxc"><span class="header-section-number">11.9</span> Prueba de Bondad de Ajuste, Tabla de contingencia RxC</a></li>
+<li><a class="nav-link" href="#prueba-de-independencia-tabla-de-contingencia-rxc"><span class="header-section-number">11.9</span> Prueba de independencia, Tabla de contingencia RxC</a></li>
 <li><a class="nav-link" href="#la-hip%C3%B3tesis-nula"><span class="header-section-number">11.10</span> La hipótesis NULA</a></li>
 <li><a class="nav-link" href="#la-hip%C3%B3tesis-alterna"><span class="header-section-number">11.11</span> La hipótesis alterna</a></li>
 <li><a class="nav-link" href="#gr%C3%A1fico-de-mosaico"><span class="header-section-number">11.12</span> Gráfico de Mosaico</a></li>
 <li><a class="nav-link" href="#prueba-de-independencia-de-frecuencia."><span class="header-section-number">11.13</span> Prueba de Independencia de frecuencia.</a></li>
 <li>
-<a class="nav-link" href="#como-calcular-el-grado-de-libertad"><span class="header-section-number">11.14</span> Como calcular el grado de libertad</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos-2"><span class="header-section-number">11.14.1</span> ¿Este ejercicio cumple con los supuestos?</a></li></ul>
+<a class="nav-link" href="#c%C3%B3mo-calcular-el-grado-de-libertad"><span class="header-section-number">11.14</span> Cómo calcular el grado de libertad</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos-1"><span class="header-section-number">11.14.1</span> ¿Este ejercicio cumple con los supuestos?</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#la-funci%C3%B3n-crosstable"><span class="header-section-number">11.15</span> La función CrossTable</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos-3"><span class="header-section-number">11.15.1</span> ¿Este ejercicio cumple con los supuestos?</a></li></ul>
+<a class="nav-link" href="#la-funci%C3%B3n-crosstable"><span class="header-section-number">11.15</span> La función CrossTable</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos-2"><span class="header-section-number">11.15.1</span> ¿Este ejercicio cumple con los supuestos?</a></li></ul>
 </li>
 <li><a class="nav-link" href="#an%C3%A1lisis-con-datos-en-formato-de-tabla"><span class="header-section-number">11.16</span> Análisis con datos en formato de tabla</a></li>
 <li><a class="nav-link" href="#prueba-de-independencia"><span class="header-section-number">11.17</span> Prueba de independencia</a></li>
 <li>
-<a class="nav-link" href="#el-color-de-pelo-es-independiente-del-sexo"><span class="header-section-number">11.18</span> El color de pelo es independiente del sexo</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos-4"><span class="header-section-number">11.18.1</span> ¿Este ejercicio cumple con los supuestos?</a></li></ul>
+<a class="nav-link" href="#el-color-de-pelo-es-independiente-del-sexo"><span class="header-section-number">11.18</span> ¿El color de pelo es independiente del sexo?</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#este-ejercicio-cumple-con-los-supuestos-3"><span class="header-section-number">11.18.1</span> ¿Este ejercicio cumple con los supuestos?</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#prueba-exacta-de-fisher"><span class="header-section-number">11.19</span> Prueba Exacta de Fisher</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#los-supuestos-de-las-prueba-exacta-de-fisher."><span class="header-section-number">11.19.1</span> Los supuestos de las prueba Exacta de Fisher.</a></li></ul>
+<a class="nav-link" href="#prueba-exacta-de-fisher"><span class="header-section-number">11.19</span> Prueba Exacta de Fisher</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#los-supuestos-de-la-prueba-exacta-de-fisher."><span class="header-section-number">11.19.1</span> Los supuestos de la prueba Exacta de Fisher.</a></li></ul>
 </li>
 </ul>
 
@@ -2073,7 +2046,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-09-20.</p>
+    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-10-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

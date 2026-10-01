@@ -6,21 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 14 Prueba de t para Datos Pareados | BioEstadística</title>
 <meta name="author" content="">
-<meta name="description" content='Fecha de la última revisión ## [1] "2026-09-20"  14.1 Datos dependientes Si tienes datos que no son independientes, es necesario usar la prueba con datos pareados (paired t-test). Cuando se habla...'>
+<meta name="description" content='Fecha de la última revisión ## [1] "2026-10-01"  14.1 Datos dependientes Si tienes datos que no son independientes, es necesario usar la prueba con datos pareados (paired t-test). Cuando se habla...'>
 <meta name="generator" content="bookdown 0.48 with bs4_book()">
 <meta property="og:title" content="Capítulo 14 Prueba de t para Datos Pareados | BioEstadística">
 <meta property="og:type" content="book">
-<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-09-20"  14.1 Datos dependientes Si tienes datos que no son independientes, es necesario usar la prueba con datos pareados (paired t-test). Cuando se habla...'>
+<meta property="og:description" content='Fecha de la última revisión ## [1] "2026-10-01"  14.1 Datos dependientes Si tienes datos que no son independientes, es necesario usar la prueba con datos pareados (paired t-test). Cuando se habla...'>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 14 Prueba de t para Datos Pareados | BioEstadística">
-<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-09-20"  14.1 Datos dependientes Si tienes datos que no son independientes, es necesario usar la prueba con datos pareados (paired t-test). Cuando se habla...'>
+<meta name="twitter:description" content='Fecha de la última revisión ## [1] "2026-10-01"  14.1 Datos dependientes Si tienes datos que no son independientes, es necesario usar la prueba con datos pareados (paired t-test). Cuando se habla...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_3-0.4.10/font.css" rel="stylesheet">
 <link href="libs/Fira_Code-0.4.10/font.css" rel="stylesheet">
 <link href="libs/Lora-0.4.10/font.css" rel="stylesheet">
 <script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link rel="icon" type="image/x-icon" href="favicon.ico">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/huxtable-6.0.2/huxtable.css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -99,7 +100,7 @@
 <span class="header-section-number">Capítulo 14</span> Prueba de t para Datos Pareados<a class="anchor" aria-label="anchor" href="#prueba-de-t-para-datos-pareados"><i class="fas fa-link"></i></a>
 </h1>
 <p>Fecha de la última revisión</p>
-<pre><code>## [1] "2026-09-20"</code></pre>
+<pre><code>## [1] "2026-10-01"</code></pre>
 <div id="datos-dependientes" class="section level2" number="14.1">
 <h2>
 <span class="header-section-number">14.1</span> Datos dependientes<a class="anchor" aria-label="anchor" href="#datos-dependientes"><i class="fas fa-link"></i></a>
@@ -111,7 +112,7 @@
 <p>Los datos provienen del paquete <strong>UsingR</strong> y el archivo se llama <strong>father.son</strong></p>
 <p>Primero mire los datos y los nombres de las variables.</p>
 <p>Paired Two-Sample T-test</p>
-<div class="sourceCode" id="cb561"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb559"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://hbiostat.org/R/Hmisc/">Hmisc</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">UsingR</span><span class="op">)</span> <span class="co"># father.son data set</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">father.son</span><span class="op">)</span></span></code></pre></div>
@@ -122,7 +123,7 @@
 ## 4 65.75250 62.79238
 ## 5 61.13723 64.28113
 ## 6 63.02254 64.24221</code></pre>
-<div class="sourceCode" id="cb563"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb561"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("UsingR", dependencies = TRUE)</span></span>
 <span></span>
 <span><span class="co">#father.son</span></span></code></pre></div>
@@ -133,7 +134,7 @@
 <span class="header-section-number">14.2</span> Visualizar la correlación<a class="anchor" aria-label="anchor" href="#visualizar-la-correlaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h2>
 <p>Antes de hacer la prueba es recomendable hacer un gráfico de puntos para visualizar los datos y observar si hay un patrón. Vemos que, a medida que aumenta la altura de los padres, los hijos tienden a ser más altos. Parece que hay una correlación entre la altura de los hijos y la altura del padre. Por consiguiente, la altura de los hijos no es independiente de la altura de los padres. Aunque hay evidencia de que el ambiente, tal como el acceso a recursos (comida, leche, etc.), tiene impacto sobre la altura de los humanos, la genética también tiene impacto sobre la altura, y la genética no es una variable asignada al azar.</p>
-<div class="sourceCode" id="cb564"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb562"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">father.son</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">fheight</span>, <span class="va">sheight</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
@@ -189,7 +190,7 @@
 </li>
 </ul>
 <p>El resultado: el valor de <span class="math inline">\(\left|t\right|\)</span> observado es de 11.789, con 1077 grados de libertad (n=1078) y un valor de <em>p</em> &lt; 0.0001. Por consiguiente, se rechaza la hipótesis nula. Como en el código se calcula <code>sheight - fheight</code>, el intervalo de confianza del promedio es de 0.831 a 1.163, con un promedio de 0.99. Esto significa que los hijos tienden a ser una pulgada (0.99) más altos que los padres.</p>
-<div class="sourceCode" id="cb565"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb563"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">father.son</span><span class="op">$</span><span class="va">sheight</span>, <span class="va">father.son</span><span class="op">$</span><span class="va">fheight</span>, paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
@@ -209,7 +210,7 @@
 <span class="header-section-number">14.4</span> Visualizar la diferencias<a class="anchor" aria-label="anchor" href="#visualizar-la-diferencias"><i class="fas fa-link"></i></a>
 </h2>
 <p>Podemos visualizar la diferencia entre los hijos y los padres. Vemos el promedio que tendríamos si no hubiese diferencia (la línea azul), que corresponde a nuestra hipótesis nula, y el estimado (el promedio de las diferencias, en rojo, con el intervalo de confianza en las líneas entrecortadas). Si nuestro estimado (el intervalo de confianza de 95%) hubiese incluido la línea azul, la prueba no sería significativa y no se rechazaría la hipótesis nula.</p>
-<div class="sourceCode" id="cb567"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb565"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">father.son</span><span class="op">$</span><span class="va">heightDiff</span><span class="op">&lt;-</span><span class="va">father.son</span><span class="op">$</span><span class="va">fheight</span><span class="op">-</span><span class="va">father.son</span><span class="op">$</span><span class="va">sheight</span> <span class="co"># para calcular la diferencia entre el padre y el hijo.</span></span>
 <span></span>
 <span></span>
@@ -229,7 +230,7 @@
 <span class="header-section-number">14.4.1</span> Supuesto de normalidad<a class="anchor" aria-label="anchor" href="#supuesto-de-normalidad-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>¿Qué método usamos para determinar si las diferencias cumplen con la normalidad?</p>
-<div class="sourceCode" id="cb568"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb566"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">father.son</span><span class="op">$</span><span class="va">heightDiff</span><span class="op">&lt;-</span><span class="va">father.son</span><span class="op">$</span><span class="va">fheight</span><span class="op">-</span><span class="va">father.son</span><span class="op">$</span><span class="va">sheight</span> <span class="co"># para calcular la diferencia entre el padre y el hijo.</span></span>
 <span></span>
 <span></span>
@@ -243,7 +244,7 @@
 <p>En la prueba pareada, el supuesto de normalidad se evalúa sobre las <strong>diferencias</strong> (<span class="math inline">\(d\)</span>), no sobre cada grupo por separado. Combina el resultado de Shapiro-Wilk con la inspección visual del gráfico Q-Q de las diferencias.</p>
 </div>
 <p>Gráfico Q-Q de las diferencias</p>
-<div class="sourceCode" id="cb570"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb568"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">father.son</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>sample<span class="op">=</span><span class="va">heightDiff</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
@@ -264,7 +265,7 @@
 <span class="header-section-number">14.6</span> Ejercicio de clase<a class="anchor" aria-label="anchor" href="#ejercicio-de-clase"><i class="fas fa-link"></i></a>
 </h2>
 <p>Vamos a evaluar si la cantidad de hijos cambia entre su abuela y su madre.</p>
-<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb569"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">abuela</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">5</span>, <span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,</span>
 <span>         <span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">4</span>, <span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">2</span>, </span>
 <span>         <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">8</span>, <span class="fl">3</span>, </span>
@@ -298,7 +299,7 @@
 ## 20      3     3
 ## 21      2     3
 ## 22      5     4</code></pre>
-<div class="sourceCode" id="cb573"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span><span class="op">$</span><span class="va">diff</span><span class="op">=</span><span class="va">df</span><span class="op">$</span><span class="va">abuela</span><span class="op">-</span><span class="va">df</span><span class="op">$</span><span class="va">madre</span></span>
 <span><span class="va">df</span></span></code></pre></div>
 <pre><code>##    abuela madre diff
@@ -324,10 +325,10 @@
 ## 20      3     3    0
 ## 21      2     3   -1
 ## 22      5     4    1</code></pre>
-<div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb573"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">diff</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 1.318182</code></pre>
-<div class="sourceCode" id="cb577"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">abuela</span>,<span class="va">df</span><span class="op">$</span><span class="va">madre</span>, paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
@@ -340,7 +341,7 @@
 ## sample estimates:
 ## mean difference 
 ##        1.318182</code></pre>
-<div class="sourceCode" id="cb579"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb577"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="va">df2</span><span class="op">=</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">abuela</span>, <span class="op">~</span><span class="va">madre</span>,</span>
 <span>            <span class="fl">4</span>, <span class="fl">2</span>,</span>
@@ -360,7 +361,7 @@
 </h2>
 <p>Un cultivador heredó 18 parcelas con árboles de toronjas, cada una en un municipio diferente. Él quiere saber si al añadir abono la cosecha de toronjas aumenta. Podría decidir seleccionar 9 de estas parcelas para añadir abono y dejar las otras 9 sin abono. El problema con este diseño experimental es que es bien conocido que el suelo varía de un sitio a otro y que el clima también varía. Es más apropiado que él divida cada parcela en 2, y que la mitad reciba el abono y la otra mitad sirva de control (sin abono). ¿Cuál será el efecto del abono sobre la producción de toronjas en parcelas pareadas en Puerto Rico?</p>
 <p>La cantidad de toronjas producidas por árbol en fincas pareadas: cada finca tiene una parcela con abono y otra parcela sin abono. Tenemos 18 sitios diferentes en PR donde se probó el efecto del abono sobre la producción de toronjas; en la tabla se muestran solamente los primeros pares de valores. Cada parcela es del mismo tamaño y con la misma cantidad de árboles. Los datos completos están en el próximo chunk.</p>
-<div class="sourceCode" id="cb581"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb579"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hughjonesd.github.io/huxtable/">huxtable</a></span><span class="op">)</span></span>
 <span><span class="va">Toronja</span><span class="op">=</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
@@ -399,7 +400,7 @@
 </ul>
 </blockquote>
 <p>El resultado: el valor de <em>t</em> observado es de 8.80, con 17 grados de libertad (n=18) y un valor de <em>p</em> &lt; 0.0001. Por consiguiente, se rechaza la hipótesis nula. El intervalo de confianza del promedio es 198.5 – 323.7, con un promedio de 261. Esto significa que al añadir fertilizante la producción de toronjas aumentó en promedio 261 toronjas.</p>
-<div class="sourceCode" id="cb582"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb580"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Fert</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2250</span>,<span class="fl">2410</span>, <span class="fl">2260</span>,<span class="fl">2200</span>, <span class="fl">2360</span>, </span>
 <span>     <span class="fl">2320</span>,<span class="fl">2240</span>,<span class="fl">2300</span>,<span class="fl">2090</span>, <span class="fl">2250</span>,<span class="fl">2410</span>, <span class="fl">2260</span>,<span class="fl">2200</span>, <span class="fl">2360</span>, </span>
 <span>     <span class="fl">2320</span>,<span class="fl">2240</span>,<span class="fl">2300</span>,<span class="fl">2090</span><span class="op">)</span></span>
@@ -423,7 +424,7 @@
 </h2>
 <p>Los datos representan cuántas hojas tenían las <strong>mismas</strong> plantas en diferentes momentos de su muestreo. Por consiguiente, los datos no son independientes. Provienen de muestreos realizados en El Yunque en una pequeña orquídea epífita, <em>Lepanthes eltoroensis</em> Stimson. Aquí una foto de la planta.</p>
 <p>El archivo de datos tiene información sobre la cantidad de hojas que tiene cada una de las plantas marcadas después del huracán Georges (1998). Las plantas fueron muestreadas cada 6 meses, comenzando 6 meses después del huracán, por 6 años (13 muestreos). Se siguieron 1084 plantas distintas, aunque no todas fueron muestreadas en cada tiempo. Cada fila representa un individuo; si no hay información en un tiempo, puede ser que la planta a) no fuera encontrada en ese muestreo, b) estuviera muerta, o c) fuera antes de que la planta creciera (todavía no había germinado).</p>
-<div class="sourceCode" id="cb583"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb581"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span><span class="va">Lepanthes_eltoroensis_Georges_STUDENT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"Data_files_csv/Lepanthes_eltoroensis_Georges_STUDENT.csv"</span><span class="op">)</span></span>
 <span></span>
@@ -465,7 +466,7 @@
 <span class="header-section-number">14.9</span> Ansiedad y Alacranes<a class="anchor" aria-label="anchor" href="#ansiedad-y-alacranes"><i class="fas fa-link"></i></a>
 </h2>
 <p>Con un índice de ansiedad: mientras más alto el número, más ansiosa está la persona.</p>
-<div class="sourceCode" id="cb584"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb582"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">picture</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span>,<span class="fl">2</span>,<span class="fl">8</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">0</span>,<span class="fl">7</span><span class="op">)</span></span>
 <span><span class="va">dead</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>,<span class="fl">15</span>,<span class="fl">17</span>,<span class="fl">10</span>,<span class="fl">10</span>,<span class="fl">10</span>,<span class="fl">18</span>,<span class="fl">16</span>,<span class="fl">11</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">picture</span><span class="op">)</span></span>
@@ -528,7 +529,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-09-20.</p>
+    <p>"<strong>BioEstadística</strong>" was written by . It was last built on 2026-10-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
